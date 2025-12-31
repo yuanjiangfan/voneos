@@ -1,0 +1,234 @@
+.footer-container {
+  color: #ecf0f1;
+  font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  position: relative;
+}
+
+.footer-bg {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  position: relative;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* 上半部分 */
+.footer-top {
+  padding: 80px 0 60px;
+  position: relative;
+}
+
+.margin-top-k {
+  margin-top: -320px;
+}
+
+.footer-row {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* 品牌信息 */
+.brand-title {
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  background: none;
+  width: 100%;
+  height: 30px;
+  object-fit: contain;
+}
+
+.brand-slogan {
+  font-size: 1.1rem;
+  color: #674409;
+  margin: 0;
+  font-style: italic;
+}
+
+/* 二维码+平台按钮 */
+.qr-platform-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.platform-btn-wrapper:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.platform-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.platform-btn {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  padding: 10px;
+}
+
+.platform-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* 底部版权 */
+.footer-bottom {
+  padding: 55px 0 55px 0;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+.bottom-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .bottom-content {
+    text-align: left;
+  }
+}
+
+.copyright p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #bdc3c7;
+}
+
+.copyright a {
+  color: #C4A46D;
+  text-decoration: none;
+  margin: 0 8px;
+  position: relative;
+}
+
+.copyright a:hover::after {
+  width: 100%;
+}
+
+.copyright a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #C4A46D;
+  transition: width 0.3s ease;
+}
+
+.cert-badge {
+  background: rgba(196, 164, 109, 0.2);
+  color: #C4A46D;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(196, 164, 109, 0.3);
+  cursor: help;
+  margin-left: 20px;
+}
+
+/* 回到顶部 */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #C4A46D;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(196, 164, 109, 0.4);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  z-index: 1000;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #B3935B;
+  transform: translateY(-3px);
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .brand-title {
+    font-size: 2rem;
+  }
+
+  .qr-platform-group {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 移动端优化 */
+  .margin-top-k {
+    margin-top: -120px;
+    /* 减小负边距，避免过度重叠 */
+  }
+
+  .footer-top {
+    padding: 40px 0 30px;
+    /* 减小内边距 */
+  }
+
+  .brand-section {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-title {
+    width: auto;
+    height: 30px;
+  }
+
+  .platform-buttons {
+    margin-right: 0;
+  }
+}

@@ -103,7 +103,7 @@ export function BrandPage() {
                         className="mb-16"
                     >
                         <h3 className="text-[#8B7355] font-bold text-title-primary">品牌文化</h3>
-                        <h4 className="text-[#C5A47E] font-medium tracking-wide uppercase text-title-secondary">BRAND CULTURE</h4>
+                        <h4 className="text-[#8B7355] font-medium tracking-wide uppercase text-title-secondary">BRAND CULTURE</h4>
                     </motion.div>
 
                     <div className="flex justify-center gap-2 overflow-x-auto pb-4">
@@ -157,7 +157,7 @@ export function BrandPage() {
                         className="mb-12"
                     >
                         <h3 className="text-[#8B7355] font-bold text-title-primary">瑞诺氏超级工厂</h3>
-                        <h4 className="text-[#C5A47E] font-medium tracking-wide uppercase text-title-secondary">VONEOS SUPER FACTORY</h4>
+                        <h4 className="text-[#8B7355] font-medium tracking-wide uppercase text-title-secondary">VONEOS SUPER FACTORY</h4>
                     </motion.div>
 
                     <div className="w-full mb-12 rounded-2xl overflow-hidden shadow-2xl">
@@ -229,7 +229,7 @@ export function BrandPage() {
             <section style={{ paddingTop: '0', paddingBottom: '20px' }} className="bg-white relative">
                 <div className="w-full mx-auto mb-8" style={{ maxWidth: '1700px' }}>
                     {/* Dashed Separator Line - Top */}
-                    <div style={{ width: '100%', height: '1px', borderTop: '2px dashed #92641f', opacity: 0.6 }}></div>
+                    <img src={horizontalDashedLine} alt="divider" className="w-full opacity-60" />
                 </div>
 
                 {/* Carousel */}
@@ -298,7 +298,7 @@ export function BrandPage() {
                 <div className="w-full mx-auto mb-16" style={{ maxWidth: '1700px' }}>
                     {/* Dashed Separator Line */}
                     {/* Dashed Separator Line - Force Style */}
-                    <div style={{ width: '100%', height: '1px', borderTop: '2px dashed #92641f', opacity: 0.6, marginBottom: '3rem' }}></div>
+                    <img src={horizontalDashedLine} alt="divider" className="w-full mb-12 opacity-60" />
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -306,7 +306,7 @@ export function BrandPage() {
                         viewport={{ once: true }}
                     >
                         <h3 className="text-[#8B7355] font-bold text-title-primary">爱宠时刻</h3>
-                        <h4 className="text-[#C5A47E] font-medium tracking-wide uppercase text-title-secondary">PET MOMENTS</h4>
+                        <h4 className="text-[#8B7355] font-medium tracking-wide uppercase text-title-secondary">PET MOMENTS</h4>
                     </motion.div>
                 </div>
 

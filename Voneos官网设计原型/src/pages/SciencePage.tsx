@@ -11,6 +11,7 @@ import icon99 from '../assets/科学营养/99.png';
 // Laboratory
 import labLogo from '../assets/科学营养/岳麓山.png';
 import labBanner from '../assets/科学营养/瑞诺氏×岳麓山实验室.png';
+import vectorObject from '../assets/科学营养/矢量智能对象.png';
 
 // Pet images grid
 import pet01 from '../assets/科学营养/图01.png';
@@ -35,10 +36,21 @@ import test9 from '../assets/科学营养/9.png';
 import test231 from '../assets/科学营养/231.png';
 import test2066 from '../assets/科学营养/2066.png';
 
+// Icons
+import iconHighEfficacy from '../assets/科学营养/2高功效.png';
+
 // Bottom scene
 import bottomScene from '../assets/科学营养/图.png';
 import petsScene from '../assets/科学营养/图层 79.png';
 import divider from '../assets/科学营养/竖虚线.png';
+
+// New 5 Systems Icons
+import materialIcon from '../assets/科学营养/新鲜材料.png';
+import naturalIcon from '../assets/科学营养/天然安全.png';
+import palatabilityIcon from '../assets/科学营养/高适口性.png';
+import nutritionIcon from '../assets/科学营养/分阶精准营养.png';
+import certificationIcon from '../assets/科学营养/科学检测认证.png';
+import verticalLine from '../assets/科学营养/竖虚线.png';
 
 export function SciencePage() {
     return (
@@ -167,7 +179,7 @@ export function SciencePage() {
             </section>
 
             {/* Divider */}
-            <div className="w-full" style={{ backgroundColor: '#f4e7ce', padding: '0px 0' }}>
+            <div className="w-full" style={{ backgroundColor: '#f3e7cf', padding: '20px 0' }}>
                 <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
                     <div style={{ width: '100%', height: '1px', borderTop: '2px dashed rgba(146, 100, 31, 0.4)' }}></div>
                 </div>
@@ -238,12 +250,14 @@ export function SciencePage() {
             </section>
 
             {/* Divider */}
-            <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
-                <div style={{ width: '100%', height: '1px', borderTop: '2px dashed rgba(146, 100, 31, 0.4)' }}></div>
+            <div className="w-full" style={{ backgroundColor: '#f8f1df', padding: '0px 0' }}>
+                <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
+                    <div style={{ width: '100%', height: '1px', borderTop: '2px dashed rgba(146, 100, 31, 0.4)' }}></div>
+                </div>
             </div>
 
             {/* 3. Certification Standard */}
-            <section className="py-24 bg-white">
+            <section className="py-24" style={{ background: 'linear-gradient(180deg, #f8f1df 0%, #ffffff 100%)' }}>
                 <div className="w-full mx-auto" style={{ maxWidth: '1700px' }}>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -251,28 +265,40 @@ export function SciencePage() {
                         viewport={{ once: true }}
                         className="mb-16"
                     >
-                        <h3 className="text-[#8B7355] font-bold text-title-primary">瑞诺氏认证标准</h3>
-                        <h4 className="text-[#C5A47E] font-medium tracking-wide uppercase text-title-secondary">VONEOS CERTIFIED STANDARD</h4>
+                        <h3 className="font-bold text-title-primary" style={{ color: 'rgb(142, 96, 21)' }}>瑞诺氏认证标准</h3>
+                        <h4 className="font-medium tracking-wide uppercase text-title-secondary" style={{ color: 'rgb(142, 96, 21)' }}>VONEOS CERTIFIED STANDARD</h4>
+                        <div className="flex items-center gap-4" style={{ marginTop: '55px' }}>
+                            <img src={vectorObject} alt="icon" className="object-contain" style={{ width: '50px', height: '50px' }} />
+                            <span style={{ color: 'rgb(142, 96, 21)', fontSize: '50px', lineHeight: '1', marginLeft: '30px' }}>瑞诺氏6A核心体系 好产品的科学答案</span>
+                        </div>
                     </motion.div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', marginBottom: '2rem' }}>
                         <img src={pet01} alt="Pet 1" className="w-full h-auto object-cover rounded-lg" />
-                        <img src={pet02} alt="Pet 2" className="w-full h-auto object-cover rounded-lg" />
+                        {/* Image 2 with Overlay */}
+                        <div className="relative w-full h-auto rounded-lg overflow-hidden group">
+                            <img src={pet02} alt="Pet 2" className="w-full h-full object-cover" />
+                            <div className="absolute inset-0 flex justify-center items-center" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+                                <img src={iconHighEfficacy} alt="High Efficacy" className="w-20 h-20 object-contain opacity-90" />
+                            </div>
+                        </div>
                         <img src={pet03} alt="Pet 3" className="w-full h-auto object-cover rounded-lg" />
                         <img src={pet04} alt="Pet 4" className="w-full h-auto object-cover rounded-lg" />
                         <img src={pet05} alt="Pet 5" className="w-full h-auto object-cover rounded-lg" />
                         <img src={pet06} alt="Pet 6" className="w-full h-auto object-cover rounded-lg" />
                     </div>
 
-                    <p className="text-center text-[#8B7355]/80 text-lg">
-                        瑞诺氏拥有自己的认证标准，确保每一款产品都符合严格的质量要求
+                    <p style={{ fontSize: '37px', color: 'rgb(142, 96, 21)', textAlign: 'right' }}>
+                        ——这背后，是瑞诺氏始终如一的坚持
                     </p>
                 </div>
             </section>
 
             {/* Divider */}
-            <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
-                <div style={{ width: '100%', height: '1px', borderTop: '2px dashed rgba(146, 100, 31, 0.4)' }}></div>
+            <div className="w-full" style={{ backgroundColor: '#f8f1df', padding: '0px 0' }}>
+                <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
+                    <div style={{ width: '100%', height: '1px', borderTop: '2px dashed rgba(146, 100, 31, 0.4)' }}></div>
+                </div>
             </div>
 
             {/* 4. Five Systems */}
@@ -285,37 +311,84 @@ export function SciencePage() {
                         className="mb-16"
                     >
                         <h3 className="text-[#8B7355] font-bold text-title-primary">科学健康五大体系</h3>
-                        <h4 className="text-[#C5A47E] font-medium tracking-wide uppercase text-title-secondary">THE FIVE SYSTEMS OF SCIENTIFIC HEALTH</h4>
+                        <h4 className="text-[#C5A47E] font-medium tracking-wide uppercase text-title-secondary">THE FIVE SYSTEMS OF </h4>
+                        <h4 className="text-[#C5A47E] font-medium tracking-wide uppercase text-title-secondary">SCIENTIFIC HEALTH</h4>
                     </motion.div>
 
-                    <div className="flex flex-wrap justify-center gap-12 md:gap-16">
-                        <div className="flex flex-col items-center">
-                            <img src={system001} alt="System 1" className="w-24 h-24 md:w-32 md:h-32 object-contain mb-4" />
-                            <p className="text-[#8B7355] font-medium text-center">营养均衡</p>
+                    <div className="flex justify-between items-center w-full px-4">
+                        {/* Item 1 */}
+                        <div className="flex flex-col items-center flex-1">
+                            <img src={materialIcon} alt="新鲜材料" className="w-[140px] h-[140px] object-contain mb-8" />
+                            <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>新鲜材料</h3>
+                            <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
+                                精选源头鲜材<br />锁住原始营养
+                            </p>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <img src={system002} alt="System 2" className="w-24 h-24 md:w-32 md:h-32 object-contain mb-4" />
-                            <p className="text-[#8B7355] font-medium text-center">高适口性</p>
+
+                        {/* Divider */}
+                        <div className="h-40 flex items-center">
+                            <img src={verticalLine} alt="divider" className="h-full w-auto object-contain" />
                         </div>
-                        <div className="flex flex-col items-center">
-                            <img src={system003} alt="System 3" className="w-24 h-24 md:w-32 md:h-32 object-contain mb-4" />
-                            <p className="text-[#8B7355] font-medium text-center">高吸收率</p>
+
+                        {/* Item 2 */}
+                        <div className="flex flex-col items-center flex-1">
+                            <img src={naturalIcon} alt="天然安全" className="w-[140px] h-[140px] object-contain mb-8" />
+                            <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>天然安全</h3>
+                            <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
+                                拒绝化学诱食剂<br />成分纯净天然
+                            </p>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <img src={system004} alt="System 4" className="w-24 h-24 md:w-32 md:h-32 object-contain mb-4" />
-                            <p className="text-[#8B7355] font-medium text-center">消化健康</p>
+
+                        {/* Divider */}
+                        <div className="h-40 flex items-center">
+                            <img src={verticalLine} alt="divider" className="h-full w-auto object-contain" />
                         </div>
-                        <div className="flex flex-col items-center">
-                            <img src={system005} alt="System 5" className="w-24 h-24 md:w-32 md:h-32 object-contain mb-4" />
-                            <p className="text-[#8B7355] font-medium text-center">科学配比</p>
+
+                        {/* Item 3 */}
+                        <div className="flex flex-col items-center flex-1">
+                            <img src={palatabilityIcon} alt="高适口性" className="w-[140px] h-[140px] object-contain mb-8" />
+                            <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>高适口性</h3>
+                            <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
+                                天然适口成分<br />悦享健康美味
+                            </p>
+                        </div>
+
+                        {/* Divider */}
+                        <div className="h-40 flex items-center">
+                            <img src={verticalLine} alt="divider" className="h-full w-auto object-contain" />
+                        </div>
+
+                        {/* Item 4 */}
+                        <div className="flex flex-col items-center flex-1">
+                            <img src={nutritionIcon} alt="分阶精准营养" className="w-[140px] h-[140px] object-contain mb-8" />
+                            <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>分阶精准营养</h3>
+                            <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
+                                独家科学配比<br />分阶定制配方<br />精准滋养成长
+                            </p>
+                        </div>
+
+                        {/* Divider */}
+                        <div className="h-40 flex items-center">
+                            <img src={verticalLine} alt="divider" className="h-full w-auto object-contain" />
+                        </div>
+
+                        {/* Item 5 */}
+                        <div className="flex flex-col items-center flex-1">
+                            <img src={certificationIcon} alt="科学检测认证" className="w-[140px] h-[140px] object-contain mb-8" />
+                            <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>科学检测认证</h3>
+                            <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
+                                严苛品控护航<br />权威检测鉴证<br />高于欧美标准
+                            </p>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Divider */}
-            <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
-                <div style={{ width: '100%', height: '1px', borderTop: '2px dashed rgba(146, 100, 31, 0.4)' }}></div>
+            <div className="w-full" style={{ backgroundColor: '#f8f1df', padding: '0px 0' }}>
+                <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
+                    <div style={{ width: '100%', height: '1px', borderTop: '2px dashed rgba(146, 100, 31, 0.4)' }}></div>
+                </div>
             </div>
 
             {/* 5. Scientific Testing */}

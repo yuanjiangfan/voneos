@@ -78,11 +78,11 @@ export function Footer() {
   };
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-
+  const isLightFooter = location.pathname === '/brand' || location.pathname === '/contact';
   return (
-    <footer className="footer-container">
+    <footer className="footer-container" style={isLightFooter ? { background: '#ffffff' } : {}}>
       {/* Decorative Image */}
-      <div className="w-full relative z-0" style={{ backgroundColor: '#ffffffff' }}>
+      <div className="w-full relative z-0" >
         <img
           src={isHomePage ? "/src/assets/footer/页脚图片.png" : "/src/assets/footer/页脚.png"}
           alt=""

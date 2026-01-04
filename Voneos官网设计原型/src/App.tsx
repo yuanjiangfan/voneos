@@ -5,6 +5,7 @@ import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
 import { BrandPage } from './pages/BrandPage';
 import { SciencePage } from './pages/SciencePage';
+import { ContactPage } from './pages/ContactPage';
 
 // ScrollToTop component to reset scroll position on route change
 function ScrollToTop() {
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/brand" element={<BrandPage />} />
           <Route path="/science" element={<SciencePage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
         <Footer />
       </div>

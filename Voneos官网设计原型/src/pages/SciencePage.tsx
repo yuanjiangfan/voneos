@@ -103,7 +103,7 @@ export function SciencePage() {
             </section>
 
             {/* Statistics Section - New Area Below Banner */}
-            <section className="w-full relative" style={{ backgroundColor: '#f7e7cd', height: '570px' }}>
+            <section className="w-full relative" style={{ backgroundColor: '#f7e7cd' }}>
                 <div
                     style={{
                         display: 'flex',
@@ -144,7 +144,8 @@ export function SciencePage() {
                             display: 'flex',
                             gap: '3rem', // Reduced gap slightly to accommodate larger icons
                             alignItems: 'center',
-                            marginTop: '2rem' // Adjusted margin
+                            marginTop: '4rem', // Adjusted margin
+                            marginBottom: '4rem' // Adjusted margin
                         }}
                     >
                         {/* Icon 0 */}
@@ -176,7 +177,7 @@ export function SciencePage() {
             </section>
 
             {/* Divider */}
-            <div className="w-full" style={{ backgroundColor: '#f3e7cf', padding: '20px 0' }}>
+            <div className="w-full" style={{ backgroundColor: '#f3e7cf', padding: '0px 0' }}>
                 <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
                     <img src={horizontalDashedLine} alt="divider" className="w-full" style={{ opacity: 1, border: 'none' }} />
                 </div>

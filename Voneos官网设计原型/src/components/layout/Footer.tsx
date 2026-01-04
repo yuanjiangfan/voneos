@@ -82,7 +82,7 @@ export function Footer() {
   return (
     <footer className="footer-container">
       {/* Decorative Image */}
-      <div className="w-full relative z-0">
+      <div className="w-full relative z-0" style={{ backgroundColor: '#ffffffff' }}>
         <img
           src={isHomePage ? "/src/assets/footer/页脚图片.png" : "/src/assets/footer/页脚.png"}
           alt=""

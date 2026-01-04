@@ -39,7 +39,7 @@ import palatabilityCoef from '../assets/科学营养/综合适口性系数.png';
 import iconHighEfficacy from '../assets/科学营养/2高功效.png';
 
 // Bottom scene
-import bottomScene from '../assets/科学营养/猫狗图.png';
+import bottomScene from '../assets/科学营养/温馨场景.png';
 import verticalLine from '../assets/科学营养/竖虚线.png'; // Replaces divider
 
 // New 5 Systems Icons
@@ -54,7 +54,7 @@ import catDogImg from '../assets/科学营养/猫狗图.png';
 
 export function SciencePage() {
     return (
-        <div className="bg-white w-full">
+        <div className="bg-white w-full relative" style={{ marginBottom: '-250px' }}>
             {/* 1. Hero Banner */}
             <section className="w-full relative">
                 <img src={banner} alt="Science Nutrition Banner" className="w-full h-auto object-cover" />
@@ -390,7 +390,7 @@ export function SciencePage() {
             </div>
 
             {/* 5. Scientific Testing */}
-            <section className="py-24 bg-white">
+            <section className="py-24 bg-white relative" style={{ background: 'none' }}>
                 <div className="w-full mx-auto" style={{ maxWidth: '1700px' }}>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -424,39 +424,39 @@ export function SciencePage() {
                     </div>
 
                     {/* Grid of Tests - 7 items (4 top, 3 bottom) */}
-                    <div className="flex flex-wrap justify-center gap-6 mt-8">
-                        {[
-                            { img: smellTest, label: "嗅觉测试", sub: "风味的初次尝试" },
-                            { img: singleBowlTest, label: "单盆测试法", sub: "进食意愿的直接反映" },
-                            { img: palatabilityTest, label: "耐口性测试", sub: "长期喜爱的验证关键" },
-                            { img: doubleBowlTest, label: "双盆测试法", sub: "口味偏好的科学判断" },
-                            { img: ghrelinTest, label: "血液饥饿素测试", sub: "食欲水平的生理标尺" },
-                            { img: preferenceEval, label: "喜爱程度评价", sub: "短期偏好的可靠指标" },
-                            { img: palatabilityCoef, label: "综合适口性系数", sub: "全面健康的科学衡量" },
-                        ].map((item, index) => (
-                            <div key={index} className="flex flex-row items-center bg-[#FFF9F1] rounded-2xl p-6 min-w-[320px] transition-transform hover:scale-105">
-                                {/* Icon Circle */}
-                                <div className="w-20 h-20 rounded-full border-2 border-[#8B6E4E] flex flex-col justify-center items-center bg-transparent mr-6 shrink-0">
-                                    <img src={item.img} alt={item.label} className="w-12 h-12 object-contain" />
+                    <div className="flex flex-col items-center mt-8 relative z-10" style={{ gap: '30px' }}>
+                        {/* Row 1: 4 Items */}
+                        <div className="flex justify-center" style={{ gap: '40px' }}>
+                            {[
+                                { img: smellTest, label: "嗅觉测试" },
+                                { img: singleBowlTest, label: "单盆测试法" },
+                                { img: palatabilityTest, label: "耐口性测试" },
+                                { img: doubleBowlTest, label: "双盆测试法" },
+                            ].map((item, index) => (
+                                <div key={index} className="transition-transform hover:scale-105">
+                                    <img src={item.img} alt={item.label} className="h-[150px] object-contain" />
                                 </div>
-                                {/* Text Content */}
-                                <div className="flex flex-col items-start">
-                                    <h4 className="text-[#8B6E4E] text-2xl font-bold mb-2">{item.label}</h4>
-                                    <p className="text-[#8B6E4E] text-sm opacity-80">{item.sub}</p>
+                            ))}
+                        </div>
+                        {/* Row 2: 3 Items */}
+                        <div className=" flex justify-center" style={{ gap: '40px' }}>
+                            {[
+                                { img: ghrelinTest, label: "血液饥饿素测试" },
+                                { img: preferenceEval, label: "喜爱程度评价" },
+                                { img: palatabilityCoef, label: "综合适口性系数" },
+                            ].map((item, index) => (
+                                <div key={index} className="transition-transform hover:scale-105">
+                                    <img src={item.img} alt={item.label} className="h-[150px] object-contain" />
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </section>
 
-            {/* 6. Bottom Scene */}
-            <section className="w-full relative">
+            </section>
+            <div className="relative w-full" style={{ marginTop: '-200px' }}>
                 <img src={bottomScene} alt="温馨场景" className="w-full h-auto object-cover" />
-            </section>
-
-            {/* Visual footer curve */}
-            <div className="w-full h-32 bg-gradient-to-b from-white to-[#DDC58C]" />
-        </div>
+            </div>
+        </div >
     );
 }

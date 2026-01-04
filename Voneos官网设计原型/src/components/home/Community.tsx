@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '../ui/button';
 import brandComposition from '../../assets/超级符号-1.png';
+import horizontalDashedLine from '../../assets/横虚线.png';
 
 
 export function Community() {
@@ -21,11 +22,10 @@ export function Community() {
             padding-left: 1.5rem;
           }
           
-          .voneos-divider {
-             border: none;
-             border-top: 2px dashed #92641f;
+          .voneos-divider-img {
              width: 100%;
-             margin-bottom: 24px; /* Space between line and headline */
+             margin-bottom: 24px;
+             opacity: 0.6;
           }
 
           .voneos-headline-wrapper { margin-bottom: 3rem; width: 100%; padding-top: 16px; /* Added 16px top margin/padding */ }
@@ -61,7 +61,7 @@ export function Community() {
         `}</style>
 
         {/* Dotted Divider Line */}
-        <div className="voneos-divider"></div>
+        <img src={horizontalDashedLine} alt="divider" className="voneos-divider-img" />
 
         {/* Top Section: Big Headline */}
         <motion.div

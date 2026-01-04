@@ -3,6 +3,9 @@ import { motion } from 'motion/react';
 
 // Import assets
 import banner from '../assets/科学营养/banner 拷贝.png';
+import stat9 from '../assets/科学营养/9.png';
+import stat231 from '../assets/科学营养/231.png';
+import stat2066 from '../assets/科学营养/2066.png';
 import titleImg from '../assets/科学营养/科学营养标题.png';
 import icon0 from '../assets/科学营养/0.png';
 import icon6A from '../assets/科学营养/6A.png';
@@ -21,28 +24,23 @@ import pet04 from '../assets/科学营养/图04.png';
 import pet05 from '../assets/科学营养/图05.png';
 import pet06 from '../assets/科学营养/图06.png';
 
-// Five systems icons
-import system001 from '../assets/科学营养/001.png';
-import system002 from '../assets/科学营养/002.png';
-import system003 from '../assets/科学营养/003.png';
-import system004 from '../assets/科学营养/004.png';
-import system005 from '../assets/科学营养/005.png';
 
 // Testing icons
-import test006 from '../assets/科学营养/006.png';
-import test007 from '../assets/科学营养/007.png';
-import test06 from '../assets/科学营养/06.png';
-import test9 from '../assets/科学营养/9.png';
-import test231 from '../assets/科学营养/231.png';
-import test2066 from '../assets/科学营养/2066.png';
+// New Testing Icons
+import smellTest from '../assets/科学营养/嗅觉测试.png';
+import singleBowlTest from '../assets/科学营养/单盆测试法.png';
+import palatabilityTest from '../assets/科学营养/耐口性测试.png';
+import doubleBowlTest from '../assets/科学营养/双盆测试法.png';
+import ghrelinTest from '../assets/科学营养/血液饥饿素测试.png';
+import preferenceEval from '../assets/科学营养/喜爱程度评价.png';
+import palatabilityCoef from '../assets/科学营养/综合适口性系数.png';
 
 // Icons
 import iconHighEfficacy from '../assets/科学营养/2高功效.png';
 
 // Bottom scene
-import bottomScene from '../assets/科学营养/图.png';
-import petsScene from '../assets/科学营养/图层 79.png';
-import divider from '../assets/科学营养/竖虚线.png';
+import bottomScene from '../assets/科学营养/猫狗图.png';
+import verticalLine from '../assets/科学营养/竖虚线.png'; // Replaces divider
 
 // New 5 Systems Icons
 import materialIcon from '../assets/科学营养/新鲜材料.png';
@@ -50,7 +48,9 @@ import naturalIcon from '../assets/科学营养/天然安全.png';
 import palatabilityIcon from '../assets/科学营养/高适口性.png';
 import nutritionIcon from '../assets/科学营养/分阶精准营养.png';
 import certificationIcon from '../assets/科学营养/科学检测认证.png';
-import verticalLine from '../assets/科学营养/竖虚线.png';
+import horizontalDashedLine from '../assets/横虚线.png';
+import catDogImg from '../assets/科学营养/猫狗图.png';
+
 
 export function SciencePage() {
     return (
@@ -67,9 +67,6 @@ export function SciencePage() {
                         alignItems: 'flex-end', // Force right alignment
                     }}
                 >
-                    {/* Title */}
-
-
                     {/* Text Content - replacing banner image */}
                     <div
                         style={{
@@ -106,7 +103,7 @@ export function SciencePage() {
             </section>
 
             {/* Statistics Section - New Area Below Banner */}
-            <section className="w-full relative" style={{ backgroundColor: '#f3e7cf', height: '570px' }}>
+            <section className="w-full relative" style={{ backgroundColor: '#f7e7cd', height: '570px' }}>
                 <div
                     style={{
                         display: 'flex',
@@ -157,7 +154,7 @@ export function SciencePage() {
 
                         {/* Divider */}
                         <div style={{ height: '260px' }}>
-                            <img src={divider} alt="divider" style={{ width: '3px', height: '100%', objectFit: 'cover' }} />
+                            <img src={verticalLine} alt="divider" style={{ width: '3px', height: '100%', objectFit: 'cover' }} />
                         </div>
 
                         {/* Icon 6A */}
@@ -167,7 +164,7 @@ export function SciencePage() {
 
                         {/* Divider */}
                         <div style={{ height: '260px' }}>
-                            <img src={divider} alt="divider" style={{ width: '3px', height: '100%', objectFit: 'cover' }} />
+                            <img src={verticalLine} alt="divider" style={{ width: '3px', height: '100%', objectFit: 'cover' }} />
                         </div>
 
                         {/* Icon 99 */}
@@ -181,7 +178,7 @@ export function SciencePage() {
             {/* Divider */}
             <div className="w-full" style={{ backgroundColor: '#f3e7cf', padding: '20px 0' }}>
                 <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
-                    <div style={{ width: '100%', height: '1px', borderTop: '2px dashed rgba(146, 100, 31, 0.4)' }}></div>
+                    <img src={horizontalDashedLine} alt="divider" className="w-full" style={{ opacity: 1, border: 'none' }} />
                 </div>
             </div>
 
@@ -219,19 +216,19 @@ export function SciencePage() {
                             {/* Stats Row */}
                             <div className="flex items-center justify-between" style={{ marginBottom: '60px' }}>
                                 {/* Stat 1 */}
-                                <div className="flex items-end gap-2">
-                                    <img src={test9} alt="9位" className="h-12 object-contain" />
-                                    <span className="text-[#5c4033]" style={{ fontSize: '30px', lineHeight: '1' }}>工程院院士</span>
+                                <div className="flex items-end gap-[6px]">
+                                    <img src={stat9} alt="9位" className="h-[46px] object-contain" />
+                                    <span className="text-[#5c4033]" style={{ fontSize: '24px', lineHeight: '1', marginBottom: '3px', paddingLeft: '6px' }}>工程院院士</span>
                                 </div>
                                 {/* Stat 2 */}
-                                <div className="flex items-end gap-2">
-                                    <img src={test231} alt="231位" className="h-12 object-contain" />
-                                    <span className="text-[#5c4033]" style={{ fontSize: '30px', lineHeight: '1' }}>PI 团队</span>
+                                <div className="flex items-end gap-[6px]">
+                                    <img src={stat231} alt="231位" className="h-[46px] object-contain" />
+                                    <span className="text-[#5c4033]" style={{ fontSize: '24px', lineHeight: '1', marginBottom: '3px', paddingLeft: '6px' }}>PI 团队</span>
                                 </div>
                                 {/* Stat 3 */}
-                                <div className="flex items-end gap-2">
-                                    <img src={test2066} alt="2066位" className="h-12 object-contain" />
-                                    <span className="text-[#5c4033]" style={{ fontSize: '30px', lineHeight: '1' }}>科研人员</span>
+                                <div className="flex items-end gap-[6px]">
+                                    <img src={stat2066} alt="2066位" className="h-[46px] object-contain" />
+                                    <span className="text-[#5c4033]" style={{ fontSize: '24px', lineHeight: '1', marginBottom: '3px', paddingLeft: '6px' }}>科研人员</span>
                                 </div>
                             </div>
 
@@ -245,19 +242,20 @@ export function SciencePage() {
                                 (注: 以上信息仅为岳麓山实验室介绍,瑞诺氏与岳麓山实验室中药材品种创制中心开展合作,共同推动科研成果转化与应用。)
                             </p>
                         </div>
-                    </div>
-                </div>
-            </section>
+                    </div >
+                </div >
+            </section >
 
             {/* Divider */}
-            <div className="w-full" style={{ backgroundColor: '#f8f1df', padding: '0px 0' }}>
+            < div className="w-full" style={{ backgroundColor: '#f8f1df', padding: '0px 0' }
+            }>
                 <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
-                    <div style={{ width: '100%', height: '1px', borderTop: '2px dashed rgba(146, 100, 31, 0.4)' }}></div>
+                    <img src={horizontalDashedLine} alt="divider" className="w-full" style={{ opacity: 1, border: 'none' }} />
                 </div>
-            </div>
+            </div >
 
             {/* 3. Certification Standard */}
-            <section className="py-24" style={{ background: 'linear-gradient(180deg, #f8f1df 0%, #ffffff 100%)' }}>
+            < section className="py-24" style={{ background: 'linear-gradient(180deg, #f8f1df 0%, #ffffff 100%)' }}>
                 <div className="w-full mx-auto" style={{ maxWidth: '1700px' }}>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -292,17 +290,17 @@ export function SciencePage() {
                         ——这背后，是瑞诺氏始终如一的坚持
                     </p>
                 </div>
-            </section>
+            </section >
 
             {/* Divider */}
-            <div className="w-full" style={{ backgroundColor: '#f8f1df', padding: '0px 0' }}>
+            < div className="w-full" style={{ padding: '0px 0' }}>
                 <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
-                    <div style={{ width: '100%', height: '1px', borderTop: '2px dashed rgba(146, 100, 31, 0.4)' }}></div>
+                    <img src={horizontalDashedLine} alt="divider" className="w-full" style={{ opacity: 1, border: 'none' }} />
                 </div>
-            </div>
+            </div >
 
             {/* 4. Five Systems */}
-            <section className="py-24 bg-[#FFFBF5]">
+            < section className="py-24 bg-[#FFFBF5]" >
                 <div className="w-full mx-auto" style={{ maxWidth: '1700px' }}>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -385,9 +383,9 @@ export function SciencePage() {
             </section>
 
             {/* Divider */}
-            <div className="w-full" style={{ backgroundColor: '#f8f1df', padding: '0px 0' }}>
+            <div className="w-full" style={{ padding: '0px 0' }}>
                 <div className="w-full" style={{ maxWidth: '1700px', margin: '0 auto' }}>
-                    <div style={{ width: '100%', height: '1px', borderTop: '2px dashed rgba(146, 100, 31, 0.4)' }}></div>
+                    <img src={horizontalDashedLine} alt="divider" className="w-full" style={{ opacity: 1, border: 'none' }} />
                 </div>
             </div>
 
@@ -404,35 +402,50 @@ export function SciencePage() {
                         <h4 className="text-[#C5A47E] font-medium tracking-wide uppercase text-title-secondary">PET'S SCIENTIFIC TESTING</h4>
                     </motion.div>
 
-                    <div className="mb-12">
-                        <img src={petsScene} alt="Pets" className="w-full h-auto object-contain" />
+                    <div className="mb-12 flex flex-col items-start gap-6">
+                        {/* Text Content */}
+                        <div className="w-full text-left relative z-10">
+                            <h3 className="text-[#6D5030] font-medium mb-6" style={{ fontSize: '50px', lineHeight: '1.2' }}>
+                                两大类科学检测，层层验证真“食”力
+                            </h3>
+                            <p className="text-[#555555] leading-relaxed mx-auto" style={{ fontSize: '20px', maxWidth: '100%' }}>
+                                每一口，都源于一套完整的科学测试体系。我们邀请您成为家庭的“首席观
+                            </p>
+                            <p className="text-[#555555] leading-relaxed mx-auto" style={{ fontSize: '20px', maxWidth: '100%' }}>
+                                察员”，使用我们简化后的居家观察法，亲自验证爱宠对瑞诺氏的真实态度。
+                            </p>
+
+                        </div>
+
+                        {/* Image */}
+                        <div className="w-full flex justify-center relative" style={{ marginTop: '-200px' }}>
+                            <img src={catDogImg} alt="Pets" className="w-full h-auto object-contain" />
+                        </div>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-                        <div className="flex flex-col items-center">
-                            <img src={test006} alt="Test 1" className="w-20 h-20 object-contain mb-2" />
-                            <p className="text-[#8B7355] text-sm text-center">微生物检测</p>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <img src={test007} alt="Test 2" className="w-20 h-20 object-contain mb-2" />
-                            <p className="text-[#8B7355] text-sm text-center">营养成分检测</p>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <img src={test06} alt="Test 3" className="w-20 h-20 object-contain mb-2" />
-                            <p className="text-[#8B7355] text-sm text-center">重金属检测</p>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <img src={test9} alt="Test 4" className="w-20 h-20 object-contain mb-2" />
-                            <p className="text-[#8B7355] text-sm text-center">农药残留检测</p>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <img src={test231} alt="Test 5" className="w-20 h-20 object-contain mb-2" />
-                            <p className="text-[#8B7355] text-sm text-center">真菌毒素检测</p>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <img src={test2066} alt="Test 6" className="w-20 h-20 object-contain mb-2" />
-                            <p className="text-[#8B7355] text-sm text-center">全面品质检测</p>
-                        </div>
+                    {/* Grid of Tests - 7 items (4 top, 3 bottom) */}
+                    <div className="flex flex-wrap justify-center gap-6 mt-8">
+                        {[
+                            { img: smellTest, label: "嗅觉测试", sub: "风味的初次尝试" },
+                            { img: singleBowlTest, label: "单盆测试法", sub: "进食意愿的直接反映" },
+                            { img: palatabilityTest, label: "耐口性测试", sub: "长期喜爱的验证关键" },
+                            { img: doubleBowlTest, label: "双盆测试法", sub: "口味偏好的科学判断" },
+                            { img: ghrelinTest, label: "血液饥饿素测试", sub: "食欲水平的生理标尺" },
+                            { img: preferenceEval, label: "喜爱程度评价", sub: "短期偏好的可靠指标" },
+                            { img: palatabilityCoef, label: "综合适口性系数", sub: "全面健康的科学衡量" },
+                        ].map((item, index) => (
+                            <div key={index} className="flex flex-row items-center bg-[#FFF9F1] rounded-2xl p-6 min-w-[320px] transition-transform hover:scale-105">
+                                {/* Icon Circle */}
+                                <div className="w-20 h-20 rounded-full border-2 border-[#8B6E4E] flex flex-col justify-center items-center bg-transparent mr-6 shrink-0">
+                                    <img src={item.img} alt={item.label} className="w-12 h-12 object-contain" />
+                                </div>
+                                {/* Text Content */}
+                                <div className="flex flex-col items-start">
+                                    <h4 className="text-[#8B6E4E] text-2xl font-bold mb-2">{item.label}</h4>
+                                    <p className="text-[#8B6E4E] text-sm opacity-80">{item.sub}</p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

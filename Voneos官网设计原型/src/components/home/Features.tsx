@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import accuracyBadge from '../../assets/546ee9abed8018e5eb9a517c284a1d21034a08d6.png';
 import darkHeartIcon from '../../assets/a67f782c8eb15f304b30c791f802f0e455953716.png';
 import catImg from '../../assets/index/猫.png';
+import horizontalDashedLine from '../../assets/横虚线.png';
 
 import './features.css';
 
@@ -13,7 +14,7 @@ export function Features() {
       <div className="science-container">
 
         {/* Top Divider */}
-        <div className="science-top-divider" />
+        <img src={horizontalDashedLine} alt="divider" className="w-full mb-8" />
 
         {/* Title Section - RESTORED with Class for Z-Index logic */}
         <motion.div
@@ -53,7 +54,7 @@ export function Features() {
               </div>
             </motion.div>
 
-            <div className="science-divider" />
+            <img src={horizontalDashedLine} alt="divider" className="w-full my-8 opacity-100" style={{ opacity: 1, border: 'none' }} />
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="science-feature-row">
               <div className="science-hl-wrapper">
@@ -72,7 +73,7 @@ export function Features() {
               </div>
             </motion.div>
 
-            <div className="science-divider" />
+            <img src={horizontalDashedLine} alt="divider" className="w-full my-8 opacity-100" style={{ opacity: 1, border: 'none' }} />
 
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="science-feature-row">
               <div>

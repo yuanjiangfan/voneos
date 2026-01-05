@@ -95,7 +95,7 @@ export function Navbar() {
     { name: '新闻动态', href: '/news' },
     { name: '产品系列', href: '' },
     { name: '科学营养', href: '/science' },
-    { name: '联系我们', href: '' },
+    { name: '联系我们', href: '/contact' },
   ];
 
   // Colors

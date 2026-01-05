@@ -5,6 +5,7 @@ import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
 import { BrandPage } from './pages/BrandPage';
 import { SciencePage } from './pages/SciencePage';
+import { ContactPage } from './pages/ContactPage';
 import { NewsPage } from './pages/NewsPage';
 import { NewsDetailPage } from './pages/NewsDetailPage';
 
@@ -29,6 +30,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/brand" element={<BrandPage />} />
           <Route path="/science" element={<SciencePage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/news/:id" element={<NewsDetailPage />} />
         </Routes>

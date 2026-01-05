@@ -15,6 +15,7 @@ import factoryImg from '../assets/品牌初心页/厂房.png';
 import badge1 from '../assets/品牌初心页/矢量智能对象.png';
 import badge2 from '../assets/品牌初心页/矢量智能对象 拷贝 2.png';
 import badge3 from '../assets/品牌初心页/矢量智能对象 拷贝 4.png';
+import horizontalDashedLine from '../assets/横虚线.png';
 
 // Certs - 使用证书子目录中的图片
 import cert1 from '../assets/品牌初心页/证书/证书 1.png';
@@ -148,7 +149,7 @@ export function BrandPage() {
             <section className="py-24 bg-white">
                 <div className="w-full mx-auto" style={{ maxWidth: '1700px' }}>
                     {/* Dashed Separator Line */}
-                    <div style={{ width: '100%', height: '1px', borderTop: '2px dashed #92641f', opacity: 0.6, marginBottom: '3rem' }}></div>
+                    <img src={horizontalDashedLine} alt="divider" className="w-full mb-12 opacity-60" />
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -170,12 +171,12 @@ export function BrandPage() {
                             从科研到生产，从承诺到陪伴，背后是高标准、硬科技与强研发的坚实支撑。瑞诺氏超级工厂，让爱宠的每一份营养都值得信赖。
                         </p>
                         {/* Dashed Separator - Consistent Style */}
-                        <div style={{ width: '100%', height: '1px', borderTop: '2px dashed #92641f', opacity: 0.6 }}></div>
+                        <img src={horizontalDashedLine} alt="divider" className="w-full opacity-60" />
                     </div>
 
                     <div className="space-y-12">
                         {/* Feature 1 */}
-                        <div className="flex flex-col md:flex-row items-center gap-12 pb-12" style={{ borderBottom: '2px dashed #92641f', borderColor: 'rgba(146, 100, 31, 0.4)' }}>
+                        <div className="flex flex-col md:flex-row items-center gap-12 pb-12">
                             <div className="shrink-0">
                                 <img src={badge1} alt="甄护之心" className="w-40 h-40 object-contain drop-shadow-md" />
                             </div>
@@ -189,9 +190,10 @@ export function BrandPage() {
                                 </p>
                             </div>
                         </div>
+                        <img src={horizontalDashedLine} alt="divider" className="w-full opacity-60 my-8" />
 
                         {/* Feature 2 */}
-                        <div className="flex flex-col md:flex-row items-center gap-12 pb-12" style={{ paddingTop: '48px', borderBottom: '2px dashed #92641f', borderColor: 'rgba(146, 100, 31, 0.4)' }}>
+                        <div className="flex flex-col md:flex-row items-center gap-12 pb-12 pt-12" style={{ paddingTop: '48px' }}>
                             <div className="shrink-0">
                                 <img src={badge2} alt="匠造之心" className="w-40 h-40 object-contain drop-shadow-md" />
                             </div>
@@ -205,6 +207,7 @@ export function BrandPage() {
                                 </p>
                             </div>
                         </div>
+                        <img src={horizontalDashedLine} alt="divider" className="w-full opacity-60 my-8" />
 
                         {/* Feature 3 */}
                         <div className="flex flex-col md:flex-row items-center gap-12" style={{ paddingTop: '48px' }}>

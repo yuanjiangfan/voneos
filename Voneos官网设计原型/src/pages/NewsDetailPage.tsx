@@ -1,8 +1,8 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
-import { newsData, NewsItem } from '../data/newsData';
+import { NewsItem, getNewsById, getHotNews, incrementNewsViews } from '../services/newsService';
 import bannerImg from '../assets/新闻动态/banner 拷贝 2.png';
 import dividerLine from '../assets/新闻动态/直线 5 拷贝 4.png';
 import backupImg from '../assets/新闻动态/返回列表.png';
@@ -11,28 +11,44 @@ import backupImg from '../assets/新闻动态/返回列表.png';
 export function NewsDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [news, setNews] = useState<NewsItem | null>(null);
+  const [hotNews, setHotNews] = useState<NewsItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // 使用 useMemo 缓存当前新闻
-  const news = useMemo(
-    () => newsData.find(n => n.id === parseInt(id || '0')),
-    [id]
-  );
+  // 加载新闻详情
+  useEffect(() => {
+    const loadNews = async () => {
+      if (!id) return;
 
-  // 使用 useMemo 缓存热门新闻
-  const hotNews = useMemo(
-    () => newsData.filter(n => n.featured),
-    []
-  );
+      setLoading(true);
+      const newsId = parseInt(id);
+      const data = await getNewsById(newsId);
+      setNews(data);
+      setLoading(false);
 
-  // 使用 useMemo 缓存上一篇和下一篇新闻
-  const { prevNews, nextNews } = useMemo(() => {
-    if (!news) return { prevNews: null, nextNews: null };
-    const currentIndex = newsData.findIndex(n => n.id === news.id);
-    return {
-      prevNews: currentIndex > 0 ? newsData[currentIndex - 1] : null,
-      nextNews: currentIndex < newsData.length - 1 ? newsData[currentIndex + 1] : null
+      // 增加浏览量
+      if (data) {
+        incrementNewsViews(newsId);
+      }
     };
-  }, [news]);
+
+    loadNews();
+  }, [id]);
+
+  // 加载热门新闻
+  useEffect(() => {
+    const loadHotNews = async () => {
+      const data = await getHotNews();
+      setHotNews(data);
+    };
+
+    loadHotNews();
+  }, []);
+
+  // 获取上一篇和下一篇新闻（暂时设为 null，需要从服务器获取相邻新闻）
+  // TODO: 可以通过 getAllNews 然后找到当前新闻的索引来实现
+  const prevNews: NewsItem | null = null;
+  const nextNews: NewsItem | null = null;
 
   // 图片加载错误处理
   const handleImageError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
@@ -152,10 +168,10 @@ export function NewsDetailPage() {
                   </div>
 
                   {/* Section Image */}
-                  {section.image != null && news.images[section.image] && (
+                  {section.image != null && (
                     <div className="my-6 overflow-hidden mb-6">
                       <img
-                        src={news.images[section.image]}
+                        src={section.image}
                         alt={section.subtitle}
                         className="w-full h-auto object-cover"
                         onError={handleImageError}

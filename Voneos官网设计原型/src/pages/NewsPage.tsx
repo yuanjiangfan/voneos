@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { newsData, NewsItem } from '../data/newsData';
+import { NewsItem, getAllNews, getFeaturedNews } from '../services/newsService';
 import bannerImg from '../assets/新闻动态/banner 拷贝 2.png';
 import brandNews from '../assets/新闻动态/品牌动态.png';
 import petCharity from '../assets/新闻动态/爱宠公益.png';
@@ -18,7 +18,20 @@ import heartSelected from 'figma:asset/a67f782c8eb15f304b30c791f802f0e455953716.
 // 新闻轮播组件
 const NewsCarousel = React.memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const featuredNews = useMemo(() => newsData.filter(news => news.featured), []);
+  const [featuredNews, setFeaturedNews] = useState<NewsItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // 加载特色新闻
+  useEffect(() => {
+    const loadFeaturedNews = async () => {
+      setLoading(true);
+      const data = await getFeaturedNews();
+      setFeaturedNews(data);
+      setLoading(false);
+    };
+
+    loadFeaturedNews();
+  }, []);
 
   // 自动播放
   useEffect(() => {
@@ -76,7 +89,7 @@ const NewsCarousel = React.memo(() => {
                   {/* 左边：新闻图片 */}
                   <div className="relative h-full w-full overflow-hidden bg-slate-200">
                     <img
-                      src={currentNews.images[0]}
+                      src={currentNews.image}
                       alt={currentNews.title}
                       className="w-full h-full object-over object-center"
                       onError={handleImageError}
@@ -208,7 +221,7 @@ const NewsCard = React.memo(({ news }: { news: NewsItem }) => {
           {/* 右侧图片 - 固定宽度 */}
           <div className="w-1/3">
             <img
-              src={news.images[0]}
+              src={news.image}
               alt={news.title}
               onError={handleImageError}
             />
@@ -228,12 +241,26 @@ NewsCard.displayName = 'NewsCard';
 export function NewsPage() {
   const [activeCategory, setActiveCategory] = useState<'品牌动态' | '爱宠公益'>('品牌动态');
   const [currentPage, setCurrentPage] = useState(1);
+  const [allNews, setAllNews] = useState<NewsItem[]>([]);
+  const [loading, setLoading] = useState(true);
   const itemsPerPage = 4; // 横向卡片布局，减少每页显示数量
+
+  // 加载所有新闻
+  useEffect(() => {
+    const loadNews = async () => {
+      setLoading(true);
+      const data = await getAllNews();
+      setAllNews(data);
+      setLoading(false);
+    };
+
+    loadNews();
+  }, []);
 
   // 使用 useMemo 缓存筛选结果
   const filteredNews = useMemo(
-    () => newsData.filter(news => news.category === activeCategory),
-    [activeCategory]
+    () => allNews.filter((news: NewsItem) => news.category === activeCategory),
+    [allNews, activeCategory]
   );
 
   const totalPages = Math.max(1, Math.ceil(filteredNews.length / itemsPerPage));

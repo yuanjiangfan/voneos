@@ -11,7 +11,10 @@ const NavLink = ({ item, linkColor, hoverColor }: { item: { name: string; href: 
   const isHome = location.pathname === '/';
 
   const isActive =
-    (item.href.startsWith('/') && location.pathname === item.href) ||
+    (item.href.startsWith('/') && (
+      location.pathname === item.href ||
+      (item.href !== '/' && location.pathname.startsWith(item.href + '/'))
+    )) ||
     (item.href.startsWith('#') && location.hash === item.href && isHome);
 
   // Determine Link Type and Props
@@ -93,7 +96,7 @@ export function Navbar() {
     { name: '首页', href: '/' },
     { name: '品牌初心', href: '/brand' },
     { name: '新闻动态', href: '/news' },
-    { name: '产品系列', href: '' },
+    { name: '产品系列', href: '/products' },
     { name: '科学营养', href: '/science' },
     { name: '联系我们', href: '/contact' },
   ];

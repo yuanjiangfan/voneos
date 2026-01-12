@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import './science.css';
 
 // Import assets
 import banner from '../assets/科学营养/banner 拷贝.png';
@@ -35,12 +36,17 @@ import ghrelinTest from '../assets/科学营养/血液饥饿素测试.png';
 import preferenceEval from '../assets/科学营养/喜爱程度评价.png';
 import palatabilityCoef from '../assets/科学营养/综合适口性系数.png';
 
-// Icons
-import iconHighEfficacy from '../assets/科学营养/2高功效.png';
+// Icons - 6 High Series
+import icon1HighPalatability from '../assets/科学营养/1高适口.png';
+import icon2HighEfficacy from '../assets/科学营养/2高功效.png';
+import icon3HighPalatability2 from '../assets/科学营养/3高适口.png';
+import icon4HighQuality from '../assets/科学营养/4高品质.png';
+import icon5HighSafety from '../assets/科学营养/5高安全.png';
+import icon6HighAbsorption from '../assets/科学营养/6高吸收.png';
 
 // Bottom scene
 import bottomScene from '../assets/科学营养/温馨场景.png';
-import verticalLine from '../assets/科学营养/竖虚线.png'; // Replaces divider
+import verticalLine from '../assets/虚线/竖虚线.png'; // Replaces divider
 
 // New 5 Systems Icons
 import materialIcon from '../assets/科学营养/新鲜材料.png';
@@ -48,7 +54,7 @@ import naturalIcon from '../assets/科学营养/天然安全.png';
 import palatabilityIcon from '../assets/科学营养/高适口性.png';
 import nutritionIcon from '../assets/科学营养/分阶精准营养.png';
 import certificationIcon from '../assets/科学营养/科学检测认证.png';
-import horizontalDashedLine from '../assets/横虚线.png';
+import horizontalDashedLine from '../assets/虚线/横虚线.png';
 import catDogImg from '../assets/科学营养/猫狗图.png';
 
 
@@ -273,18 +279,48 @@ export function SciencePage() {
                     </motion.div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', marginBottom: '2rem' }}>
-                        <img src={pet01} alt="Pet 1" className="w-full h-auto object-cover rounded-lg" />
-                        {/* Image 2 with Overlay */}
-                        <div className="relative w-full h-auto rounded-lg overflow-hidden group">
-                            <img src={pet02} alt="Pet 2" className="w-full h-full object-cover" />
-                            <div className="absolute inset-0 flex justify-center items-center" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
-                                <img src={iconHighEfficacy} alt="High Efficacy" className="w-20 h-20 object-contain opacity-90" />
+                        {/* Image 1 with Hover Overlay */}
+                        <div className="pet-image-container">
+                            <img src={pet01} alt="Pet 1" />
+                            <div className="pet-image-overlay">
+                                <img src={icon1HighPalatability} alt="高适口" />
                             </div>
                         </div>
-                        <img src={pet03} alt="Pet 3" className="w-full h-auto object-cover rounded-lg" />
-                        <img src={pet04} alt="Pet 4" className="w-full h-auto object-cover rounded-lg" />
-                        <img src={pet05} alt="Pet 5" className="w-full h-auto object-cover rounded-lg" />
-                        <img src={pet06} alt="Pet 6" className="w-full h-auto object-cover rounded-lg" />
+                        {/* Image 2 with Hover Overlay */}
+                        <div className="pet-image-container">
+                            <img src={pet02} alt="Pet 2" />
+                            <div className="pet-image-overlay">
+                                <img src={icon2HighEfficacy} alt="高功效" />
+                            </div>
+                        </div>
+                        {/* Image 3 with Hover Overlay */}
+                        <div className="pet-image-container">
+                            <img src={pet03} alt="Pet 3" />
+                            <div className="pet-image-overlay">
+                                <img src={icon3HighPalatability2} alt="高适口" />
+                            </div>
+                        </div>
+                        {/* Image 4 with Hover Overlay */}
+                        <div className="pet-image-container">
+                            <img src={pet04} alt="Pet 4" />
+                            <div className="pet-image-overlay">
+                                <img src={icon4HighQuality} alt="高品质" />
+                            </div>
+                        </div>
+                        {/* Image 5 with Hover Overlay */}
+                        <div className="pet-image-container">
+                            <img src={pet05} alt="Pet 5" />
+                            <div className="pet-image-overlay">
+                                <img src={icon5HighSafety} alt="高安全" />
+                            </div>
+                        </div>
+                        {/* Image 6 with Hover Overlay */}
+                        <div className="pet-image-container">
+                            <img src={pet06} alt="Pet 6" />
+                            <div className="pet-image-overlay">
+                                <img src={icon6HighAbsorption} alt="高吸收" />
+                            </div>
+                        </div>
                     </div>
 
                     <p style={{ fontSize: '37px', color: 'rgb(142, 96, 21)', textAlign: 'right' }}>
@@ -314,9 +350,9 @@ export function SciencePage() {
                         <h4 className="text-[#C5A47E] font-medium tracking-wide uppercase text-title-secondary">SCIENTIFIC HEALTH</h4>
                     </motion.div>
 
-                    <div className="flex justify-between items-center w-full px-4">
+                    <div className="flex justify-between items-start w-full px-4">
                         {/* Item 1 */}
-                        <div className="flex flex-col items-center flex-1">
+                        <div className="flex flex-col items-center" style={{ width: '18%' }}>
                             <img src={materialIcon} alt="新鲜材料" className="w-[140px] h-[140px] object-contain mb-8" />
                             <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>新鲜材料</h3>
                             <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
@@ -330,7 +366,7 @@ export function SciencePage() {
                         </div>
 
                         {/* Item 2 */}
-                        <div className="flex flex-col items-center flex-1">
+                        <div className="flex flex-col items-center" style={{ width: '18%' }}>
                             <img src={naturalIcon} alt="天然安全" className="w-[140px] h-[140px] object-contain mb-8" />
                             <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>天然安全</h3>
                             <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
@@ -344,7 +380,7 @@ export function SciencePage() {
                         </div>
 
                         {/* Item 3 */}
-                        <div className="flex flex-col items-center flex-1">
+                        <div className="flex flex-col items-center" style={{ width: '18%' }}>
                             <img src={palatabilityIcon} alt="高适口性" className="w-[140px] h-[140px] object-contain mb-8" />
                             <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>高适口性</h3>
                             <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
@@ -358,7 +394,7 @@ export function SciencePage() {
                         </div>
 
                         {/* Item 4 */}
-                        <div className="flex flex-col items-center flex-1">
+                        <div className="flex flex-col items-center" style={{ width: '18%' }}>
                             <img src={nutritionIcon} alt="分阶精准营养" className="w-[140px] h-[140px] object-contain mb-8" />
                             <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>分阶精准营养</h3>
                             <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
@@ -372,7 +408,7 @@ export function SciencePage() {
                         </div>
 
                         {/* Item 5 */}
-                        <div className="flex flex-col items-center flex-1">
+                        <div className="flex flex-col items-center" style={{ width: '18%' }}>
                             <img src={certificationIcon} alt="科学检测认证" className="w-[140px] h-[140px] object-contain mb-8" />
                             <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>科学检测认证</h3>
                             <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>

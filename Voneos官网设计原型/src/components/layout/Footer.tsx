@@ -78,7 +78,7 @@ export function Footer() {
   };
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-  const isLightFooter = location.pathname === '/brand' || location.pathname === '/contact';
+  const isLightFooter = location.pathname === '/brand' || location.pathname === '/contact' || location.pathname.startsWith('/products') || location.pathname === '/news' || location.pathname.startsWith('/news/');
   return (
     <footer className="footer-container" style={isLightFooter ? { background: '#ffffff' } : {}}>
       {/* Decorative Image */}
@@ -137,8 +137,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="footer-bg pt-[50px]">
-          <div className="footer-bottom">
+        <div className="footer-bg pt-[50px]" >
+          <div className="footer-bottom" style={{ background: "#c4a567", color: "#95621e" }}>
             <div className="container">
               <div className="bottom-content">
                 <div className="copyright">

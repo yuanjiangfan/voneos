@@ -8,6 +8,9 @@ import { SciencePage } from './pages/SciencePage';
 import { ContactPage } from './pages/ContactPage';
 import { NewsPage } from './pages/NewsPage';
 import { NewsDetailPage } from './pages/NewsDetailPage';
+import { ProductSeriesPage } from './pages/ProductSeriesPage';
+import { ProductCategoryPage } from './pages/ProductCategoryPage';
+import { ProductDetailPage } from './pages/ProductDetailPage';
 
 // ScrollToTop component to reset scroll position on route change
 function ScrollToTop() {
@@ -29,6 +32,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/brand" element={<BrandPage />} />
+          <Route path="/products" element={<ProductSeriesPage />} />
+          <Route path="/products/:categoryId" element={<ProductCategoryPage />} />
+          <Route path="/products/:categoryId/:productId" element={<ProductDetailPage />} />
           <Route path="/science" element={<SciencePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/news" element={<NewsPage />} />

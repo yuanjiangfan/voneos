@@ -1,21 +1,22 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import './brand.css';
 
 // Imports - Asset names are based on file listing. 
 // Using relative paths to ../assets/品牌初心页/
 import bannerImg from '../assets/品牌初心页/banner.png';
 
-// Culture Cards
-import culture01 from '../assets/品牌初心页/01.png';
-import culture02 from '../assets/品牌初心页/02展开.png';
-import culture03 from '../assets/品牌初心页/03.png';
+// Culture Cards - 默认和展开状态
+import culture01Expanded from '../assets/品牌初心页/01展开.png';
+import culture02Expanded from '../assets/品牌初心页/02展开.png';
+import culture03Expanded from '../assets/品牌初心页/03展开.png';
 
 // Factory
 import factoryImg from '../assets/品牌初心页/厂房.png';
 import badge1 from '../assets/品牌初心页/矢量智能对象.png';
 import badge2 from '../assets/品牌初心页/矢量智能对象 拷贝 2.png';
 import badge3 from '../assets/品牌初心页/矢量智能对象 拷贝 4.png';
-import horizontalDashedLine from '../assets/横虚线.png';
+import horizontalDashedLine from '../assets/虚线/横虚线.png';
 
 // Certs - 使用证书子目录中的图片
 import cert1 from '../assets/品牌初心页/证书/证书 1.png';
@@ -25,32 +26,33 @@ import cert4 from '../assets/品牌初心页/证书/证书 4.png';
 import cert5 from '../assets/品牌初心页/证书/证书 5.png';
 
 // Moments (Sample selection)
-import moment1 from '../assets/品牌初心页/图层 15.png';
-import moment2 from '../assets/品牌初心页/图层 16.png';
-import moment3 from '../assets/品牌初心页/图层 17.png';
-import moment4 from '../assets/品牌初心页/图层 18.png';
-import moment5 from '../assets/品牌初心页/图层 19.png';
-import moment6 from '../assets/品牌初心页/图层 20.png';
-import superSymbol from '../assets/品牌初心页/超级符号.png';
 import petGroupImage from '../assets/品牌初心页/宠物群像.png';
 
 export function BrandPage() {
-    const certs = [cert1, cert2, cert3, cert4, cert5]; // 5 张证书图片
+    // 证书数据:包含图片和名称
+    const certificatesData = [
+        { image: cert1, name: 'ISO 9001质量管理体系认证' },
+        { image: cert2, name: 'HACCP食品安全管理体系认证' },
+        { image: cert3, name: '英国零售商协会全球消费品标准认证(BRC)' },
+        { image: cert4, name: 'IFS国际食品标准认证' },
+        { image: cert5, name: 'SGS产品质量认证' },
+    ];
     const [activeCertIndex, setActiveCertIndex] = React.useState(2);
     const [autoPlayKey, setAutoPlayKey] = React.useState(0);
+    const [hoveredCard, setHoveredCard] = React.useState<number | null>(null); // 品牌文化卡片hover状态
 
     const resetAutoPlay = () => {
         setAutoPlayKey(prev => prev + 1);
     };
 
     const handlePrev = () => {
-        setActiveCertIndex((prev: number) => (prev - 1 + certs.length) % certs.length);
+        setActiveCertIndex((prev: number) => (prev - 1 + certificatesData.length) % certificatesData.length);
         resetAutoPlay();
     };
 
     const handleNext = React.useCallback(() => {
-        setActiveCertIndex((prev: number) => (prev + 1) % certs.length);
-    }, [certs.length]);
+        setActiveCertIndex((prev: number) => (prev + 1) % certificatesData.length);
+    }, [certificatesData.length]);
 
     const handleNextWithReset = () => {
         handleNext();
@@ -66,7 +68,7 @@ export function BrandPage() {
     }, [handleNext, autoPlayKey]);
 
     const getSlideStyles = (index: number) => {
-        const diff = (index - activeCertIndex + certs.length) % certs.length;
+        const diff = (index - activeCertIndex + certificatesData.length) % certificatesData.length;
         // diff 0: Center (中间图片 415x610)
         // diff 1: Right
         // diff 2: Far Right
@@ -108,39 +110,67 @@ export function BrandPage() {
                     </motion.div>
 
                     <div className="flex justify-center gap-2 overflow-x-auto pb-4">
-                        {/* Card 1: Vision - 443x633 strict (Inline Style) */}
-                        <motion.div
-                            style={{ width: '443px', minWidth: '443px', height: '633px' }}
-                            className="relative group overflow-hidden flex-none"
-                        >
-                            <img src={culture03} alt="Vision" className="w-full h-full object-cover" />
-                            {/* Optional Overlay Text based on design */}
-                            <div className="absolute top-4 left-4 md:top-6 md:left-6">
-                                <h5 className="text-white text-3xl font-bold tracking-widest drop-shadow-md">愿景</h5>
-                            </div>
-                        </motion.div>
+                        {[
+                            {
+                                id: 1,
+                                title: '愿景',
+                                expandedImage: culture03Expanded,
+                                description: '打造全球科学健康\n宠物营养食品第一品牌'
+                            },
+                            {
+                                id: 2,
+                                title: '使命',
+                                expandedImage: culture02Expanded,
+                                description: '因爱而生，\n用科学适口好营养，守护宠物健康'
+                            },
+                            {
+                                id: 3,
+                                title: '价值观',
+                                expandedImage: culture01Expanded,
+                                description: '科学求效，专研固本\n美味悦心，新鲜护安'
+                            },
+                        ].map((card, index) => {
+                            // 联动宽度计算:hover时当前卡片扩展,其他卡片缩小
+                            const isHovered = hoveredCard === index;
+                            const width = hoveredCard === null
+                                ? 448  // 默认状态:所有卡片448px
+                                : isHovered
+                                    ? 778  // 当前hover卡片:778px
+                                    : 283; // 其他卡片:283px
 
-                        {/* Card 2: Mission - 788x633 strict (Inline Style) */}
-                        <motion.div
-                            style={{ width: '788px', minWidth: '788px', height: '633px' }}
-                            className="relative group overflow-hidden flex-none"
-                        >
-                            <img src={culture02} alt="Mission" className="w-full h-full object-cover" />
-                            <div className="absolute top-4 left-4 md:top-6 md:left-6">
-                                <h5 className="text-white text-3xl font-bold tracking-widest drop-shadow-md">使命</h5>
-                            </div>
-                        </motion.div>
+                            return (
+                                <motion.div
+                                    key={card.id}
+                                    style={{ height: '637px' }}
+                                    className="relative overflow-hidden flex-none cursor-pointer"
+                                    onMouseEnter={() => setHoveredCard(index)}
+                                    onMouseLeave={() => setHoveredCard(null)}
+                                    transition={{ duration: 0.8, ease: 'easeInOut' }}
+                                    animate={{ width: `${width}px` }}
+                                >
+                                    <img
+                                        src={card.expandedImage}
+                                        alt={card.title}
+                                        className="w-full h-full object-cover"
+                                        style={{ objectPosition: 'center' }}
+                                    />
 
-                        {/* Card 3: Values - 443x633 strict (Inline Style) */}
-                        <motion.div
-                            style={{ width: '443px', minWidth: '443px', height: '633px' }}
-                            className="relative group overflow-hidden flex-none"
-                        >
-                            <img src={culture01} alt="Values" className="w-full h-full object-cover" />
-                            <div className="absolute top-4 left-4 md:top-6 md:left-6">
-                                <h5 className="text-white text-3xl font-bold tracking-widest drop-shadow-md">价值观</h5>
-                            </div>
-                        </motion.div>
+                                    {/* 黑色透明遮罩层 */}
+                                    <div className={`brand-culture-overlay ${isHovered ? 'active' : ''}`}>
+                                        <p className="brand-culture-description">
+                                            {card.description}
+                                        </p>
+                                    </div>
+
+                                    {/* 标题文字 */}
+                                    <div className="absolute top-4 left-4 md:top-6 md:left-6 z-10">
+                                        <h5 className="brand-culture-title">
+                                            {card.title}
+                                        </h5>
+                                    </div>
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
@@ -265,7 +295,7 @@ export function BrandPage() {
                     </div>
 
                     <div className="relative w-full h-full flex justify-center items-center">
-                        {certs.map((cert, index) => {
+                        {certificatesData.map((cert, index) => {
                             const styles = getSlideStyles(index);
                             return (
                                 <div
@@ -283,16 +313,16 @@ export function BrandPage() {
                                         border: '1px solid #e5e5e5'
                                     }}
                                 >
-                                    <img src={cert} className="w-full h-full object-contain" alt="Certificate" />
+                                    <img src={cert.image} className="w-full h-full object-contain" alt="Certificate" />
                                 </div>
                             );
                         })}
                     </div>
                 </div>
 
-                {/* Caption */}
-                <div className="text-center text-[#C5A47E] font-bold tracking-wider" style={{ fontSize: '35px', marginTop: '40px' }}>
-                    英国零售商协会全球消费品标准认证(BRC)
+                {/* Caption - 动态显示当前证书名称 */}
+                <div className="text-center text-[#C5A47E] font-bold tracking-wider transition-opacity duration-300" style={{ fontSize: '35px', marginTop: '40px' }}>
+                    {certificatesData[activeCertIndex].name}
                 </div>
             </section>
 

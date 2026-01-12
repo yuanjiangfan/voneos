@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { newsData, NewsItem } from '../data/newsData';
 import bannerImg from '../assets/新闻动态/banner 拷贝 2.png';
-import dividerLine from '../assets/新闻动态/直线 5 拷贝 4.png';
+import dividerLine from '../assets/虚线/横虚线.png';
 import backupImg from '../assets/新闻动态/返回列表.png';
 
 // 新闻详情页面组件
@@ -67,14 +67,14 @@ export function NewsDetailPage() {
   }
 
   return (
-    <div className="bg-white w-full min-h-screen mb-8">
+    <div className="bg-white w-full min-h-screen">
       {/* Hero Banner */}
       <section className="w-full relative">
         <img src={bannerImg} alt="新闻动态" className="w-full h-auto object-cover" />
       </section>
 
       {/* Breadcrumb Navigation */}
-      <div className="px-4 md:px-8 lg:px-12 pb-16 mb-8">
+      <div className="w-full mx-auto pb-16 mb-8" style={{ maxWidth: '1700px' }}>
         <nav className="flex items-center text-sm text-slate-600">
           <Link to="/" className="hover:text-[#8E5E16] transition-colors">
             首页
@@ -89,10 +89,10 @@ export function NewsDetailPage() {
       </div>
 
       {/* Article Content */}
-      <div className="px-4 md:px-8 lg:px-12 pb-16">
+      <div className="w-full mx-auto pb-16" style={{ maxWidth: '1700px' }}>
         <div className="flex flex-row gap-6 sm:gap-8 lg:gap-16">
           {/* Left Side - Main Article Content */}
-          <div className="w-[95%] min-w-0 max-w-4xl mx-auto bg-white">
+          <div className="flex-1 min-w-0 bg-white">
             {/* Article Header */}
             <div className="px-8 md:px-12 pt-10 pb-6">
               <motion.div
@@ -100,11 +100,11 @@ export function NewsDetailPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <h1 className="md:text-4xl font-bold text-[#8E5E16] mb-6 leading-tight">
+                <h1 className="text-5xl font-bold text-[#8E5E16] mb-6 leading-tight" style={{ fontSize: '3rem' }}>
                   {news.title}
                 </h1>
 
-                <div className="flex items-center gap-6 text-sm text-slate-400">
+                <div className="flex items-center gap-6 text-base text-slate-400">
                   <span>发布时间：{news.date}</span>
                   <span>阅读量：{news.views}</span>
                 </div>
@@ -123,7 +123,7 @@ export function NewsDetailPage() {
 
             {/* Article Body */}
             <div className="px-8 md:px-12 mb-6">
-              <p className="text-sm md:text-base text-slate-700 leading-relaxed indent-8">
+              <p className="text-slate-700 indent-8" style={{ fontSize: '21px', lineHeight: '38px' }}>
                 {news.excerpt}
               </p>
             </div>
@@ -138,14 +138,14 @@ export function NewsDetailPage() {
                   className="mb-10"
                 >
                   {/* Section Title */}
-                  <h2 className="text-lg md:text-xl font-bold text-slate-800 mb-6">
+                  <h2 className="text-xl font-bold text-slate-800 mb-6">
                     {section.subtitle}
                   </h2>
 
                   {/* Section Content */}
-                  <div className="text-slate-700 leading-relaxed space-y-4 mb-6">
+                  <div className="text-slate-700 space-y-4 mb-6">
                     {section.content.split('\n\n').map((paragraph, pIndex) => (
-                      <p key={pIndex} className="text-sm md:text-base indent-8">
+                      <p key={pIndex} className="indent-8" style={{ fontSize: '21px', lineHeight: '38px' }}>
                         {paragraph}
                       </p>
                     ))}
@@ -219,7 +219,7 @@ export function NewsDetailPage() {
           </div>
 
           {/* Right Side - Hot News Sidebar */}
-          <div className="bg-white w-[30%] p-6 sticky top-24">
+          <div className="bg-white p-6 sticky top-24" style={{ width: '350px', flexShrink: 0 }}>
             <h3 className="text-3xl font-bold text-[#8E5E16] mb-6 pb-3 border-b border-slate-200">
               热门资讯
             </h3>
@@ -232,12 +232,12 @@ export function NewsDetailPage() {
                 >
                   <motion.div
                     className="group cursor-pointer overflow-hidden transition-all"
-                    style={{ backgroundColor: '#F8F6F0' }}
+                    style={{ backgroundColor: '#F8F6F0', display: 'flex', flexDirection: 'column' }}
                     whileHover={{ y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
                     {/* 图片区域 */}
-                    <div className="relative overflow-hidden h-56">
+                    <div className="relative overflow-hidden" style={{ height: '200px', flexShrink: 0 }}>
                       <img
                         src={hotNewsItem.image}
                         alt={hotNewsItem.title}
@@ -248,7 +248,7 @@ export function NewsDetailPage() {
                     </div>
 
                     {/* 内容区域 */}
-                    <div className="p-6 flex flex-col gap-4">
+                    <div className="p-6 flex flex-col">
                       {/* 新闻标题区域 */}
                       <div className="overflow-hidden">
                         <h3 className="text-lg md:text-xl font-bold text-[#8E5E16] text-left leading-7 group-hover:text-[#6d4810] transition-colors line-clamp-2 md-4" title={hotNewsItem.title}>

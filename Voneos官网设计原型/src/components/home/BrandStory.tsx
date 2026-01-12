@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import brandComposition from 'figma:asset/3b693765c88dcb52e7aee5428b483cd7fef2c78c.png';
+import './home.css';
 
 export function BrandStory() {
   return (
@@ -9,12 +10,7 @@ export function BrandStory() {
       className="relative pt-20 pb-40 overflow-hidden min-h-[80vh] flex items-center"
     >
       {/* Gradient Background */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background: 'linear-gradient(to bottom, #F5E7CB 0%, #FFFFFF 100%)'
-        }}
-      />
+      <div className="absolute inset-0 z-0 brand-gradient-bg" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

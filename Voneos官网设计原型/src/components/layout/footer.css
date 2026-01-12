@@ -116,11 +116,11 @@
 .copyright p {
   margin: 0;
   font-size: 0.9rem;
-  color: #bdc3c7;
+  color: #95621e;
 }
 
 .copyright a {
-  color: #C4A46D;
+  color: #95621e;
   text-decoration: none;
   margin: 0 8px;
   position: relative;
@@ -137,17 +137,17 @@
   left: 0;
   width: 0;
   height: 1px;
-  background-color: #C4A46D;
+  background-color: #95621e;
   transition: width 0.3s ease;
 }
 
 .cert-badge {
-  background: rgba(196, 164, 109, 0.2);
-  color: #C4A46D;
+  background: rgba(149, 98, 30, 0.2);
+  color: #95621e;
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 0.8rem;
-  border: 1px solid rgba(196, 164, 109, 0.3);
+  border: 1px solid rgba(149, 98, 30, 0.3);
   cursor: help;
   margin-left: 20px;
 }

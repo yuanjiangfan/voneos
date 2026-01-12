@@ -6,12 +6,12 @@ import { newsData, NewsItem } from '../data/newsData';
 import bannerImg from '../assets/新闻动态/banner 拷贝 2.png';
 import brandNews from '../assets/新闻动态/品牌动态.png';
 import petCharity from '../assets/新闻动态/爱宠公益.png';
-import straightIine from '../assets/新闻动态/直线 5 拷贝 4.png';
+import straightIine from '../assets/虚线/横虚线.png';
 import circleIcon from '../assets/新闻动态/椭圆 4 拷贝.png';
 import triangleIcon from '../assets/新闻动态/三角形 1.png';
 import triangleIcon2 from '../assets/新闻动态/三角形 1-1.png';
 import learnMoreIcon from '../assets/新闻动态/点击理解报名.png';
-import dividerLine from '../assets/新闻动态/直线 5 拷贝 5.png';
+import dividerLine from '../assets/虚线/横虚线.png';
 import heartUnselected from 'figma:asset/b2d60a3007e626530c4f26151cac09a610940128.png';
 import heartSelected from 'figma:asset/a67f782c8eb15f304b30c791f802f0e455953716.png';
 

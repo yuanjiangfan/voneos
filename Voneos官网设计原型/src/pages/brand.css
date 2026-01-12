@@ -1,0 +1,41 @@
+/* ========================================
+   Brand Page Styles
+   ======================================== */
+
+/* Brand Culture Card Title */
+.brand-culture-title {
+    color: white;
+    font-size: 50px;
+    font-weight: 400;
+    /* normal */
+    letter-spacing: 0.1em;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Brand Culture Card Overlay (展开时的遮罩) */
+.brand-culture-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 5;
+}
+
+.brand-culture-overlay.active {
+    opacity: 1;
+}
+
+/* Brand Culture Card Description Text */
+.brand-culture-description {
+    position: absolute;
+    bottom: 50px;
+    left: 24px;
+    right: 24px;
+    color: white;
+    font-size: 23px;
+    line-height: 1.8;
+    text-align: left;
+    white-space: pre-line;
+    overflow: hidden;
+}

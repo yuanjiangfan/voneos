@@ -3,7 +3,8 @@ import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '../ui/button';
 import brandComposition from '../../assets/超级符号-1.png';
-import horizontalDashedLine from '../../assets/横虚线.png';
+import horizontalDashedLine from '../../assets/虚线/横虚线.png';
+import './home.css';
 
 
 export function Community() {
@@ -12,53 +13,7 @@ export function Community() {
       {/* Replaced 'container' with custom class for 1700px width */}
       <div className="voneos-container relative z-10">
 
-        {/* Internal Style to bypass Tailwind JIT issues - CRITICAL FIX */}
-        <style>{`
-          .voneos-container {
-            width: 100%;
-            margin-right: auto;
-            margin-left: auto;
-            padding-right: 1.5rem;
-            padding-left: 1.5rem;
-          }
-          
-          .voneos-divider-img {
-             width: 100%;
-             margin-bottom: 24px;
-             opacity: 0.6;
-          }
 
-          .voneos-headline-wrapper { margin-bottom: 3rem; width: 100%; padding-top: 16px; /* Added 16px top margin/padding */ }
-          .voneos-headline-cn { font-size: 32px; line-height: 1.2; margin-bottom: 0.5rem; font-weight: 700; color: #8B7355; }
-          .voneos-headline-en { font-size: 24px; line-height: 1; font-weight: 500; text-transform: uppercase; color: #8B7355; }
-          .voneos-btn-recruit { width: 100%; }
-          .voneos-desc { margin-bottom: 3rem; font-size: 0.875rem; line-height: 1.625; color: #4b5563; }
-          .voneos-arrow-box { padding: 4px; border-radius: 9999px; background-color: #8B7355; display: inline-flex; transition: background-color 0.15s; }
-          
-          @media (min-width: 768px) {
-            .voneos-headline-wrapper { margin-bottom: 5rem; width: 70%; }
-            .voneos-headline-cn { font-size: 50px; margin-bottom: 1.5rem; }
-            .voneos-headline-en { font-size: 45px; }
-            .voneos-btn-recruit { width: 320px; }
-            .voneos-desc { margin-bottom: 4rem; } 
-            .voneos-arrow-box { padding: 8px; }
-          }
-          
-          @media (min-width: 1700px) {
-            .voneos-container {
-              max-width: 1700px;
-            }
-          }
-          /* Fallback for screens smaller than 1700 but larger than standard breakpoints to ensure it grows */
-          @media (min-width: 1536px) {
-             .voneos-container {
-                max-width: 1700px; 
-             }
-          }
-
-          /* Force icon size since Lucide props might be overridden or ignored */
-          .voneos-icon-lg { width: 20px !important; height: 20px !important; color: white; }
-        `}</style>
 
         {/* Dotted Divider Line */}
         <img src={horizontalDashedLine} alt="divider" className="voneos-divider-img" />
@@ -96,7 +51,11 @@ export function Community() {
                 免费新品抢先体验！诚邀您家的「毛孩子试吃官」，<br />
                 与我们一同完成这场关于味蕾与健康的探索～
               </p>
-              <Button className="voneos-btn-recruit flex justify-between items-center bg-white hover:bg-gray-50 text-[#8B7355] border border-[#8B7355] rounded-full px-8 py-6 group transition-colors">
+              <Button
+                className="voneos-btn-recruit flex justify-between items-center bg-white hover:bg-gray-50 text-[#8B7355] border border-[#8B7355] rounded-full px-8 py-6 group transition-colors"
+                style={{ cursor: 'not-allowed' }}
+                onClick={(e) => e.preventDefault()}
+              >
                 <span>立即报名 · 开启体验之旅</span>
                 <span className="voneos-arrow-box group-hover:bg-[#705a41]">
                   <ArrowUpRight className="voneos-icon-lg" />

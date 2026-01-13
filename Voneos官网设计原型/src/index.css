@@ -588,6 +588,7 @@
 
   .container {
     width: 100%;
+    margin: 0 auto;
   }
 
   @media (min-width: 1600px) {
@@ -2317,6 +2318,8 @@ html {
 .nav-arrow-btn {
   transition: all 0.2s ease-in-out;
   background-color: transparent;
+  border-radius: 25%;
+  background-color: rgba(161, 125, 85, 0.164);
 }
 
 .nav-arrow-btn svg {
@@ -2324,7 +2327,7 @@ html {
 }
 
 .nav-arrow-btn:hover {
-  background-color: rgba(197, 164, 126, 0.15);
+  background-color: rgba(161, 126, 85, 0.555);
 }
 
 .nav-arrow-btn:hover svg {
@@ -2895,4 +2898,1466 @@ html {
 
 .group:hover .group-hover\:scale-110 {
   transform: scale(1.1);
+}
+
+.science-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 1600px) {
+  .science-container {
+    max-width: 1600px;
+  }
+}
+
+/* Dashed Line restricted to container */
+.science-top-divider {
+  width: 100%;
+  height: 0;
+  border-top: 2px dashed #92641f;
+  margin-bottom: 2rem;
+  z-index: 50;
+}
+
+/* Title Styles - Left Aligned, Specific Sizes */
+.science-main-title {
+  color: #8B7355;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  text-align: left;
+  /* Left align per feedback */
+  /* font-size: 50px handled by global class */
+}
+
+.science-sub-title {
+  color: #C5A47E;
+  font-weight: 500;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+  text-align: left;
+  /* Left align per feedback */
+  /* font-size: 45px handled by global class */
+}
+
+/* Main Layout Wrapper - The Offset Parent */
+.science-main-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 1000px;
+  /* Increased height to show full cat image */
+  padding-bottom: 250px;
+  /* Reduced by 100px to move cat up */
+}
+
+@media (min-width: 1024px) {
+  .science-main-wrapper {
+    flex-direction: row;
+    justify-content: flex-end;
+    /* Push text to right */
+    align-items: center;
+  }
+}
+
+/* Feature List Styling - More compact */
+.science-feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 3rem 0;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.science-divider {
+  border-top: 2px dashed #92641f;
+  opacity: 0.6;
+  width: 100%;
+  margin: 0;
+}
+
+.science-title-text {
+  color: #C5A47E;
+  font-weight: bold;
+  font-size: 1.875rem;
+  /* Slightly smaller for compact feel */
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.science-sub-text {
+  color: #8B7355;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Title Section - Ensure it's ABOVE the background image */
+.science-title-section {
+  position: relative;
+  z-index: 50;
+  /* Top tier */
+}
+
+/* Layout Proportions - Cat as background layer */
+.science-img-col {
+  position: absolute;
+  left: -5%;
+  top: 200px;
+  /* Fine-tuned to perfectly align cat's visual top with text (compensating for scale(1.4) from bottom) */
+  width: 70%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.science-cat-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transform: scale(1.4);
+  /* Scaled to 140% per feedback */
+  transform-origin: left bottom;
+}
+
+/* List Column - High stack */
+.science-list-col {
+  width: 100%;
+  position: relative;
+  z-index: 40;
+  /* Above image but below the main divider if needed */
+  overflow: visible;
+  /* Allow hover content to overflow without affecting wrapper height */
+}
+
+@media (min-width: 1024px) {
+  .science-list-col {
+    width: 45%;
+  }
+}
+
+.science-accuracy-desc {
+  color: #8B7355;
+  font-size: 0.9375rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  text-align: center;
+  max-width: 400px;
+}
+
+.science-hl-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+}
+
+.science-hl-tip-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.science-hl-tip-text {
+  color: #8B7355;
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.science-heart-icon {
+  width: 18px;
+  height: auto;
+  object-fit: contain;
+  animation: scienceHeartFloat 2s ease-in-out infinite;
+}
+
+@keyframes scienceHeartFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+
+.science-hl-badge {
+  width: 100px;
+  margin: 12px auto 0;
+  display: block;
+}
+
+/* ========================================
+   BrandStory Component Styles
+   ======================================== */
+
+.brand-gradient-bg {
+  background: linear-gradient(to bottom, #F5E7CB 0%, #FFFFFF 100%);
+}
+
+/* ========================================
+   Community Component Styles
+   ======================================== */
+
+.voneos-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.voneos-divider-img {
+  width: 100%;
+  margin-bottom: 24px;
+  opacity: 0.6;
+}
+
+.voneos-headline-wrapper {
+  margin-bottom: 3rem;
+  width: 100%;
+  padding-top: 16px;
+}
+
+.voneos-headline-cn {
+  font-size: 32px;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #8B7355;
+}
+
+.voneos-headline-en {
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #8B7355;
+}
+
+.voneos-btn-recruit {
+  width: 100%;
+}
+
+.voneos-desc {
+  margin-bottom: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: #4b5563;
+}
+
+.voneos-arrow-box {
+  padding: 4px;
+  border-radius: 9999px;
+  background-color: #8B7355;
+  display: inline-flex;
+  transition: background-color 0.15s;
+}
+
+.voneos-icon-lg {
+  width: 20px !important;
+  height: 20px !important;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .voneos-headline-wrapper {
+    margin-bottom: 5rem;
+    width: 70%;
+  }
+
+  .voneos-headline-cn {
+    font-size: 50px;
+    margin-bottom: 1.5rem;
+  }
+
+  .voneos-headline-en {
+    font-size: 45px;
+  }
+
+  .voneos-btn-recruit {
+    width: 320px;
+  }
+
+  .voneos-desc {
+    margin-bottom: 4rem;
+  }
+
+  .voneos-arrow-box {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .voneos-container {
+    max-width: 1700px;
+  }
+}
+
+@media (min-width: 1700px) {
+  .voneos-container {
+    max-width: 1700px;
+  }
+}
+
+/* ========================================
+   ProductShowcase Component Styles
+   ======================================== */
+
+.product-nav-button {
+  width: 56px;
+  height: 56px;
+  border: 1px solid #8e5f17;
+  color: #8e5f17;
+  background-color: white;
+  margin-right: 25px;
+}
+
+.product-card {
+  width: 490px;
+  height: 720px;
+  flex-shrink: 0;
+}
+
+.product-badge-container {
+  width: 100%;
+}
+
+.product-name-container {
+  width: 100%;
+}
+
+.product-type-text {
+  font-size: 28px;
+  line-height: 22px;
+}
+
+.product-name-text {
+  font-size: 33px;
+  margin-bottom: 10px;
+}
+
+.product-view-more-text {
+  font-size: 18px;
+}
+
+.product-divider {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 12px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  /* overflow-x: auto; */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Product scroll container */
+.product-scroll-container {
+  overflow-x: auto;
+}
+
+/* ========================================
+   Features Component Styles
+   ======================================== */
+
+.features-divider {
+  opacity: 1;
+  border: none;
+}
+
+/* ========================================
+   Features Card Hover Interaction Styles
+   ======================================== */
+
+/* Feature Card Container */
+.science-feature-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+/* Hover Content - Hidden by Default */
+.science-hover-content {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Show Hover Content on Card Hover */
+.science-feature-card:hover .science-hover-content {
+  opacity: 1;
+  max-height: 300px;
+  /* Adjust based on content */
+}
+
+/* Adjust spacing when hovering */
+.science-feature-card:hover .science-sub-text {
+  margin-bottom: 0.5rem;
+}
+
+
+/* ========================================
+   HOME PAGE STYLES
+   ======================================== */
+
+.science-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 1600px) {
+  .science-container {
+    max-width: 1600px;
+  }
+}
+
+/* Dashed Line restricted to container */
+.science-top-divider {
+  width: 100%;
+  height: 0;
+  border-top: 2px dashed #92641f;
+  margin-bottom: 2rem;
+  z-index: 50;
+}
+
+/* Title Styles - Left Aligned, Specific Sizes */
+.science-main-title {
+  color: #8B7355;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  text-align: left;
+  /* Left align per feedback */
+  /* font-size: 50px handled by global class */
+}
+
+.science-sub-title {
+  color: #C5A47E;
+  font-weight: 500;
+  line-height: 1.1;
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+  text-align: left;
+  /* Left align per feedback */
+  /* font-size: 45px handled by global class */
+}
+
+/* Main Layout Wrapper - The Offset Parent */
+.science-main-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 1000px;
+  /* Increased height to show full cat image */
+  padding-bottom: 250px;
+  /* Reduced by 100px to move cat up */
+}
+
+@media (min-width: 1024px) {
+  .science-main-wrapper {
+    flex-direction: row;
+    justify-content: flex-end;
+    /* Push text to right */
+    align-items: center;
+  }
+}
+
+/* Feature List Styling - More compact */
+.science-feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 3rem 0;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.science-divider {
+  border-top: 2px dashed #92641f;
+  opacity: 0.6;
+  width: 100%;
+  margin: 0;
+}
+
+.science-title-text {
+  color: #C5A47E;
+  font-weight: bold;
+  font-size: 1.875rem;
+  /* Slightly smaller for compact feel */
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.science-sub-text {
+  color: #8B7355;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Title Section - Ensure it's ABOVE the background image */
+.science-title-section {
+  position: relative;
+  z-index: 50;
+  /* Top tier */
+}
+
+/* Layout Proportions - Cat as background layer */
+.science-img-col {
+  position: absolute;
+  left: -5%;
+  top: 200px;
+  /* Fine-tuned to perfectly align cat's visual top with text (compensating for scale(1.4) from bottom) */
+  width: 70%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.science-cat-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  transform: scale(1.4);
+  /* Scaled to 140% per feedback */
+  transform-origin: left bottom;
+}
+
+/* List Column - High stack */
+.science-list-col {
+  width: 100%;
+  position: relative;
+  z-index: 40;
+  /* Above image but below the main divider if needed */
+  overflow: visible;
+  /* Allow hover content to overflow without affecting wrapper height */
+}
+
+@media (min-width: 1024px) {
+  .science-list-col {
+    width: 45%;
+  }
+}
+
+.science-accuracy-desc {
+  color: #8B7355;
+  font-size: 0.9375rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  text-align: center;
+  max-width: 400px;
+}
+
+.science-hl-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+}
+
+.science-hl-tip-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.science-hl-tip-text {
+  color: #8B7355;
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+.science-heart-icon {
+  width: 18px;
+  height: auto;
+  object-fit: contain;
+  animation: scienceHeartFloat 2s ease-in-out infinite;
+}
+
+@keyframes scienceHeartFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+
+.science-hl-badge {
+  width: 100px;
+  margin: 12px auto 0;
+  display: block;
+}
+
+/* ========================================
+   BrandStory Component Styles
+   ======================================== */
+
+.brand-gradient-bg {
+  background: linear-gradient(to bottom, #F5E7CB 0%, #FFFFFF 100%);
+}
+
+/* ========================================
+   Community Component Styles
+   ======================================== */
+
+.voneos-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.voneos-divider-img {
+  width: 100%;
+  margin-bottom: 24px;
+  opacity: 0.6;
+}
+
+.voneos-headline-wrapper {
+  margin-bottom: 3rem;
+  width: 100%;
+  padding-top: 16px;
+}
+
+.voneos-headline-cn {
+  font-size: 32px;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #8B7355;
+}
+
+.voneos-headline-en {
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #8B7355;
+}
+
+.voneos-btn-recruit {
+  width: 100%;
+}
+
+.voneos-desc {
+  margin-bottom: 3rem;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: #4b5563;
+}
+
+.voneos-arrow-box {
+  padding: 4px;
+  border-radius: 9999px;
+  background-color: #8B7355;
+  display: inline-flex;
+  transition: background-color 0.15s;
+}
+
+.voneos-icon-lg {
+  width: 20px !important;
+  height: 20px !important;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .voneos-headline-wrapper {
+    margin-bottom: 5rem;
+    width: 70%;
+  }
+
+  .voneos-headline-cn {
+    font-size: 50px;
+    margin-bottom: 1.5rem;
+  }
+
+  .voneos-headline-en {
+    font-size: 45px;
+  }
+
+  .voneos-btn-recruit {
+    width: 320px;
+  }
+
+  .voneos-desc {
+    margin-bottom: 4rem;
+  }
+
+  .voneos-arrow-box {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .voneos-container {
+    max-width: 1700px;
+  }
+}
+
+@media (min-width: 1700px) {
+  .voneos-container {
+    max-width: 1700px;
+  }
+}
+
+/* ========================================
+   ProductShowcase Component Styles
+   ======================================== */
+
+.product-nav-button {
+  width: 56px;
+  height: 56px;
+  border: 1px solid #8e5f17;
+  color: #8e5f17;
+  background-color: white;
+  margin-right: 25px;
+}
+
+.product-card {
+  width: 490px;
+  height: 720px;
+  flex-shrink: 0;
+}
+
+.product-badge-container {
+  width: 100%;
+}
+
+.product-name-container {
+  width: 100%;
+}
+
+.product-type-text {
+  font-size: 28px;
+  line-height: 22px;
+}
+
+.product-name-text {
+  font-size: 33px;
+  margin-bottom: 10px;
+}
+
+.product-view-more-text {
+  font-size: 18px;
+}
+
+.product-divider {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  margin-bottom: 12px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hide {
+  /* overflow-x: auto; */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Product scroll container */
+.product-scroll-container {
+  overflow-x: auto;
+}
+
+/* ========================================
+   Features Component Styles
+   ======================================== */
+
+.features-divider {
+  opacity: 1;
+  border: none;
+}
+
+/* ========================================
+   Features Card Hover Interaction Styles
+   ======================================== */
+
+/* Feature Card Container */
+.science-feature-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+/* Hover Content - Hidden by Default */
+.science-hover-content {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Show Hover Content on Card Hover */
+.science-feature-card:hover .science-hover-content {
+  opacity: 1;
+  max-height: 300px;
+  /* Adjust based on content */
+}
+
+/* Adjust spacing when hovering */
+.science-feature-card:hover .science-sub-text {
+  margin-bottom: 0.5rem;
+}
+
+
+/* ========================================
+   BRAND PAGE STYLES
+   ======================================== */
+
+/* ========================================
+   Brand Page Styles
+   ======================================== */
+
+/* Brand Culture Card Title */
+.brand-culture-title {
+  color: white;
+  font-size: 50px;
+  font-weight: 400;
+  /* normal */
+  letter-spacing: 0.1em;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Brand Culture Card Overlay (展开时的遮罩) */
+.brand-culture-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 5;
+}
+
+.brand-culture-overlay.active {
+  opacity: 1;
+}
+
+/* Brand Culture Card Description Text */
+.brand-culture-description {
+  position: absolute;
+  bottom: 50px;
+  left: 24px;
+  right: 24px;
+  color: white;
+  font-size: 23px;
+  line-height: 1.8;
+  text-align: left;
+  white-space: pre-line;
+  overflow: hidden;
+}
+
+
+/* ========================================
+   FOOTER COMPONENT STYLES
+   ======================================== */
+
+}
+
+.footer-bg {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  position: relative;
+}
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* 上半部分 */
+.footer-top {
+  padding: 80px 0 60px;
+  position: relative;
+}
+
+.margin-top-k {
+  margin-top: -320px;
+}
+
+.footer-row {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* 品牌信息 */
+.brand-title {
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  background: none;
+  width: 100%;
+  height: 30px;
+  object-fit: contain;
+}
+
+.brand-slogan {
+  font-size: 1.1rem;
+  color: #674409;
+  margin: 0;
+  font-style: italic;
+}
+
+/* 二维平台按钮 */
+.qr-platform-group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.platform-btn-wrapper:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.platform-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.platform-btn {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  padding: 10px;
+}
+
+.platform-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* 底部版权 */
+.footer-bottom {
+  padding: 55px 0 55px 0;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+.bottom-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .bottom-content {
+    text-align: left;
+  }
+}
+
+.copyright p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #95621e;
+}
+
+.copyright a {
+  color: #95621e;
+  text-decoration: none;
+  margin: 0 8px;
+  position: relative;
+}
+
+.copyright a:hover::after {
+  width: 100%;
+}
+
+.copyright a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #95621e;
+  transition: width 0.3s ease;
+}
+
+.cert-badge {
+  background: rgba(149, 98, 30, 0.2);
+  color: #95621e;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(149, 98, 30, 0.3);
+  cursor: help;
+  margin-left: 20px;
+}
+
+/* 回到顶部 */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #C4A46D;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(196, 164, 109, 0.4);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  z-index: 1000;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #B3935B;
+  transform: translateY(-3px);
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+/* 响应式调*/
+@media (max-width: 768px) {
+  .brand-title {
+    font-size: 2rem;
+  }
+
+  .qr-platform-group {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 移动端优*/
+  .margin-top-k {
+    margin-top: -120px;
+    /* 减小负边距，避免过度重叠 */
+  }
+
+  .footer-top {
+    padding: 40px 0 30px;
+    /* 减小内边*/
+  }
+
+  .brand-section {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .brand-title {
+    width: auto;
+    height: 30px;
+  }
+
+  .platform-buttons {
+    margin-right: 0;
+  }
+}
+
+
+/* ========================================
+   PRODUCT PAGES STYLES
+   ======================================== */
+
+/* ========================================
+   Product Page Styles (Series & Category)
+   ======================================== */
+
+/* Category Toggle Button Container */
+.category-btn-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/* Main Layout Container (Sidebar + Grid) */
+.product-layout-container {
+  gap: 80px;
+}
+
+/* Sidebar Styling */
+.category-sidebar {
+  width: 280px;
+}
+
+.category-sidebar-item {
+  color: #946621;
+  font-size: 27px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.category-sidebar-icon {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.category-sidebar-subitem {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding-left: 30px;
+}
+
+.category-sidebar-subitem:hover {
+  color: #D4B895;
+}
+
+.category-sidebar-subitem.active {
+  color: #D4B895;
+  font-weight: bold;
+}
+
+/* Product Grid Area */
+.product-grid-area {
+  min-height: 500px;
+  width: auto;
+}
+
+
+/* ========================================
+   Product Series Page Styles
+   ======================================== */
+
+/* Product Section (Dog/Cat) */
+.product-section {
+  padding-top: 60px;
+}
+
+/* Product Grid */
+.product-grid {
+  margin-top: 63px;
+}
+
+/* Product Card - Series Page */
+.product-card-series {
+  aspect-ratio: 365/480;
+}
+
+/* Learn More Button Container */
+.learn-more-btn-container {
+  margin-top: 65px;
+}
+
+/* Section Divider */
+.section-divider {
+  margin-top: 65px;
+}
+
+/* ========================================
+   Product Category Page Grid Styles
+   ======================================== */
+
+/* Product Grid Area Inner */
+.product-grid-area-inner {
+  min-width: 0;
+}
+
+/* Product Grid Container */
+.product-grid-container {
+  gap: 24px;
+  flex-wrap: wrap;
+  /* 必须保留,Tailwind类不生效 */
+}
+
+/* Product Card - Category Page */
+.product-card-category {
+  width: calc((100% - 48px) / 3);
+  max-width: 400px;
+  min-width: 300px;
+  aspect-ratio: 365/480;
+  border-radius: 20px;
+  position: relative;
+}
+
+/* ========================================
+   Product Card Title Styles
+   ======================================== */
+
+/* Product Card Title - Series Page (一级页面) */
+.product-card-title-series {
+  font-size: 25px;
+  line-height: 1;
+  padding-bottom: 8px;
+}
+
+
+/* Product Card Title - Category Page (二级页面) */
+.product-card-title-category {
+  font-size: 27px;
+  line-height: 1;
+}
+
+/* ========================================
+   Product Detail Page Styles
+   ======================================== */
+
+/* Product detail content text (inside yellow boxes) */
+.product-detail-content {
+  width: 80%;
+  font-size: 20px;
+  color: #986c2c;
+  line-height: 1.6;
+}
+
+
+/* ========================================
+   SCIENCE PAGE STYLES
+   ======================================== */
+
+/* ========================================
+   Science Page Styles
+   ======================================== */
+
+/* Pet Image Grid Hover Effects */
+.pet-image-container {
+  position: relative;
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.pet-image-container img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.pet-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.pet-image-container:hover .pet-image-overlay {
+  opacity: 1;
+}
+
+.pet-image-overlay img {
+  height: 80%;
+  object-fit: contain;
+}
+
+/* ========================================
+   CONTACT PAGE STYLES
+   ======================================== */
+
+/* Section Padding */
+.contact-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+/* Section Title */
+.contact-section-title {
+    font-size: 65px;
+    color: #8e5f17;
+}
+
+/* Card Grid Gap */
+.contact-card-grid {
+    gap: 30px;
+}
+
+
+/* ========================================
+   PRODUCT DETAIL PAGE STYLES
+   ======================================== */
+
+/* Page Background */
+.product-detail-page {
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+/* Breadcrumb Container */
+.product-breadcrumb {
+    padding-top: 50px;
+    max-width: 1600px;
+    width: 100%;
+    color: #8B7355;
+    font-size: 20px;
+}
+
+/* Product Content Section */
+.product-content-section {
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+
+/* Product Content Wrapper */
+.product-content-wrapper {
+    max-width: 1600px;
+    gap: 130px;
+}
+
+/* Product Carousel Container */
+.product-carousel-container {
+    width: 665px;
+    flex-shrink: 0;
+}
+
+/* Product Carousel Image Box */
+.product-carousel-box {
+    padding: 30px;
+    width: 665px;
+    height: 520px;
+    background-color: whitesmoke;
+}
+
+/* Thumbnail Gallery Gap */
+.product-thumbnail-gallery {
+    gap: 20px;
+}
+
+/* Product Info Container */
+.product-info-container {
+    width: 805px;
+    flex-shrink: 0;
+}
+
+/* Product Title English */
+.product-title-en {
+    color: #8B7355;
+}
+
+
+/* ========================================
+   PRODUCT CATEGORY PAGE STYLES
+   ======================================== */
+
+/* Category Sidebar Width */
+.category-sidebar-width {
+    width: 280px;
+    min-width: 280px;
+}
+
+
+/* ========================================
+   PRODUCT SHOWCASE COMPONENT STYLES
+   ======================================== */
+
+/* Product Scroll Container Padding */
+.product-scroll-wrapper {
+    padding-left: 24px;
+}
+
+/* Product Badge Top Padding */
+.product-badge-top {
+    padding-top: 30px;
+}
+
+
+/* ========================================
+   FOOTER COMPONENT STYLES
+   ======================================== */
+
+/* QR Code Container Size */
+.footer-qr-container {
+    width: 76px;
+    height: 76px;
+}
+
+/* Copyright Text Color */
+.footer-copyright-text {
+    color: #8d5f18;
 }

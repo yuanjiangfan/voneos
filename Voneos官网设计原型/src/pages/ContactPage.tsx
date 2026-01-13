@@ -17,7 +17,7 @@ export function ContactPage() {
     ];
 
     const flagshipStores = [
-        { name: '天猫商城', icon: tmall, label: '天猫商城' },
+        { name: '天猫商城', icon: tmall, label: '天猫商城', link: 'https://ruinuoshi.tmall.com/?ali_refid=a3_430582_1006:1688626570:H:5kMMDN6xpHzTPLBeF%2BOtOg%3D%3D:e9330ef924e168489c2a0d809c183c9b&ali_trackid=318_e9330ef924e168489c2a0d809c183c9b&spm=a21n57.1.1.1&pisk=g9Ioh09Z1a850nc4jX-7zRhrTpzY23tBP6np9HdUuIRj2eRLP6Yh9sTF23BRiB5OtpIRvMbjxO6C28tLF36WAHPT6lQhFTtIlLmbFgY23pBqzYJUknP-3HqY6lEOnzJWvtPOy8TzYd9tYH8y8ou2GpcE8p5euIJpg0JE4pl4npO2YpoeUm-2LdnyU05F3-vBgB-eY6-4npO2TH-EhfiesMSf0WFXRM8WeIjDEUANnPiEx3n9zCWwgDPNmLV6_TRmYDANubWVnTFoftK5K1vOwoolsOWFf3ILdqR5mdfk-ieKoKQOhwJR0JgJM_6V2ESzpApf8ssH2hDU4txkZFSyoYy5_tXFWEjYQltk4Q7pV9HgwtjlwTscpvu2q3QDSgxafbRdkOjHKMNQm1XNLGtRvJg2NivF4c0q7LAmAKyd02gBzK9D6854KVCUfvPQn-0_PUJXe5e0n2gBzK9D6-2m5XTyhLFO.&mm_sceneid=0_0_5304939681_0' },
         { name: '京东商城', icon: jd, label: '京东商城' },
         { name: '拼多多商城', icon: pinduoduo, label: '拼多多商城' },
     ];
@@ -30,9 +30,9 @@ export function ContactPage() {
             </div>
 
             {/* Brand Official Accounts */}
-            <section className="w-full max-w-[1400px] mx-auto pb-16" style={{ paddingTop: '100px', paddingBottom: '100px' }}>
-                <h2 className="text-center font-bold mb-12" style={{ fontSize: '65px', color: '#8e5f17' }}>品牌官号</h2>
-                <div className="flex justify-center flex-wrap" style={{ gap: '30px' }}>
+            <section className="w-full max-w-[1400px] mx-auto pb-16 contact-section">
+                <h2 className="text-center font-bold mb-12 contact-section-title">品牌官号</h2>
+                <div className="flex justify-center flex-wrap contact-card-grid">
                     {officialAccounts.map((item, index) => (
                         <div key={index} className="bg-white rounded-xl shadow-sm w-[280px] h-[180px] flex flex-col items-center justify-center gap-4 hover:shadow-md transition-shadow">
                             {item.icon ? (
@@ -47,11 +47,15 @@ export function ContactPage() {
 
             {/* Brand Flagship Stores */}
             <div className="w-full bg-white">
-                <section className="w-full max-w-[1400px] mx-auto pb-20" style={{ paddingTop: '100px', paddingBottom: '100px' }}>
-                    <h2 className="text-center font-bold mb-12" style={{ fontSize: '65px', color: '#8e5f17' }}>品牌旗舰店</h2>
-                    <div className="flex justify-center flex-wrap" style={{ gap: '30px' }}>
+                <section className="w-full max-w-[1400px] mx-auto pb-20 contact-section">
+                    <h2 className="text-center font-bold mb-12 contact-section-title">品牌旗舰店</h2>
+                    <div className="flex justify-center flex-wrap contact-card-grid">
                         {flagshipStores.map((item, index) => (
-                            <div key={index} className="bg-[#F9F7F2] rounded-xl w-[280px] h-[180px] flex flex-col items-center justify-center gap-4 hover:shadow-md transition-shadow">
+                            <div
+                                key={index}
+                                className="bg-[#F9F7F2] rounded-xl w-[280px] h-[180px] flex flex-col items-center justify-center gap-4 hover:shadow-md transition-shadow cursor-pointer"
+                                onClick={() => item.link && window.open(item.link, '_blank')}
+                            >
                                 {item.icon ? (
                                     <img src={item.icon} alt={item.name} className="h-12 w-auto object-contain" />
                                 ) : (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
-import './footer.css';
+
 import footerImageHome from '../../assets/footer/页脚图片.png';
 import footerImageOther from '../../assets/footer/页脚.png';
 import logo from '../../assets/首页/LOGO.png';
@@ -71,7 +71,7 @@ export function Footer() {
 
               <div className="brand-section">
                 <img src={logo} alt="VONEOS" className="brand-title" />
-                <p className="brand-slogan">科学营养 • 爱宠之选</p>
+                <p className="brand-slogan">科学营养 爱宠之选</p>
               </div>
 
               <div className="qr-platform-group flex flex-col items-center gap-4">
@@ -99,7 +99,7 @@ export function Footer() {
                           <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[8px] border-b-white"></div>
 
                           {/* QR Image */}
-                          <div style={{ width: '76px', height: '76px' }} className="bg-white flex items-center justify-center overflow-hidden rounded">
+                          <div className="bg-white flex items-center justify-center overflow-hidden rounded footer-qr-container">
                             <img src={item.qrcode} alt={`${item.platformName}二维码`} className="w-full h-full object-cover" />
                           </div>
                         </div>
@@ -108,7 +108,7 @@ export function Footer() {
                   ))}
                 </div>
                 {/* Copyright Information */}
-                <div className="mt-4 text-sm" style={{ color: "#8d5f18" }}>
+                <div className="mt-4 text-sm footer-copyright-text">
                   <p className="mb-2 font-medium">© {new Date().getFullYear()} 湖南瑞诺氏海外实验室宠物用品有限公司</p>
                 </div>
               </div>

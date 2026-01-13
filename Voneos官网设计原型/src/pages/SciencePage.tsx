@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import './science.css';
+
 
 // Import assets
-import banner from '../assets/科学营养/banner 拷贝.png';
+import banner from '../assets/科学营养/瑞诺氏×岳麓山实验室.png';
 import stat9 from '../assets/科学营养/9.png';
 import stat231 from '../assets/科学营养/231.png';
 import stat2066 from '../assets/科学营养/2066.png';
@@ -14,7 +14,6 @@ import icon99 from '../assets/科学营养/99.png';
 
 // Laboratory
 import labLogo from '../assets/科学营养/岳麓山.png';
-import labBanner from '../assets/科学营养/瑞诺氏×岳麓山实验室.png';
 import vectorObject from '../assets/科学营养/矢量智能对象.png';
 
 // Pet images grid
@@ -73,37 +72,6 @@ export function SciencePage() {
                         alignItems: 'flex-end', // Force right alignment
                     }}
                 >
-                    {/* Text Content - replacing banner image */}
-                    <div
-                        style={{
-                            width: '50%', // Occupy right half
-                            textAlign: 'left',
-                            paddingLeft: '0rem',
-                            marginRight: '4rem' // Increased from 2rem to 4rem (~ +64px total shift)
-                        }}
-                    >
-                        <h2
-                            className="mb-6 tracking-wide drop-shadow-md"
-                            style={{
-                                fontSize: '4.5rem', // ~72px
-                                lineHeight: '1.2',
-                                fontWeight: 'normal', // Removed bold
-                                color: '#ffffff'
-                            }}
-                        >
-                            瑞诺氏×岳麓山实验室
-                        </h2>
-                        <p
-                            className="font-light tracking-wider drop-shadow-sm"
-                            style={{
-                                fontSize: '1.8rem', // ~29px
-                                opacity: 1, // Full opacity as requested (implied by "white")
-                                color: '#ffffff'
-                            }}
-                        >
-                            瑞诺氏与岳麓山实验室联合研发 "独家适口专利"
-                        </p>
-                    </div>
 
                 </div>
             </section>
@@ -141,7 +109,7 @@ export function SciencePage() {
                             top: '-24px'
                         }}
                     >
-                        岳麓山实验室 &nbsp;|&nbsp; 瑞诺氏6A高标准 &nbsp;|&nbsp; 科学健康五大体系 &nbsp;|&nbsp; 爱宠科学测试
+                        岳麓山实验室 &nbsp;|&nbsp; 瑞诺氏6A高标标准&nbsp;|&nbsp; 科学健康五大体系 &nbsp;|&nbsp; 爱宠科学测试
                     </div>
 
                     {/* Icons Row */}
@@ -166,7 +134,7 @@ export function SciencePage() {
 
                         {/* Icon 6A */}
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                            <img src={icon6A} alt="6A高标准" style={{ width: '225px', height: '225px', objectFit: 'contain' }} />
+                            <img src={icon6A} alt="6A高" style={{ width: '225px', height: '225px', objectFit: 'contain' }} />
                         </div>
 
                         {/* Divider */}
@@ -224,29 +192,29 @@ export function SciencePage() {
                             <div className="flex items-center justify-between" style={{ marginBottom: '60px' }}>
                                 {/* Stat 1 */}
                                 <div className="flex items-end gap-[6px]">
-                                    <img src={stat9} alt="9位" className="h-[46px] object-contain" />
+                                    <img src={stat9} alt="9" className=" h-[46px] object-contain" />
                                     <span className="text-[#5c4033]" style={{ fontSize: '24px', lineHeight: '1', marginBottom: '3px', paddingLeft: '6px' }}>工程院院士</span>
                                 </div>
                                 {/* Stat 2 */}
                                 <div className="flex items-end gap-[6px]">
-                                    <img src={stat231} alt="231位" className="h-[46px] object-contain" />
+                                    <img src={stat231} alt="231" className=" h-[46px] object-contain" />
                                     <span className="text-[#5c4033]" style={{ fontSize: '24px', lineHeight: '1', marginBottom: '3px', paddingLeft: '6px' }}>PI 团队</span>
                                 </div>
                                 {/* Stat 3 */}
                                 <div className="flex items-end gap-[6px]">
-                                    <img src={stat2066} alt="2066位" className="h-[46px] object-contain" />
+                                    <img src={stat2066} alt="2066" className=" h-[46px] object-contain" />
                                     <span className="text-[#5c4033]" style={{ fontSize: '24px', lineHeight: '1', marginBottom: '3px', paddingLeft: '6px' }}>科研人员</span>
                                 </div>
                             </div>
 
                             {/* Text Paragraph 2 */}
                             <p className="text-[#5c4033] leading-relaxed text-justify" style={{ marginBottom: '60px', fontSize: '20px' }}>
-                                目前，实验室总建筑面积约 41.76 万平方米，已汇聚首批 231 个 PI 团队、2066 名科研人员，其中包括 9 位中国工程院院士领衔的高水平队伍。在今年全国两会期间，湖南代表团已正式建议推动岳麓山实验室纳入国家实验室体系，以强化其在全国种业战略中的核心作用。
+                                目前，实验室总建筑面积约 41.76 万平方米，已汇聚首批 231 个PI 团队，2066 名科研人员，其中包括 9 位中国工程院院士领衔的高水平队伍。在今年全国两会期间，湖南代表团已正式建议推动岳麓山实验室纳入国家实验室体系，以强化其在全国种业战略中的核心作用。
                             </p>
 
                             {/* Footer Note */}
                             <p className="text-sm" style={{ color: '#666666' }}>
-                                (注: 以上信息仅为岳麓山实验室介绍,瑞诺氏与岳麓山实验室中药材品种创制中心开展合作,共同推动科研成果转化与应用。)
+                                (注： 以上信息仅为岳麓山实验室介绍,瑞诺氏与岳麓山实验室中药材品种创制中心开展合作，共同推动科研成果转化与应用。)
                             </p>
                         </div>
                     </div >
@@ -324,7 +292,7 @@ export function SciencePage() {
                     </div>
 
                     <p style={{ fontSize: '37px', color: 'rgb(142, 96, 21)', textAlign: 'right' }}>
-                        ——这背后，是瑞诺氏始终如一的坚持
+                        ——这背后，是瑞诺氏始终如一的坚定信念
                     </p>
                 </div>
             </section >
@@ -352,11 +320,11 @@ export function SciencePage() {
 
                     <div className="flex justify-between items-start w-full px-4">
                         {/* Item 1 */}
-                        <div className="flex flex-col items-center" style={{ width: '18%' }}>
+                        <div className="flex flex-col items-center" style={{ width: '18%', padding: '50px 0 0 0' }}>
                             <img src={materialIcon} alt="新鲜材料" className="w-[140px] h-[140px] object-contain mb-8" />
                             <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>新鲜材料</h3>
                             <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
-                                精选源头鲜材<br />锁住原始营养
+                                精选源头鲜活原料<br />锁住原始营养
                             </p>
                         </div>
 
@@ -366,11 +334,11 @@ export function SciencePage() {
                         </div>
 
                         {/* Item 2 */}
-                        <div className="flex flex-col items-center" style={{ width: '18%' }}>
+                        <div className="flex flex-col items-center" style={{ width: '18%', padding: '50px 0 0 0' }}>
                             <img src={naturalIcon} alt="天然安全" className="w-[140px] h-[140px] object-contain mb-8" />
                             <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>天然安全</h3>
                             <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
-                                拒绝化学诱食剂<br />成分纯净天然
+                                拒绝化学诱食<br />成分纯净天然
                             </p>
                         </div>
 
@@ -380,9 +348,9 @@ export function SciencePage() {
                         </div>
 
                         {/* Item 3 */}
-                        <div className="flex flex-col items-center" style={{ width: '18%' }}>
-                            <img src={palatabilityIcon} alt="高适口性" className="w-[140px] h-[140px] object-contain mb-8" />
-                            <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>高适口性</h3>
+                        <div className="flex flex-col items-center" style={{ width: '18%', padding: '50px 0 0 0' }}>
+                            <img src={palatabilityIcon} alt="高适口" className="w-[140px] h-[140px] object-contain mb-8" />
+                            <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>高适口</h3>
                             <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
                                 天然适口成分<br />悦享健康美味
                             </p>
@@ -394,7 +362,7 @@ export function SciencePage() {
                         </div>
 
                         {/* Item 4 */}
-                        <div className="flex flex-col items-center" style={{ width: '18%' }}>
+                        <div className="flex flex-col items-center" style={{ width: '18%', padding: '50px 0 0 0' }}>
                             <img src={nutritionIcon} alt="分阶精准营养" className="w-[140px] h-[140px] object-contain mb-8" />
                             <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>分阶精准营养</h3>
                             <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
@@ -408,7 +376,7 @@ export function SciencePage() {
                         </div>
 
                         {/* Item 5 */}
-                        <div className="flex flex-col items-center" style={{ width: '18%' }}>
+                        <div className="flex flex-col items-center" style={{ width: '18%', padding: '50px 0 0 0' }}>
                             <img src={certificationIcon} alt="科学检测认证" className="w-[140px] h-[140px] object-contain mb-8" />
                             <h3 className="text-[#6D5030] mb-4" style={{ fontSize: '40px' }}>科学检测认证</h3>
                             <p className="text-[#555] leading-relaxed text-center" style={{ fontSize: '20px' }}>
@@ -465,10 +433,10 @@ export function SciencePage() {
                         {/* Row 1: 4 Items */}
                         <div className="flex justify-center" style={{ gap: '40px' }}>
                             {[
-                                { img: smellTest, label: "嗅觉测试" },
-                                { img: singleBowlTest, label: "单盆测试法" },
-                                { img: palatabilityTest, label: "耐口性测试" },
-                                { img: doubleBowlTest, label: "双盆测试法" },
+                                { img: smellTest },
+                                { img: singleBowlTest },
+                                { img: palatabilityTest },
+                                { img: doubleBowlTest },
                             ].map((item, index) => (
                                 <div key={index} className="transition-transform hover:scale-105">
                                     <img src={item.img} alt={item.label} className="h-[150px] object-contain" />
@@ -478,9 +446,9 @@ export function SciencePage() {
                         {/* Row 2: 3 Items */}
                         <div className=" flex justify-center" style={{ gap: '40px' }}>
                             {[
-                                { img: ghrelinTest, label: "血液饥饿素测试" },
-                                { img: preferenceEval, label: "喜爱程度评价" },
-                                { img: palatabilityCoef, label: "综合适口性系数" },
+                                { img: ghrelinTest },
+                                { img: preferenceEval },
+                                { img: palatabilityCoef },
                             ].map((item, index) => (
                                 <div key={index} className="transition-transform hover:scale-105">
                                     <img src={item.img} alt={item.label} className="h-[150px] object-contain" />

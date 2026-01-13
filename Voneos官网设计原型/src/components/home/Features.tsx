@@ -5,7 +5,7 @@ import darkHeartIcon from '../../assets/首页/a67f782c8eb15f304b30c791f802f0e45
 import catImg from '../../assets/首页/猫.png';
 import horizontalDashedLine from '../../assets/虚线/横虚线.png';
 
-import './home.css';
+
 
 // 6个特性的完整数据
 const featuresData = [
@@ -21,7 +21,7 @@ const featuresData = [
     title: 'AMPLIFICATION',
     subtitle: '高功效',
     tagline: '省心之选',
-    description: '实验室精准研发营养,数百万爱宠功效实证\n有效呵护爱宠健康',
+    description: '实验室精准研发营养，数百万爱宠功效实证\n有效呵护爱宠健康',
   },
   {
     id: 'accuracy',
@@ -33,16 +33,16 @@ const featuresData = [
   {
     id: 'acme',
     title: 'ACME',
-    subtitle: '高品质',
+    subtitle: '高品位',
     tagline: '臻心之选',
-    description: '臻选全球新鲜原料,散发食材天然本味',
+    description: '臻选全球新鲜原材散发食材天然本味',
   },
   {
     id: 'assurance',
     title: 'ASSURANCE',
-    subtitle: '高安全',
+    subtitle: '高安心',
     tagline: '安心之选',
-    description: '成分可溯源,多项科学检测,高于欧美标准',
+    description: '成分可溯多项科学检高于欧美标准',
   },
   {
     id: 'absorption',

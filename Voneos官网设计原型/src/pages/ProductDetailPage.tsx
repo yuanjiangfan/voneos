@@ -4,7 +4,7 @@ import { products } from '../data/productData';
 import { ChevronLeft, ChevronRight, Home, ChevronRight as BreadcrumbArrow } from 'lucide-react';
 import bannerImg from '../assets/产品页面/product-3.png';
 import horizontalDashedLine from '../assets/虚线/横虚线.png';
-import './product.css';
+
 
 export function ProductDetailPage() {
     const { categoryId, productId } = useParams<{ categoryId: string; productId: string }>();
@@ -18,7 +18,7 @@ export function ProductDetailPage() {
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <div className="text-center">
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4">产品未找到</h2>
+                    <h2 className="text-2xl font-bold text-gray-800 mb-4">产品未找到 </h2>
                     <button
                         onClick={() => navigate('/products')}
                         className="px-6 py-2 bg-[#8B7355] text-white rounded-lg hover:bg-[#6d5a42] transition"
@@ -33,7 +33,7 @@ export function ProductDetailPage() {
     const images = product.images || [product.image];
 
     return (
-        <div style={{ backgroundColor: '#ffffff', minHeight: '100vh' }}>
+        <div className="product-detail-page">
             {/* Hero Banner */}
             <div className="relative w-full h-[200px] md:h-[280px]">
                 <img
@@ -46,22 +46,22 @@ export function ProductDetailPage() {
             {/* Breadcrumb Navigation */}
             <div className="w-full" >
                 <div className="container mx-auto px-6 py-4 flex justify-center">
-                    <div className="flex items-center gap-2 text-sm" style={{ maxWidth: '1600px', width: '100%', color: '#8B7355' }}>
-                        <Home size={16} className="text-[#8B7355]" />
+                    <div className="flex items-center gap-2 text-sm product-breadcrumb">
+                        <Home size={26} className="text-[#8B7355]" />
                         <button
                             onClick={() => navigate('/')}
                             className="hover:text-[#6d5a42] transition-colors"
                         >
                             首页
                         </button>
-                        <BreadcrumbArrow size={14} className="text-[#C5A47E]" />
+                        <BreadcrumbArrow size={24} className="text-[#C5A47E]" />
                         <button
                             onClick={() => navigate('/products')}
                             className="hover:text-[#6d5a42] transition-colors"
                         >
                             品牌产品
                         </button>
-                        <BreadcrumbArrow size={14} className="text-[#C5A47E]" />
+                        <BreadcrumbArrow size={24} className="text-[#C5A47E]" />
                         <button
                             onClick={() => navigate(`/products/${product.category}`)}
                             className="hover:text-[#6d5a42] transition-colors"
@@ -70,7 +70,7 @@ export function ProductDetailPage() {
                         </button>
                         {product.subCategory && (
                             <>
-                                <BreadcrumbArrow size={14} className="text-[#C5A47E]" />
+                                <BreadcrumbArrow size={24} className="text-[#C5A47E]" />
                                 <span className="font-medium text-[#6d5a42]">{product.subCategory}</span>
                             </>
                         )}
@@ -79,12 +79,12 @@ export function ProductDetailPage() {
             </div>
 
             {/* Product Detail Content */}
-            <div className="container mx-auto px-6 py-12 flex justify-center" style={{ paddingBottom: '100px', paddingTop: '100px' }}>
-                <div className="flex" style={{ maxWidth: '1600px', gap: '130px' }}>
+            <div className="container mx-auto px-6 py-12 flex justify-center product-content-section">
+                <div className="flex product-content-wrapper">
                     {/* Left: Product Carousel - 665px */}
-                    <div style={{ width: '665px', flexShrink: 0 }}>
+                    <div className="product-carousel-container">
                         {/* Carousel Container */}
-                        <div className="relative bg-gray-100 rounded-lg overflow-hidden" style={{ padding: '30px', width: '665px', height: '520px', backgroundColor: 'whitesmoke' }}>
+                        <div className="relative bg-gray-100 rounded-lg overflow-hidden product-carousel-box">
                             {/* Carousel Image */}
                             <img
                                 src={images[selectedImageIndex]}
@@ -130,7 +130,7 @@ export function ProductDetailPage() {
 
                         {/* Thumbnail Gallery */}
                         {images.length > 1 && (
-                            <div className="flex mt-4 justify-center" style={{ gap: '20px' }}>
+                            <div className="flex mt-4 justify-center product-thumbnail-gallery">
                                 {images.map((image, index) => (
                                     <button
                                         key={index}
@@ -157,11 +157,11 @@ export function ProductDetailPage() {
                     </div>
 
                     {/* Right: Product Information - 805px */}
-                    <div className="space-y-6" style={{ width: '805px', flexShrink: 0 }}>
+                    <div className="space-y-6 product-info-container">
                         {/* Product Title */}
                         <div>
                             <h2 className="text-3xl font-bold text-[#8B7355] mb-2">{product.title}</h2>
-                            <p className="text-3xl  uppercase tracking-wide" style={{ color: '#8B7355' }}>{product.titleEn}</p>
+                            <p className="text-3xl uppercase tracking-wide product-title-en">{product.titleEn}</p>
                         </div>
 
                         {/* Divider */}

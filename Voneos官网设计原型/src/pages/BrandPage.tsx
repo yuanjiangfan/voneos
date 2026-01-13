@@ -1,12 +1,12 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
-import './brand.css';
+
 
 // Imports - Asset names are based on file listing. 
-// Using relative paths to ../assets/品牌初心页/
+// Using relative paths to ../assets/品牌初心/
 import bannerImg from '../assets/品牌初心页/banner.png';
 
-// Culture Cards - 默认和展开状态
+// Culture Cards - 默认和展开状/
 import culture01Expanded from '../assets/品牌初心页/01展开.png';
 import culture02Expanded from '../assets/品牌初心页/02展开.png';
 import culture03Expanded from '../assets/品牌初心页/03展开.png';
@@ -18,7 +18,7 @@ import badge2 from '../assets/品牌初心页/矢量智能对象 拷贝 2.png';
 import badge3 from '../assets/品牌初心页/矢量智能对象 拷贝 4.png';
 import horizontalDashedLine from '../assets/虚线/横虚线.png';
 
-// Certs - 使用证书子目录中的图片
+// Certs - 使用证书子目录中的图/
 import cert1 from '../assets/品牌初心页/证书/证书 1.png';
 import cert2 from '../assets/品牌初心页/证书/证书 2.png';
 import cert3 from '../assets/品牌初心页/证书/证书 3.png';
@@ -26,10 +26,10 @@ import cert4 from '../assets/品牌初心页/证书/证书 4.png';
 import cert5 from '../assets/品牌初心页/证书/证书 5.png';
 
 // Moments (Sample selection)
-import petGroupImage from '../assets/品牌初心页/宠物群像.png';
+import petGroupImage from '../assets/品牌初心页/照片墙.png';
 
 export function BrandPage() {
-    // 证书数据:包含图片和名称
+    // 证书数据:包含图片和名/
     const certificatesData = [
         { image: cert1, name: 'ISO 9001质量管理体系认证' },
         { image: cert2, name: 'HACCP食品安全管理体系认证' },
@@ -39,7 +39,7 @@ export function BrandPage() {
     ];
     const [activeCertIndex, setActiveCertIndex] = React.useState(2);
     const [autoPlayKey, setAutoPlayKey] = React.useState(0);
-    const [hoveredCard, setHoveredCard] = React.useState<number | null>(null); // 品牌文化卡片hover状态
+    const [hoveredCard, setHoveredCard] = React.useState<number | null>(null); // 品牌文化卡片hover状/
 
     const resetAutoPlay = () => {
         setAutoPlayKey(prev => prev + 1);
@@ -130,10 +130,10 @@ export function BrandPage() {
                                 description: '科学求效，专研固本\n美味悦心，新鲜护安'
                             },
                         ].map((card, index) => {
-                            // 联动宽度计算:hover时当前卡片扩展,其他卡片缩小
+                            // 联动宽度计算:hover时当前卡片扩/其他卡片缩小
                             const isHovered = hoveredCard === index;
                             const width = hoveredCard === null
-                                ? 448  // 默认状态:所有卡片448px
+                                ? 448  // 默认状/所有卡/48px
                                 : isHovered
                                     ? 778  // 当前hover卡片:778px
                                     : 283; // 其他卡片:283px
@@ -155,7 +155,7 @@ export function BrandPage() {
                                         style={{ objectPosition: 'center' }}
                                     />
 
-                                    {/* 黑色透明遮罩层 */}
+                                    {/* 黑色透明遮罩/*/}
                                     <div className={`brand-culture-overlay ${isHovered ? 'active' : ''}`}>
                                         <p className="brand-culture-description">
                                             {card.description}
@@ -225,7 +225,7 @@ export function BrandPage() {
                         {/* Feature 2 */}
                         <div className="flex flex-col md:flex-row items-center gap-12 pb-12 pt-12" style={{ paddingTop: '48px' }}>
                             <div className="shrink-0">
-                                <img src={badge2} alt="匠造之心" className="w-40 h-40 object-contain drop-shadow-md" />
+                                <img src={badge2} alt="匠造之" className=" w-40 h-40 object-contain drop-shadow-md" />
                             </div>
                             {/* Vertical Dashed Line */}
                             <div className="shrink-0" style={{ width: '4px', height: '160px', borderLeft: '3px dashed rgba(146, 100, 31, 0.4)' }}></div>
@@ -300,7 +300,7 @@ export function BrandPage() {
                             return (
                                 <div
                                     key={index}
-                                    className="absolute transition-all duration-500 ease-in-out bg-white p-3 shadow-lg rounded-sm"
+                                    className="absolute transition-all duration-500 ease-in-out bg-white p-3 shadow-lg rounded-sm cursor-pointer hover:shadow-xl"
                                     style={{
                                         zIndex: styles.zIndex,
                                         transform: styles.transform,
@@ -312,6 +312,10 @@ export function BrandPage() {
                                         alignItems: 'center',
                                         border: '1px solid #e5e5e5'
                                     }}
+                                    onClick={() => {
+                                        setActiveCertIndex(index);
+                                        resetAutoPlay();
+                                    }}
                                 >
                                     <img src={cert.image} className="w-full h-full object-contain" alt="Certificate" />
                                 </div>
@@ -320,7 +324,7 @@ export function BrandPage() {
                     </div>
                 </div>
 
-                {/* Caption - 动态显示当前证书名称 */}
+                {/* Caption - 动态显示当前证书名/*/}
                 <div className="text-center text-[#C5A47E] font-bold tracking-wider transition-opacity duration-300" style={{ fontSize: '35px', marginTop: '40px' }}>
                     {certificatesData[activeCertIndex].name}
                 </div>

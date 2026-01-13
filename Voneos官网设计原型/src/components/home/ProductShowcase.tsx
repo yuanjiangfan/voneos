@@ -114,7 +114,7 @@ export function ProductShowcase() {
       </div>
 
       {/* Product scroll container - calculated left margin to match container, allow right overflow */}
-      <div style={{ marginLeft: 'calc((100vw - 1600px) / 2)', paddingLeft: '24px' }}>
+      <div className="product-scroll-wrapper" style={{ marginLeft: 'calc((100vw - 1600px) / 2)' }}>
         <div
           ref={scrollContainerRef}
           className="flex gap-6 scroll-smooth scrollbar-hide product-scroll-container"
@@ -129,7 +129,7 @@ export function ProductShowcase() {
               className="group relative rounded-xl overflow-hidden product-card flex-shrink-0 w-[490px]"
             >
               {/* Top Left Badge - Image */}
-              <div className="absolute top-5 left-5 z-20 opacity-90">
+              <div className="absolute top-5 left-5 z-20 opacity-90 product-badge-top">
                 <img src={dogBadge} alt="For Dogs Badge" className="w-full h-auto" />
               </div>
 

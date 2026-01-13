@@ -9,7 +9,7 @@ import dogBtnHover from '../assets/产品页面/爱犬-h.png';
 import catBtn from '../assets/产品页面/爱猫.png';
 import catBtnHover from '../assets/产品页面/爱猫-h.png';
 import productCardTriangle from '../assets/产品页面/产品卡片三角.png';
-import './product.css';
+
 
 export function ProductCategoryPage() {
     const { categoryId } = useParams<{ categoryId: string }>();
@@ -98,7 +98,7 @@ export function ProductCategoryPage() {
 
                 <div className="flex flex-col md:flex-row product-layout-container">
                     {/* Sidebar Filters */}
-                    <div className="flex-shrink-0 category-sidebar" style={{ width: '280px', minWidth: '280px' }}>
+                    <div className="flex-shrink-0 category-sidebar category-sidebar-width">
                         <div className="space-y-2">
                             {subCategories.map((sub) => (
                                 <div key={sub}>

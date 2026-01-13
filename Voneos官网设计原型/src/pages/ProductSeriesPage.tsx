@@ -6,7 +6,7 @@ import bannerImg from '../assets/产品页面/一级广告.png';
 import learnMoreBtn from '../assets/产品页面/点击了解更多.png';
 import dividerImg from '../assets/虚线/横虚线.png';
 
-import './product.css';
+
 
 export function ProductSeriesPage() {
     const navigate = useNavigate();

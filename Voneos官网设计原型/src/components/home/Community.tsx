@@ -1,23 +1,16 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '../ui/button';
 import brandComposition from '../../assets/首页/超级符号-1.png';
 import horizontalDashedLine from '../../assets/虚线/横虚线.png';
-import './home.css';
-
-
 export function Community() {
   return (
     <section className="py-12 md:py-24 bg-white relative overflow-hidden">
       {/* Replaced 'container' with custom class for 1700px width */}
       <div className="voneos-container relative z-10">
-
-
-
         {/* Dotted Divider Line */}
         <img src={horizontalDashedLine} alt="divider" className="voneos-divider-img" />
-
         {/* Top Section: Big Headline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -27,14 +20,12 @@ export function Community() {
           className="voneos-headline-wrapper"
         >
           <h3 className="voneos-headline-cn">
-            用互动做纽带，让爱有仪式感
-          </h3>
+            用互动做纽带，让爱有仪式感        </h3>
           <h4 className="voneos-headline-en">
             WE BIND WITH INTERACTION, <br />
             AND CHERISH LOVE WITH RITUALS.
           </h4>
         </motion.div>
-
         {/* Bottom Section: Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4 items-start">
           {/* Left Content: Recruitment Info */}
@@ -63,7 +54,6 @@ export function Community() {
               </Button>
             </div>
           </motion.div>
-
           {/* Right Content: Image */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -75,7 +65,7 @@ export function Community() {
             <div className="relative w-[560px] max-w-full">
               <img
                 src={brandComposition}
-                alt="Scientific Nutrition • For Your Beloved Pets"
+                alt="Scientific Nutrition For Your Beloved Pets"
                 className="w-full h-auto object-contain select-none"
               />
             </div>

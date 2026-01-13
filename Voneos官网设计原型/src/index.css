@@ -4361,3 +4361,120 @@ html {
 .footer-copyright-text {
     color: #8d5f18;
 }
+
+
+/* ========================================
+   RESPONSIVE DESIGN - LAPTOP OPTIMIZATION
+   针对笔记本屏幕优化 (1024px - 1600px)
+   ======================================== */
+
+/* 1600px断点 - 针对120%缩放的19201200屏幕 */
+@media (max-width: 1600px) {
+  /* 产品卡片缩小 */
+  .product-card {
+    width: 420px !important;
+  }
+  
+  /* 产品详情页容器 */
+  .product-content-wrapper {
+    max-width: 1400px;
+    gap: 100px;
+  }
+  
+  .product-carousel-container {
+    width: 580px;
+  }
+  
+  .product-carousel-box {
+    width: 580px;
+    height: 450px;
+  }
+  
+  .product-info-container {
+    width: 720px;
+  }
+  
+  /* 标题字体缩小 */
+  .contact-section-title {
+    font-size: 56px;
+  }
+  
+  /* Section padding缩小 */
+  .contact-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  
+  .product-content-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+/* 1280px断点 - 小笔记本 */
+@media (max-width: 1280px) {
+  .product-card {
+    width: 380px !important;
+  }
+  
+  .product-content-wrapper {
+    max-width: 1200px;
+    gap: 80px;
+  }
+  
+  .product-carousel-container {
+    width: 500px;
+  }
+  
+  .product-carousel-box {
+    width: 500px;
+    height: 390px;
+  }
+  
+  .product-info-container {
+    width: 620px;
+  }
+  
+  .contact-section-title {
+    font-size: 48px;
+  }
+  
+  .contact-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  .product-content-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* 1024px断点 - 平板横屏 */
+@media (max-width: 1024px) {
+  .product-card {
+    width: 100% !important;
+    max-width: 450px;
+  }
+  
+  .product-content-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .product-carousel-container,
+  .product-info-container {
+    width: 100%;
+    max-width: 700px;
+  }
+  
+  .product-carousel-box {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+  
+  .contact-section-title {
+    font-size: 42px;
+  }
+}

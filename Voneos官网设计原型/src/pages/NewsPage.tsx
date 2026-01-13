@@ -13,6 +13,7 @@ import triangleIcon2 from '../assets/新闻动态/三角形 1-1.png';
 import learnMoreIcon from '../assets/新闻动态/点击理解报名.png';
 import dividerLine from '../assets/虚线/横虚线.png';
 import heartUnselected from '../assets/首页/b2d60a3007e626530c4f26151cac09a610940128.png';
+import calendarIcon from '../assets/新闻动态/矢量智能对象-2.png';
 import heartSelected from '../assets/首页/a67f782c8eb15f304b30c791f802f0e455953716.png';
 
 // 新闻轮播组件
@@ -102,7 +103,7 @@ const NewsCarousel = React.memo(() => {
                     <div className="flex-1 flex flex-col">
                       <div className="flex items-end text-xs text-slate-400 mb-4 gap-2">
                         <img
-                          src="/src/assets/新闻动态/矢量智能对象-2.png"
+                          src={calendarIcon}
                           alt="日历"
                           className="w-6 h-6 object-contain opacity-70"
                         />
@@ -208,7 +209,7 @@ const NewsCard = React.memo(({ news }: { news: NewsItem }) => {
               <div className="flex items-end justify-between">
                 <div className="flex items-end text-sm text-slate-400 gap-2">
                   <img
-                    src="/src/assets/新闻动态/矢量智能对象-2.png"
+                    src={calendarIcon}
                     alt="日历"
                     className="w-6 h-6 object-contain opacity-70"
                   />

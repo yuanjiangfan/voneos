@@ -5,6 +5,7 @@ import { ArrowLeft, ChevronRight } from 'lucide-react';
 import { NewsItem, getNewsById, getHotNews, incrementNewsViews } from '../services/newsService';
 import bannerImg from '../assets/新闻动态/banner 拷贝 2.png';
 import dividerLine from '../assets/虚线/横虚线.png';
+import calendarIcon from '../assets/新闻动态/矢量智能对象-2.png';
 import backupImg from '../assets/新闻动态/返回列表.png';
 
 // 新闻详情页面组件
@@ -276,7 +277,7 @@ export function NewsDetailPage() {
                       <div className="flex items-end mt-4">
                         <div className="flex items-end text-sm text-slate-400 gap-2">
                           <img
-                            src="/src/assets/新闻动态/矢量智能对象-2.png"
+                            src={calendarIcon}
                             alt="日历"
                             className="w-6 h-6 object-contain opacity-70"
                           />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import accuracyBadge from '../../assets/首页/心标.png';
-import darkHeartIcon from '../../assets/a67f782c8eb15f304b30c791f802f0e455953716.png';
+import darkHeartIcon from '../../assets/首页/a67f782c8eb15f304b30c791f802f0e455953716.png';
 import catImg from '../../assets/首页/猫.png';
 import horizontalDashedLine from '../../assets/虚线/横虚线.png';
 

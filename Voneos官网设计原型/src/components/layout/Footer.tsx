@@ -2,6 +2,10 @@ import React from 'react';
 import { ArrowUp } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import './footer.css';
+import footerImageHome from '../../assets/footer/页脚图片.png';
+import footerImageOther from '../../assets/footer/页脚.png';
+import logo from '../../assets/首页/LOGO.png';
+import { platforms } from '../../data/platformData';
 
 export function Footer() {
   const location = useLocation();
@@ -11,38 +15,7 @@ export function Footer() {
   const [hoverPlatformIndex, setHoverPlatformIndex] = React.useState<number>(-1);
   const scrollThrottleRef = React.useRef<number | null>(null);
 
-  const platforms = [
-    {
-      platformName: '微信',
-      icon: '/src/assets/other_logo/微信.png',
-      type: 'qr',
-      qrcode: '/src/assets/二维码/微信二维码.png'
-    },
-    {
-      platformName: '小红书',
-      icon: '/src/assets/other_logo/小红书.png',
-      type: 'qr',
-      qrcode: '/src/assets/二维码/微信二维码.png'
-    },
-    {
-      platformName: '天猫',
-      icon: '/src/assets/other_logo/天猫.png',
-      type: 'link',
-      link: 'https://www.baidu.com'
-    },
-    {
-      platformName: '京东',
-      icon: '/src/assets/other_logo/京东.png',
-      type: 'link',
-      link: 'https://www.baidu.com'
-    }
-  ];
 
-  const certifications = [
-    { name: 'ISO认证', description: '国际标准化组织认证' },
-    { name: '食品安全认证', description: '国家食品安全管理体系认证' },
-    { name: '有机认证', description: '有机食品生产认证' }
-  ];
 
   const openPlatformLink = (link?: string) => {
     if (!link) return;
@@ -84,7 +57,7 @@ export function Footer() {
       {/* Decorative Image */}
       <div className="w-full relative z-0" >
         <img
-          src={isHomePage ? "/src/assets/footer/页脚图片.png" : "/src/assets/footer/页脚.png"}
+          src={isHomePage ? footerImageHome : footerImageOther}
           alt=""
           className="w-full h-auto block align-bottom"
         />
@@ -95,11 +68,13 @@ export function Footer() {
         <div className="footer-top border-none bg-transparent">
           <div className="container mx-auto">
             <div className="footer-row">
+
               <div className="brand-section">
-                <img src="/src/assets/LOGO.png" alt="VONEOS" className="brand-title" />
+                <img src={logo} alt="VONEOS" className="brand-title" />
                 <p className="brand-slogan">科学营养 • 爱宠之选</p>
               </div>
-              <div className="qr-platform-group">
+
+              <div className="qr-platform-group flex flex-col items-center gap-4">
                 <div className="platform-buttons relative flex gap-5">
                   {platforms.map((item, index) => (
                     <div
@@ -132,42 +107,23 @@ export function Footer() {
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="footer-bg pt-[50px]" >
-          <div className="footer-bottom" style={{ background: "#c4a567", color: "#95621e" }}>
-            <div className="container">
-              <div className="bottom-content">
-                <div className="copyright">
-                  <p>© 2024 VONEOS瑞诺氏宠物食品有限公司 版权所有</p>
-                  <p>
-                    <a href="#privacy" onClick={(e) => { e.preventDefault(); navigateTo('privacy'); }}>隐私政策</a> |
-                    <a href="#terms" onClick={(e) => { e.preventDefault(); navigateTo('terms'); }}>用户协议</a> |
-                    <a href="#sitemap" onClick={(e) => { e.preventDefault(); navigateTo('sitemap'); }}>网站地图</a> |
-                    <a href="#contact" onClick={(e) => { e.preventDefault(); navigateTo('contact'); }}>联系我们</a>
-                  </p>
-                </div>
-                <div className="certifications">
-                  {certifications.map((c, i) => (
-                    <span key={i} className="cert-badge" title={c.description}>{c.name}</span>
-                  ))}
+                {/* Copyright Information */}
+                <div className="mt-4 text-sm" style={{ color: "#8d5f18" }}>
+                  <p className="mb-2 font-medium">© {new Date().getFullYear()} 湖南瑞诺氏海外实验室宠物用品有限公司</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <button
-        className={`back-to-top ${showBackToTop ? 'visible' : ''}`}
-        onClick={scrollToTop}
-        aria-label="回到顶部"
-      >
-        <ArrowUp size={24} />
-      </button>
-    </footer>
+        <button
+          className={`back-to-top ${showBackToTop ? 'visible' : ''}`}
+          onClick={scrollToTop}
+          aria-label="回到顶部"
+        >
+          <ArrowUp size={24} />
+        </button>
+      </div >
+    </footer >
   );
 }

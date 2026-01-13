@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import heartUnselected from 'figma:asset/b2d60a3007e626530c4f26151cac09a610940128.png';
-import heartSelected from 'figma:asset/a67f782c8eb15f304b30c791f802f0e455953716.png';
-import heroImage1 from 'figma:asset/3bb757520384969e2476ebfff71bc53340794575.png';
-import heroImage2 from 'figma:asset/1abdfc947e74cda16107687dfe9f2731688b0d12.png';
+import heartUnselected from '../../assets/首页/b2d60a3007e626530c4f26151cac09a610940128.png';
+import heartSelected from '../../assets/首页/a67f782c8eb15f304b30c791f802f0e455953716.png';
+import heroImage1 from '../../assets/3bb757520384969e2476ebfff71bc53340794575.png';
+import heroImage2 from '../../assets/1abdfc947e74cda16107687dfe9f2731688b0d12.png';
 
 export function Hero() {
   const images = [
@@ -51,16 +51,16 @@ export function Hero() {
 
       {/* Curved Mask Area */}
       <div className="absolute -bottom-0.5 left-0 w-full z-20">
-         {/* 
+        {/* 
             Increased viewBox height to 320 and control point to 350 to create a significantly deeper/larger arc.
             This allows the 'smile' curve to be much more pronounced.
          */}
-         <svg 
-            viewBox="0 0 1440 320" 
-            className="w-full h-auto block align-bottom max-h-[25vh]" // Responsive height constraint
-            preserveAspectRatio="none"
-         >
-            {/* 
+        <svg
+          viewBox="0 0 1440 320"
+          className="w-full h-auto block align-bottom max-h-[25vh]" // Responsive height constraint
+          preserveAspectRatio="none"
+        >
+          {/* 
                 Path logic updated for deeper curve:
                 M 0,0 -> Start Top-Left
                 Q 720,350 1440,0 -> Control point at y=350 pulls the curve down deep
@@ -68,34 +68,34 @@ export function Hero() {
                 H 0 -> Left to Bottom-Left
                 Z -> Close
             */}
-            <path 
-                fill="#F5E7CB" 
-                d="M0,0 Q720,350 1440,0 V320 H0 Z"
-            />
-         </svg>
+          <path
+            fill="#F5E7CB"
+            d="M0,0 Q720,350 1440,0 V320 H0 Z"
+          />
+        </svg>
       </div>
-      
+
       {/* Hearts Container - Positioned within the beige mask area */}
       <div className="absolute bottom-4 left-0 w-full z-30 flex justify-center pb-2 md:pb-6">
         <div className="flex space-x-6 items-center">
-           {images.map((_, idx) => (
-             <button
-               key={idx}
-               onMouseEnter={() => handleManualSwitch(idx)}
-               onClick={() => handleManualSwitch(idx)}
-               className="group relative flex items-center justify-center focus:outline-none"
-             >
-                <motion.img
-                   src={currentIndex === idx ? heartSelected : heartUnselected}
-                   alt="Switch slide"
-                   className="w-6 h-6 object-contain"
-                   animate={{
-                      scale: currentIndex === idx ? 1.2 : 1
-                   }}
-                   transition={{ duration: 0.3 }}
-                />
-             </button>
-           ))}
+          {images.map((_, idx) => (
+            <button
+              key={idx}
+              onMouseEnter={() => handleManualSwitch(idx)}
+              onClick={() => handleManualSwitch(idx)}
+              className="group relative flex items-center justify-center focus:outline-none"
+            >
+              <motion.img
+                src={currentIndex === idx ? heartSelected : heartUnselected}
+                alt="Switch slide"
+                className="w-6 h-6 object-contain"
+                animate={{
+                  scale: currentIndex === idx ? 1.2 : 1
+                }}
+                transition={{ duration: 0.3 }}
+              />
+            </button>
+          ))}
         </div>
       </div>
     </div>

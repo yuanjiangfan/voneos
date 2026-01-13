@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import brandComposition from 'figma:asset/3b693765c88dcb52e7aee5428b483cd7fef2c78c.png';
+import brandComposition from '../../assets/首页/3b693765c88dcb52e7aee5428b483cd7fef2c78c.png';
 import './home.css';
 
 export function BrandStory() {

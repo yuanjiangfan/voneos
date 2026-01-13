@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '../ui/button';
-import brandComposition from '../../assets/超级符号-1.png';
+import brandComposition from '../../assets/首页/超级符号-1.png';
 import horizontalDashedLine from '../../assets/虚线/横虚线.png';
 import './home.css';
 

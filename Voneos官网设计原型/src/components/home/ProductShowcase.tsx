@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import goldBottle from 'figma:asset/317cac038998c4e36412e5105cca95e59b17feb7.png';
-import dogBadge from '../../assets/841674919b79fbeb8be97f4abab0c1c54b4db2b9.png';
+import goldBottle from '../../assets/317cac038998c4e36412e5105cca95e59b17feb7.png';
+import dogBadge from '../../assets/首页/841674919b79fbeb8be97f4abab0c1c54b4db2b9.png';
 
 const products = [
   {

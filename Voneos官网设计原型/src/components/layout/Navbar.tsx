@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import hoverDecoration from '../../assets/546ee9abed8018e5eb9a517c284a1d21034a08d6.png';
+import hoverDecoration from '../../assets/首页/心图标.png';
+import logo from '../../assets/首页/LOGO.png';
 
 // Sub-component for individual Nav Links to handle hover state independently
 const NavLink = ({ item, linkColor, hoverColor }: { item: { name: string; href: string }; linkColor: string; hoverColor: string }) => {
@@ -126,7 +127,7 @@ export function Navbar() {
       >
         {/* Logo */}
         <Link to="/" className="flex items-center shrink-0">
-          <img src="/src/assets/LOGO.png" alt="VONEOS" className="h-8 w-auto object-contain" />
+          <img src={logo} alt="VONEOS" className="h-8 w-auto object-contain" />
         </Link>
 
         {/* Desktop Menu */}

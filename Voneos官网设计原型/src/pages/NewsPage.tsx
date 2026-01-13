@@ -12,8 +12,8 @@ import triangleIcon from '../assets/新闻动态/三角形 1.png';
 import triangleIcon2 from '../assets/新闻动态/三角形 1-1.png';
 import learnMoreIcon from '../assets/新闻动态/点击理解报名.png';
 import dividerLine from '../assets/虚线/横虚线.png';
-import heartUnselected from 'figma:asset/b2d60a3007e626530c4f26151cac09a610940128.png';
-import heartSelected from 'figma:asset/a67f782c8eb15f304b30c791f802f0e455953716.png';
+import heartUnselected from '../assets/首页/b2d60a3007e626530c4f26151cac09a610940128.png';
+import heartSelected from '../assets/首页/a67f782c8eb15f304b30c791f802f0e455953716.png';
 
 // 新闻轮播组件
 const NewsCarousel = React.memo(() => {

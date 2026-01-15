@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ArrowUp } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 import footerImageHome from '../../assets/footer/页脚图片.png';
 import footerImageOther from '../../assets/footer/页脚.png';
 import logo from '../../assets/首页/LOGO.png';
-import { platforms } from '../../data/platformData';
+import { getAllPlatforms, Platform } from '../../services/platformService';
 
 export function Footer() {
+  const [platforms, setPlatforms] = useState<Platform[]>([]);
   const location = useLocation();
   const isHomePage = location.pathname === '/' || location.pathname === '/home';
 
@@ -38,6 +39,15 @@ export function Footer() {
       }, 100);
     }
   };
+
+  // 获取平台数据
+  useEffect(() => {
+    const fetchPlatforms = async () => {
+      const data = await getAllPlatforms();
+      setPlatforms(data);
+    };
+    fetchPlatforms();
+  }, []);
 
   React.useEffect(() => {
     checkScrollPosition();
@@ -80,27 +90,31 @@ export function Footer() {
                     <div
                       key={index}
                       className="platform-btn-wrapper relative"
-                      onMouseEnter={() => item.type === 'qr' && setHoverPlatformIndex(index)}
+                      onMouseEnter={() => item.type === 'social' && setHoverPlatformIndex(index)}
                       onMouseLeave={() => setHoverPlatformIndex(-1)}
                     >
                       <img
                         className="platform-btn w-[40px] h-[40px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity"
-                        src={item.icon}
-                        alt={item.platformName}
-                        onClick={() => item.type === 'link' && openPlatformLink(item.link)}
+                        src={item.iconUrl || ''}
+                        alt={item.name}
+                        onClick={() => item.type === 'ecommerce' && openPlatformLink(item.url)}
                       />
 
                       {/* QR Code Popover */}
-                      {item.type === 'qr' && hoverPlatformIndex === index && (
+                      {item.type === 'social' && hoverPlatformIndex === index && (
                         <div
                           className="absolute top-full left-1/2 -translate-x-1/2 mt-2 p-2 bg-white rounded-lg shadow-xl z-50 animate-in fade-in zoom-in duration-200"
                         >
                           {/* Triangle Arrow */}
                           <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-b-[8px] border-b-white"></div>
 
-                          {/* QR Image */}
+                          {/* QR Code Image */}
                           <div className="bg-white flex items-center justify-center overflow-hidden rounded footer-qr-container">
-                            <img src={item.qrcode} alt={`${item.platformName}二维码`} className="w-full h-full object-cover" />
+                            {item.qrcodeUrl ? (
+                              <img src={item.qrcodeUrl} alt={`${item.name}二维码`} className="w-32 h-32 object-contain" />
+                            ) : (
+                              <div className="w-32 h-32 bg-gray-100 flex items-center justify-center text-gray-400 text-xs">{item.name}</div>
+                            )}
                           </div>
                         </div>
                       )}

@@ -1,5 +1,6 @@
-﻿import React from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
+import { getAllCertificates, Certificate } from '../services/certificateService';
 
 
 // Imports - Asset names are based on file listing. 
@@ -18,40 +19,49 @@ import badge2 from '../assets/品牌初心页/矢量智能对象 拷贝 2.png';
 import badge3 from '../assets/品牌初心页/矢量智能对象 拷贝 4.png';
 import horizontalDashedLine from '../assets/虚线/横虚线.png';
 
-// Certs - 使用证书子目录中的图/
-import cert1 from '../assets/品牌初心页/证书/证书 1.png';
-import cert2 from '../assets/品牌初心页/证书/证书 2.png';
-import cert3 from '../assets/品牌初心页/证书/证书 3.png';
-import cert4 from '../assets/品牌初心页/证书/证书 4.png';
-import cert5 from '../assets/品牌初心页/证书/证书 5.png';
+
 
 // Moments (Sample selection)
 import petGroupImage from '../assets/品牌初心页/照片墙.png';
 
 export function BrandPage() {
-    // 证书数据:包含图片和名/
-    const certificatesData = [
-        { image: cert1, name: 'ISO 9001质量管理体系认证' },
-        { image: cert2, name: 'HACCP食品安全管理体系认证' },
-        { image: cert3, name: '英国零售商协会全球消费品标准认证(BRC)' },
-        { image: cert4, name: 'IFS国际食品标准认证' },
-        { image: cert5, name: 'SGS产品质量认证' },
-    ];
-    const [activeCertIndex, setActiveCertIndex] = React.useState(2);
-    const [autoPlayKey, setAutoPlayKey] = React.useState(0);
-    const [hoveredCard, setHoveredCard] = React.useState<number | null>(null); // 品牌文化卡片hover状/
+    // 使用证书数据接口(异步获取)
+    const [certificatesData, setCertificatesData] = useState<Certificate[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [activeCertIndex, setActiveCertIndex] = useState(2);
+    const [autoPlayKey, setAutoPlayKey] = useState(0);
+    const [hoveredCard, setHoveredCard] = useState<number | null>(null); // 品牌文化卡片hover状态
+
+    // 获取证书数据
+    useEffect(() => {
+        const fetchCertificates = async () => {
+            try {
+                const data = await getAllCertificates();
+                setCertificatesData(data);
+            } catch (error) {
+                console.error('Failed to fetch certificates:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchCertificates();
+    }, []);
 
     const resetAutoPlay = () => {
         setAutoPlayKey(prev => prev + 1);
     };
 
     const handlePrev = () => {
-        setActiveCertIndex((prev: number) => (prev - 1 + certificatesData.length) % certificatesData.length);
-        resetAutoPlay();
+        if (certificatesData.length > 0) {
+            setActiveCertIndex((prev: number) => (prev - 1 + certificatesData.length) % certificatesData.length);
+            resetAutoPlay();
+        }
     };
 
     const handleNext = React.useCallback(() => {
-        setActiveCertIndex((prev: number) => (prev + 1) % certificatesData.length);
+        if (certificatesData.length > 0) {
+            setActiveCertIndex((prev: number) => (prev + 1) % certificatesData.length);
+        }
     }, [certificatesData.length]);
 
     const handleNextWithReset = () => {
@@ -317,7 +327,7 @@ export function BrandPage() {
                                         resetAutoPlay();
                                     }}
                                 >
-                                    <img src={cert.image} className="w-full h-full object-contain" alt="Certificate" />
+                                    <img src={cert.imageUrl} className="w-full h-full" alt="Certificate" />
                                 </div>
                             );
                         })}
@@ -326,7 +336,7 @@ export function BrandPage() {
 
                 {/* Caption - 动态显示当前证书名/*/}
                 <div className="text-center text-[#C5A47E] font-bold tracking-wider transition-opacity duration-300" style={{ fontSize: '35px', marginTop: '40px' }}>
-                    {certificatesData[activeCertIndex].name}
+                    {certificatesData[activeCertIndex]?.title || ''}
                 </div>
             </section>
 

@@ -1,18 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { products } from '../data/productData';
+import { getProductById, ProductDetail } from '../services/productService';
 import { ChevronLeft, ChevronRight, Home, ChevronRight as BreadcrumbArrow } from 'lucide-react';
 import bannerImg from '../assets/产品页面/product-3.png';
 import horizontalDashedLine from '../assets/虚线/横虚线.png';
-
 
 export function ProductDetailPage() {
     const { categoryId, productId } = useParams<{ categoryId: string; productId: string }>();
     const navigate = useNavigate();
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const [product, setProduct] = useState<ProductDetail | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    // 获取产品数据
+    useEffect(() => {
+        const fetchProduct = async () => {
+            if (!productId) {
+                setLoading(false);
+                return;
+            }
+            try {
+                const data = await getProductById(productId);
+                setProduct(data);
+            } catch (error) {
+                console.error('Error fetching product:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProduct();
+    }, [productId]);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="text-center">
+                    <h2 className="text-2xl font-bold text-gray-800">加载中...</h2>
+                </div>
+            </div>
+        );
+    }
 
     // 查找当前产品
-    const product = products.find(p => p.id === productId);
 
     if (!product) {
         return (
@@ -201,13 +230,13 @@ export function ProductDetailPage() {
                         <img src={horizontalDashedLine} alt="" className="w-full my-4" />
 
                         {/* Purchase Links */}
-                        {product.purchaseLinks && (
+                        {(product.tmallLink || product.jdLink) && (
                             <div>
                                 <h3 className="text-xl font-bold text-[#8B7355] mb-4">购买:</h3>
                                 <div className="flex gap-4">
-                                    {product.purchaseLinks.tmall && (
+                                    {product.tmallLink && (
                                         <a
-                                            href={product.purchaseLinks.tmall}
+                                            href={product.tmallLink}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className=" text-white rounded-full font-medium hover:bg-[#6d5a42] transition flex items-center justify-center"
@@ -216,9 +245,9 @@ export function ProductDetailPage() {
                                             天猫
                                         </a>
                                     )}
-                                    {product.purchaseLinks.jd && (
+                                    {product.jdLink && (
                                         <a
-                                            href={product.purchaseLinks.jd}
+                                            href={product.jdLink}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className=" text-white rounded-full font-medium hover:bg-[#6d5a42] transition flex items-center justify-center"

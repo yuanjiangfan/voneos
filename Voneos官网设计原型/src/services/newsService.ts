@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase';
+import { debugLog } from '../lib/debug';
 
 // 数据库表类型定义
 export interface NewsItemDB {
@@ -44,6 +45,23 @@ export interface NewsSection {
 }
 
 /**
+ * 数据映射辅助函数：将数据库格式转换为前端格式
+ */
+function mapNewsData(item: NewsItemDB): NewsItem {
+  return {
+    id: item.id,
+    title: item.title,
+    date: item.date,
+    excerpt: item.excerpt,
+    image: item.image,
+    category: item.category,
+    author: item.author,
+    featured: item.featured,
+    views: item.views
+  };
+}
+
+/**
  * 获取所有新闻列表
  */
 export async function getAllNews(): Promise<NewsItem[]> {
@@ -58,24 +76,7 @@ export async function getAllNews(): Promise<NewsItem[]> {
       return [];
     }
 
-    console.log('getAllNews - 原始数据:', data);
-
-    // 转换数据库格式到前端格式
-    const result = (data || []).map(item => ({
-      id: item.id,
-      title: item.title,
-      date: item.date,
-      excerpt: item.excerpt,
-      image: item.image,
-      category: item.category,
-      author: item.author,
-      featured: item.featured,
-      views: item.views
-    }));
-
-    console.log('getAllNews - 转换后结果:', result);
-    console.log('getAllNews - 总数:', result.length);
-
+    const result = (data || []).map(mapNewsData);
     return result;
   } catch (error) {
     console.error('Exception fetching news:', error);
@@ -100,23 +101,7 @@ export async function getFeaturedNews(): Promise<NewsItem[]> {
       return [];
     }
 
-    console.log('getFeaturedNews - 原始数据:', data);
-
-    const result = (data || []).map(item => ({
-      id: item.id,
-      title: item.title,
-      date: item.date,
-      excerpt: item.excerpt,
-      image: item.image,
-      category: item.category,
-      author: item.author,
-      featured: item.featured,
-      views: item.views
-    }));
-
-    console.log('getFeaturedNews - 转换后结果:', result);
-    console.log('getFeaturedNews - 总数:', result.length);
-
+    const result = (data || []).map(mapNewsData);
     return result;
   } catch (error) {
     console.error('Exception fetching featured news:', error);
@@ -140,23 +125,7 @@ export async function getHotNews(): Promise<NewsItem[]> {
       return [];
     }
 
-    console.log('getHotNews - 原始数据:', data);
-
-    const result = (data || []).map(item => ({
-      id: item.id,
-      title: item.title,
-      date: item.date,
-      excerpt: item.excerpt,
-      image: item.image,
-      category: item.category,
-      author: item.author,
-      featured: item.featured,
-      views: item.views
-    }));
-
-    console.log('getHotNews - 转换后结果:', result);
-    console.log('getHotNews - 总数:', result.length);
-
+    const result = (data || []).map(mapNewsData);
     return result;
   } catch (error) {
     console.error('Exception fetching hot news:', error);
@@ -169,8 +138,6 @@ export async function getHotNews(): Promise<NewsItem[]> {
  */
 export async function getNewsById(id: number): Promise<NewsItem | null> {
   try {
-    console.log('getNewsById - 查询ID:', id);
-
     // 获取新闻主体
     const { data: newsData, error: newsError } = await supabase
       .from('news_item')
@@ -183,8 +150,6 @@ export async function getNewsById(id: number): Promise<NewsItem | null> {
       return null;
     }
 
-    console.log('getNewsById - 新闻主体数据:', newsData);
-
     // 获取新闻段落
     const { data: sectionsData, error: sectionsError } = await supabase
       .from('news_sections')
@@ -196,8 +161,6 @@ export async function getNewsById(id: number): Promise<NewsItem | null> {
       console.error('Error fetching news sections:', sectionsError);
     }
 
-    console.log('getNewsById - 新闻段落数据:', sectionsData);
-
     // 组合数据
     const sections: NewsSection[] = (sectionsData || []).map(section => ({
       subtitle: section.subtitle,
@@ -206,20 +169,9 @@ export async function getNewsById(id: number): Promise<NewsItem | null> {
     }));
 
     const result = {
-      id: newsData.id,
-      title: newsData.title,
-      date: newsData.date,
-      excerpt: newsData.excerpt,
-      image: newsData.image,
-      category: newsData.category,
-      author: newsData.author,
-      featured: newsData.featured,
-      views: newsData.views,
+      ...mapNewsData(newsData),
       sections
     };
-
-    console.log('getNewsById - 完整结果:', result);
-    console.log('getNewsById - 段落数量:', sections.length);
 
     return result;
   } catch (error) {
@@ -233,8 +185,6 @@ export async function getNewsById(id: number): Promise<NewsItem | null> {
  */
 export async function getNewsByCategory(category: string): Promise<NewsItem[]> {
   try {
-    console.log('getNewsByCategory - 查询分类:', category);
-
     const { data, error } = await supabase
       .from('news_item')
       .select('*')
@@ -246,23 +196,7 @@ export async function getNewsByCategory(category: string): Promise<NewsItem[]> {
       return [];
     }
 
-    console.log('getNewsByCategory - 原始数据:', data);
-
-    const result = (data || []).map(item => ({
-      id: item.id,
-      title: item.title,
-      date: item.date,
-      excerpt: item.excerpt,
-      image: item.image,
-      category: item.category,
-      author: item.author,
-      featured: item.featured,
-      views: item.views
-    }));
-
-    console.log('getNewsByCategory - 转换后结果:', result);
-    console.log('getNewsByCategory - 总数:', result.length);
-
+    const result = (data || []).map(mapNewsData);
     return result;
   } catch (error) {
     console.error('Exception fetching news by category:', error);
@@ -275,8 +209,6 @@ export async function getNewsByCategory(category: string): Promise<NewsItem[]> {
  */
 export async function incrementNewsViews(id: number): Promise<void> {
   try {
-    console.log('incrementNewsViews - 新闻ID:', id);
-
     // 先获取当前浏览量
     const { data, error: fetchError } = await supabase
       .from('news_item')
@@ -289,8 +221,6 @@ export async function incrementNewsViews(id: number): Promise<void> {
       return;
     }
 
-    console.log('incrementNewsViews - 当前浏览量:', data.views);
-
     // 更新浏览量
     const newViews = (data.views || 0) + 1;
     const { error: updateError } = await supabase
@@ -301,7 +231,7 @@ export async function incrementNewsViews(id: number): Promise<void> {
     if (updateError) {
       console.error('Error updating views:', updateError);
     } else {
-      console.log('incrementNewsViews - 更新后浏览量:', newViews);
+      debugLog('incrementNewsViews - 更新后浏览量:', newViews);
     }
   } catch (error) {
     console.error('Exception incrementing views:', error);

@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { products, categories } from '../data/productData';
+import { getAllProducts, Product } from '../services/productService';
 import { ArrowRight } from 'lucide-react';
 import bannerImg from '../assets/产品页面/一级广告.png';
 import learnMoreBtn from '../assets/产品页面/点击了解更多.png';
 import dividerImg from '../assets/虚线/横虚线.png';
 
-
-
 export function ProductSeriesPage() {
     const navigate = useNavigate();
-    const dogProducts = products.filter(p => p.category === 'dog' && p.showInSeriesPage).slice(0, 4);
-    const catProducts = products.filter(p => p.category === 'cat' && p.showInSeriesPage).slice(0, 4);
+    const [dogProducts, setDogProducts] = useState<Product[]>([]);
+    const [catProducts, setCatProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    // 获取产品数据
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const allProducts = await getAllProducts();
+                setDogProducts(allProducts.filter(p => p.category === 'dog' && p.showInSeriesPage).slice(0, 4));
+                setCatProducts(allProducts.filter(p => p.category === 'cat' && p.showInSeriesPage).slice(0, 4));
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProducts();
+    }, []);
 
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
@@ -47,9 +62,9 @@ export function ProductSeriesPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 product-grid">
                         {dogProducts.map((product) => (
-                            <Link key={product.id} to={product.link} className="group relative rounded-lg overflow-hidden w-full product-card-series block">
+                            <Link key={product.id} to={`/products/${product.category}/${product.id}`} className="group relative rounded-lg overflow-hidden w-full product-card-series block">
                                 <img
-                                    src={product.image}
+                                    src={product.imageUrl}
                                     alt={product.title}
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 />
@@ -95,9 +110,9 @@ export function ProductSeriesPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 product-grid">
                         {catProducts.map((product) => (
-                            <Link key={product.id} to={product.link} className="group relative rounded-lg overflow-hidden w-full product-card-series block">
+                            <Link key={product.id} to={`/products/${product.category}/${product.id}`} className="group relative rounded-lg overflow-hidden w-full product-card-series block">
                                 <img
-                                    src={product.image}
+                                    src={product.imageUrl}
                                     alt={product.title}
                                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 />

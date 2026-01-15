@@ -1,13 +1,10 @@
-// 导入平台logo图片
+// 临时保留旧的导出供Footer使用
 import wechatIcon from '../assets/other_logo/微信.png';
 import xiaohongshuIcon from '../assets/other_logo/小红书.png';
 import tmallIcon from '../assets/other_logo/天猫.png';
 import jdIcon from '../assets/other_logo/京东.png';
-
-// 导入二维码图片
 import wechatQR from '../assets/二维码/微信二维码.png';
 
-// 社交媒体平台数据接口
 export interface Platform {
     platformName: string;
     icon: string;
@@ -16,7 +13,6 @@ export interface Platform {
     link?: string;
 }
 
-// 社交媒体平台数据
 export const platforms: Platform[] = [
     {
         platformName: '微信',
@@ -43,3 +39,5 @@ export const platforms: Platform[] = [
         link: 'https://www.baidu.com'
     }
 ];
+
+// 注意: 此文件保留是为了兼容性,实际应使用 src/services/platformService.ts

@@ -33,7 +33,7 @@ const featuresData = [
   {
     id: 'acme',
     title: 'ACME',
-    subtitle: '高品位',
+    subtitle: '高品质',
     tagline: '臻心之选',
     description: '臻选全球新鲜原材散发食材天然本味',
   },

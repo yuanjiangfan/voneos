@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { products, categories, Product } from '../data/productData';
+import { getAllProducts, Product } from '../services/productService';
 import { ChevronDown, ChevronRight, ArrowRight } from 'lucide-react';
 import bannerImg from '../assets/产品页面/二级广告.png';
 import dividerLine from '../assets/虚线/横虚线.png';
@@ -10,6 +10,11 @@ import catBtn from '../assets/产品页面/爱猫.png';
 import catBtnHover from '../assets/产品页面/爱猫-h.png';
 import productCardTriangle from '../assets/产品页面/产品卡片三角.png';
 
+// 类别数据
+const categories = [
+    { id: 'dog', name: '犬用产品', path: '/products/dog' },
+    { id: 'cat', name: '猫用产品', path: '/products/cat' }
+];
 
 export function ProductCategoryPage() {
     const { categoryId } = useParams<{ categoryId: string }>();
@@ -17,13 +22,27 @@ export function ProductCategoryPage() {
     const [activeSubCategory, setActiveSubCategory] = useState<string | null>(null);
     const [dogHovered, setDogHovered] = useState(false);
     const [catHovered, setCatHovered] = useState(false);
+    const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    // Default to 'dog' if categoryId is missing or invalid, though routing should handle it
+    // Default to 'dog' if categoryId is missing or invalid
     const currentCategory = categories.find(c => c.id === categoryId) || categories[0];
     const isDog = currentCategory.id === 'dog';
 
-    // Filter products by main category
-    const categoryProducts = products.filter(p => p.category === currentCategory.id);
+    // 获取产品数据
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const allProducts = await getAllProducts();
+                setCategoryProducts(allProducts.filter(p => p.category === currentCategory.id));
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProducts();
+    }, [currentCategory.id]);
 
     // Hardcoded subcategories as per requirement
     const subCategories = ['金罐系列', '化毛膏系列', '口腔护理专区'];
@@ -119,11 +138,11 @@ export function ProductCategoryPage() {
                         <div className="flex flex-wrap product-grid-container">
                             {displayProducts.length > 0 ? (
                                 displayProducts.map((product) => (
-                                    <Link key={product.id} to={product.link} className="group relative bg-gradient-to-b from-[#FFF5E6] to-[#D4B895]  product-card-category overflow-hidden transition-shadow block">
+                                    <Link key={product.id} to={`/products/${product.category}/${product.id}`} className="group relative bg-gradient-to-b from-[#FFF5E6] to-[#D4B895]  product-card-category overflow-hidden transition-shadow block">
                                         <div className="w-full relative">
                                             {/* Product Image */}
                                             <img
-                                                src={product.image}
+                                                src={product.imageUrl}
                                                 alt={product.title}
                                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                             />

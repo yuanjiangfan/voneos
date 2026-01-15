@@ -1,5 +1,4 @@
 import { supabase } from '../lib/supabase';
-import { debugLog } from '../lib/debug';
 
 // 数据库表类型定义
 export interface ProductDB {
@@ -87,12 +86,12 @@ export async function getAllProducts(): Promise<Product[]> {
             return [];
         }
 
-        debugLog('getAllProducts - 原始数据:', data);
+        console.log('getAllProducts - 原始数据:', data);
 
         const result = (data || []).map(mapProductData);
 
-        debugLog('getAllProducts - 转换后结果:', result);
-        debugLog('getAllProducts - 总数:', result.length);
+        console.log('getAllProducts - 转换后结果:', result);
+        console.log('getAllProducts - 总数:', result.length);
 
         return result;
     } catch (error) {
@@ -106,7 +105,7 @@ export async function getAllProducts(): Promise<Product[]> {
  */
 export async function getProductsByCategory(category: 'dog' | 'cat'): Promise<Product[]> {
     try {
-        debugLog('getProductsByCategory - 查询类别:', category);
+        console.log('getProductsByCategory - 查询类别:', category);
 
         const { data, error } = await supabase
             .from('products')
@@ -120,12 +119,12 @@ export async function getProductsByCategory(category: 'dog' | 'cat'): Promise<Pr
             return [];
         }
 
-        debugLog('getProductsByCategory - 原始数据:', data);
+        console.log('getProductsByCategory - 原始数据:', data);
 
         const result = (data || []).map(mapProductData);
 
-        debugLog('getProductsByCategory - 转换后结果:', result);
-        debugLog('getProductsByCategory - 总数:', result.length);
+        console.log('getProductsByCategory - 转换后结果:', result);
+        console.log('getProductsByCategory - 总数:', result.length);
 
         return result;
     } catch (error) {
@@ -151,12 +150,12 @@ export async function getHomeProducts(): Promise<Product[]> {
             return [];
         }
 
-        debugLog('getHomeProducts - 原始数据:', data);
+        console.log('getHomeProducts - 原始数据:', data);
 
         const result = (data || []).map(mapProductData);
 
-        debugLog('getHomeProducts - 转换后结果:', result);
-        debugLog('getHomeProducts - 总数:', result.length);
+        console.log('getHomeProducts - 转换后结果:', result);
+        console.log('getHomeProducts - 总数:', result.length);
 
         return result;
     } catch (error) {
@@ -170,7 +169,7 @@ export async function getHomeProducts(): Promise<Product[]> {
  */
 export async function getProductById(id: string): Promise<ProductDetail | null> {
     try {
-        debugLog('getProductById - 查询ID:', id);
+        console.log('getProductById - 查询ID:', id);
 
         // 使用关联查询一次性获取产品基础信息和详情
         const { data, error } = await supabase
@@ -194,7 +193,7 @@ export async function getProductById(id: string): Promise<ProductDetail | null> 
             return null;
         }
 
-        debugLog('getProductById - 关联查询结果:', data);
+        console.log('getProductById - 关联查询结果:', data);
 
         // 提取product_details数据（Supabase返回的是数组，取第一个元素）
         const detailData = Array.isArray(data.product_details)
@@ -212,7 +211,7 @@ export async function getProductById(id: string): Promise<ProductDetail | null> 
             jdLink: detailData?.jd_link || undefined
         };
 
-        debugLog('getProductById - 完整结果:', result);
+        console.log('getProductById - 完整结果:', result);
 
         return result;
     } catch (error) {

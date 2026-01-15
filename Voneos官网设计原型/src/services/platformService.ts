@@ -1,5 +1,4 @@
 import { supabase } from '../lib/supabase';
-import { debugLog } from '../lib/debug';
 
 // 数据库表类型定义 (匹配API文档)
 export interface PlatformDB {
@@ -58,12 +57,12 @@ export async function getAllPlatforms(): Promise<Platform[]> {
             return [];
         }
 
-        debugLog('getAllPlatforms - 原始数据:', data);
+        console.log('getAllPlatforms - 原始数据:', data);
 
         const result = (data || []).map(mapPlatformData);
 
-        debugLog('getAllPlatforms - 转换后结果:', result);
-        debugLog('getAllPlatforms - 总数:', result.length);
+        console.log('getAllPlatforms - 转换后结果:', result);
+        console.log('getAllPlatforms - 总数:', result.length);
 
         return result;
     } catch (error) {
@@ -77,7 +76,7 @@ export async function getAllPlatforms(): Promise<Platform[]> {
  */
 export async function getPlatformsByType(type: 'qr' | 'link'): Promise<Platform[]> {
     try {
-        debugLog('getPlatformsByType - 查询类型:', type);
+        console.log('getPlatformsByType - 查询类型:', type);
 
         const { data, error } = await supabase
             .from('platforms')
@@ -91,12 +90,12 @@ export async function getPlatformsByType(type: 'qr' | 'link'): Promise<Platform[
             return [];
         }
 
-        debugLog('getPlatformsByType - 原始数据:', data);
+        console.log('getPlatformsByType - 原始数据:', data);
 
         const result = (data || []).map(mapPlatformData);
 
-        debugLog('getPlatformsByType - 转换后结果:', result);
-        debugLog('getPlatformsByType - 总数:', result.length);
+        console.log('getPlatformsByType - 转换后结果:', result);
+        console.log('getPlatformsByType - 总数:', result.length);
 
         return result;
     } catch (error) {

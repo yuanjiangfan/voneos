@@ -1,5 +1,4 @@
 import { supabase } from '../lib/supabase';
-import { debugLog } from '../lib/debug';
 
 // 数据库表类型定义
 export interface NewsItemDB {
@@ -231,7 +230,7 @@ export async function incrementNewsViews(id: number): Promise<void> {
     if (updateError) {
       console.error('Error updating views:', updateError);
     } else {
-      debugLog('incrementNewsViews - 更新后浏览量:', newViews);
+      console.log('incrementNewsViews - 更新后浏览量:', newViews);
     }
   } catch (error) {
     console.error('Exception incrementing views:', error);

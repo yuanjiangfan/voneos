@@ -1,5 +1,4 @@
 import { supabase } from '../lib/supabase';
-import { debugLog } from '../lib/debug';
 
 // 数据库表类型定义 (匹配API文档)
 export interface CertificateDB {
@@ -34,7 +33,7 @@ export async function getAllCertificates(): Promise<Certificate[]> {
             return [];
         }
 
-        debugLog('getAllCertificates - 原始数据:', data);
+        console.log('getAllCertificates - 原始数据:', data);
 
         // 转换数据库格式到前端格式
         const result = (data || []).map(item => ({
@@ -44,8 +43,8 @@ export async function getAllCertificates(): Promise<Certificate[]> {
             sortOrder: item.sort_order
         }));
 
-        debugLog('getAllCertificates - 转换后结果:', result);
-        debugLog('getAllCertificates - 总数:', result.length);
+        console.log('getAllCertificates - 转换后结果:', result);
+        console.log('getAllCertificates - 总数:', result.length);
 
         return result;
     } catch (error) {

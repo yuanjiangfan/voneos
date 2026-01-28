@@ -99,7 +99,7 @@ export function BrandPage() {
     };
 
     return (
-        <div className="bg-white w-full">
+        <div className="bg-white w-full" style={{ zoom: 0.75 } as React.CSSProperties}>
             {/* 1. Hero Banner */}
             <section className="w-full relative">
                 <img src={bannerImg} alt="Brand Essence" className="w-full h-auto object-cover" />

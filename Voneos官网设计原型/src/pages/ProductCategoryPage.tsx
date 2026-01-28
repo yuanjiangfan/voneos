@@ -69,7 +69,7 @@ export function ProductCategoryPage() {
 
 
     return (
-        <div className="bg-white min-h-screen">
+        <div className="bg-white min-h-screen" style={{ zoom: 0.75 } as React.CSSProperties}>
             {/* Hero Banner */}
             <div className="relative w-full h-[300px] md:h-[400px]">
                 <img

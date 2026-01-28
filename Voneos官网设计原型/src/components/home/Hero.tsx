@@ -1,27 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { getHomeBanners, Banner } from '../../services/bannerService';
 import heartUnselected from '../../assets/首页/b2d60a3007e626530c4f26151cac09a610940128.png';
 import heartSelected from '../../assets/首页/a67f782c8eb15f304b30c791f802f0e455953716.png';
-import heroImage1 from '../../assets/3bb757520384969e2476ebfff71bc53340794575.png';
-import heroImage2 from '../../assets/1abdfc947e74cda16107687dfe9f2731688b0d12.png';
+import heroImage1 from '../../assets/首页/3b693765c88dcb52e7aee5428b483cd7fef2c78c.png';
+import heroImage2 from '../../assets/首页/猫.png';
 
 export function Hero() {
-  const images = [
-    heroImage1,
-    heroImage2,
-    "https://images.unsplash.com/photo-1616968491853-875e02f61e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXQlMjBzbGVlcGluZyUyMG9uJTIwc3VubnklMjB3aW5kb3dzaWxsfGVufDF8fHx8MTc2NTIwMDc0NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+  const defaultBanners: Banner[] = [
+    { id: 'local-1', title: 'Default Banner 1', imageUrl: heroImage1, sortOrder: 1 },
+    { id: 'local-2', title: 'Default Banner 2', imageUrl: heroImage2, sortOrder: 2 },
+    { id: 'local-3', title: 'Default Banner 3', imageUrl: "https://images.unsplash.com/photo-1616968491853-875e02f61e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXQlMjBzbGVlcGluZyUyMG9uJTIwc3VubnklMjB3aW5kb3dzaWxsfGVufDF8fHx8MTc2NTIwMDc0NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", sortOrder: 3 }
   ];
 
+  const [banners, setBanners] = useState<Banner[]>([]);
+  const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Fetch banners from Supabase
+  useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        const data = await getHomeBanners();
+        if (data && data.length > 0) {
+          setBanners(data);
+        } else {
+          // If no data or error (which returns empty array), use defaults
+          // But technically setBanners([]) is already initial state, 
+          // we just need to know if we should render 'banners' or 'defaultBanners'
+          // We can just keep banners empty and handle it in render variable
+        }
+      } catch (error) {
+        console.error('Failed to fetch banners:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBanners();
+  }, []);
+
+  const displayBanners = banners.length > 0 ? banners : defaultBanners;
 
   // Auto-switch logic
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
+      setCurrentIndex((prev) => (prev + 1) % displayBanners.length);
     }, 5000);
 
     return () => clearInterval(timer);
-  }, [currentIndex, images.length]);
+  }, [currentIndex, displayBanners.length]);
 
   const handleManualSwitch = (index: number) => {
     setCurrentIndex(index);
@@ -41,8 +68,8 @@ export function Hero() {
           className="absolute inset-0 z-0"
         >
           <img
-            src={images[currentIndex]}
-            alt="Hero Background"
+            src={displayBanners[currentIndex]?.imageUrl}
+            alt={displayBanners[currentIndex]?.title || "Hero Background"}
             className="w-full h-full object-cover object-center opacity-90"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-[#F5E7CB]/20" />
@@ -78,7 +105,7 @@ export function Hero() {
       {/* Hearts Container - Positioned within the beige mask area */}
       <div className="absolute bottom-4 left-0 w-full z-30 flex justify-center pb-2 md:pb-6">
         <div className="flex space-x-6 items-center">
-          {images.map((_, idx) => (
+          {displayBanners.map((_, idx) => (
             <button
               key={idx}
               onMouseEnter={() => handleManualSwitch(idx)}

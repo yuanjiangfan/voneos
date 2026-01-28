@@ -62,7 +62,7 @@ export function ProductDetailPage() {
     const images = product.images || [product.image];
 
     return (
-        <div className="product-detail-page">
+        <div className="product-detail-page" style={{ zoom: 0.75 } as React.CSSProperties}>
             {/* Hero Banner */}
             <div className="relative w-full h-[200px] md:h-[280px]">
                 <img

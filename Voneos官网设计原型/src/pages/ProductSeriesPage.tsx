@@ -36,7 +36,7 @@ export function ProductSeriesPage() {
     };
 
     return (
-        <div className="bg-white">
+        <div className="bg-white" style={{ zoom: 0.75 } as React.CSSProperties}>
             {/* HMR Update Trigger */}
             {/* Hero Banner */}
             <div className="relative w-full h-[300px] md:h-[500px]">

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Home, ChevronRight as BreadcrumbArrow } from 'lucide-react';
 import { NewsItem, getNewsById, getHotNews, incrementNewsViews } from '../services/newsService';
 import bannerImg from '../assets/新闻动态/banner 拷贝 2.png';
 import dividerLine from '../assets/虚线/横虚线.png';
@@ -84,25 +84,34 @@ export function NewsDetailPage() {
   }
 
   return (
-    <div className="bg-white w-full min-h-screen">
+    <div className="bg-white w-full min-h-screen" style={{ zoom: 0.75 } as React.CSSProperties}>
       {/* Hero Banner */}
       <section className="w-full relative">
         <img src={bannerImg} alt="新闻动态" className="w-full h-auto object-cover" />
       </section>
 
-      {/* Breadcrumb Navigation */}
-      <div className="w-full mx-auto pb-16 mb-8" style={{ maxWidth: '1700px' }}>
-        <nav className="flex items-center text-sm text-slate-600">
-          <Link to="/" className="hover:text-[#8E5E16] transition-colors">
-            首页
-          </Link>
-          <ChevronRight className="w-4 h-4 mx-2" />
-          <Link to="/news" className="hover:text-[#8E5E16] transition-colors">
-            新闻动态
-          </Link>
-          <ChevronRight className="w-4 h-4 mx-2" />
-          <span className="text-[#8E5E16] font-medium">新闻详情</span>
-        </nav>
+      {/* Breadcrumb Navigation - 模仿产品详情页样式，增强可见度 */}
+      <div className="w-full border-b border-gray-100 bg-white">
+        <div className="container mx-auto px-6 py-6 flex justify-center">
+          <div className="flex items-center gap-3 text-lg product-breadcrumb">
+            <Home size={28} className="text-[#8B7355]" />
+            <button
+              onClick={() => navigate('/')}
+              className="hover:text-[#6d5a42] transition-colors text-slate-600"
+            >
+              首页
+            </button>
+            <BreadcrumbArrow size={26} className="text-[#C5A47E]" />
+            <button
+              onClick={() => navigate('/news')}
+              className="hover:text-[#6d5a42] transition-colors text-slate-600"
+            >
+              新闻动态
+            </button>
+            <BreadcrumbArrow size={26} className="text-[#C5A47E]" />
+            <span className="font-medium text-[#8B7355] truncate max-w-[400px]">新闻详情</span>
+          </div>
+        </div>
       </div>
 
       {/* Article Content */}
@@ -117,11 +126,11 @@ export function NewsDetailPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <h1 className="text-5xl font-bold text-[#8E5E16] mb-6 leading-tight" style={{ fontSize: '3rem' }}>
+                <h1 className="text-6xl font-bold text-[#8E5E16] mb-8 leading-tight">
                   {news.title}
                 </h1>
 
-                <div className="flex items-center gap-6 text-base text-slate-400">
+                <div className="flex items-center gap-8 text-xl text-slate-400">
                   <span>发布时间：{news.date}</span>
                   <span>阅读量：{news.views}</span>
                 </div>
@@ -139,8 +148,8 @@ export function NewsDetailPage() {
             </div>
 
             {/* Article Body */}
-            <div className="px-8 md:px-12 mb-6">
-              <p className="text-slate-700 indent-8" style={{ fontSize: '21px', lineHeight: '38px' }}>
+            <div className="px-8 md:px-12 mb-8">
+              <p className="text-slate-700 indent-10 text-2xl leading-[1.8]">
                 {news.excerpt}
               </p>
             </div>
@@ -160,9 +169,9 @@ export function NewsDetailPage() {
                   </h2>
 
                   {/* Section Content */}
-                  <div className="text-slate-700 space-y-4 mb-6">
+                  <div className="text-slate-700 space-y-6 mb-8">
                     {section.content.split('\n\n').map((paragraph, pIndex) => (
-                      <p key={pIndex} className="indent-8" style={{ fontSize: '21px', lineHeight: '38px' }}>
+                      <p key={pIndex} className="indent-10 text-2xl leading-[1.8]">
                         {paragraph}
                       </p>
                     ))}

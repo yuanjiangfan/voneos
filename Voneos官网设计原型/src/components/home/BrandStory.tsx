@@ -7,7 +7,7 @@ export function BrandStory() {
   return (
     <section
       id="brand"
-      className="relative pt-20 pb-40 overflow-hidden min-h-[80vh] flex items-center"
+      className="relative pt-20 overflow-hidden min-h-[70vh] flex items-center"
     >
       {/* Gradient Background */}
       <div className="absolute inset-0 z-0 brand-gradient-bg" />
@@ -24,6 +24,7 @@ export function BrandStory() {
           >
             <h3 className="text-[#8B7355] font-bold mb-2 text-title-primary">
               因爱而生 · 科学健康
+
             </h3>
             <h4 className="text-[#8B7355] font-medium tracking-wide mb-8 uppercase text-title-secondary">
               INSPIRED BY LOVE <br />

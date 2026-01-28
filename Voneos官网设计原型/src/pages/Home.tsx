@@ -7,7 +7,9 @@ import { Community } from '../components/home/Community';
 
 export function Home() {
     return (
-        <main>
+        <main style={{
+            zoom: 0.75
+        } as React.CSSProperties}>
             <Hero />
             <BrandStory />
             <ProductShowcase />

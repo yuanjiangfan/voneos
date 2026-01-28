@@ -74,7 +74,7 @@ export function Footer() {
       </div>
 
       {/* Footer Top - Overlapping Image with Transparent Background */}
-      <div className="relative margin-top-k">
+      <div className="relative margin-top-k z-10">
         <div className="footer-top border-none bg-transparent">
           <div className="container mx-auto">
             <div className="footer-row">
@@ -90,18 +90,18 @@ export function Footer() {
                     <div
                       key={index}
                       className="platform-btn-wrapper relative"
-                      onMouseEnter={() => item.type === 'social' && setHoverPlatformIndex(index)}
+                      onMouseEnter={() => item.type === 'official_account' && setHoverPlatformIndex(index)}
                       onMouseLeave={() => setHoverPlatformIndex(-1)}
                     >
                       <img
                         className="platform-btn w-[40px] h-[40px] object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity"
                         src={item.iconUrl || ''}
                         alt={item.name}
-                        onClick={() => item.type === 'ecommerce' && openPlatformLink(item.url)}
+                        onClick={() => item.type === 'flagship_store' && openPlatformLink(item.link)}
                       />
 
                       {/* QR Code Popover */}
-                      {item.type === 'social' && hoverPlatformIndex === index && (
+                      {item.type === 'official_account' && hoverPlatformIndex === index && (
                         <div
                           className="absolute top-full left-1/2 -translate-x-1/2 mt-2 p-2 bg-white rounded-lg shadow-xl z-50 animate-in fade-in zoom-in duration-200"
                         >

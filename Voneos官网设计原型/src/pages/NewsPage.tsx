@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ArrowRight, Home, ChevronRight as BreadcrumbArrow } from 'lucide-react';
 import { NewsItem, getAllNews, getFeaturedNews } from '../services/newsService';
 import bannerImg from '../assets/新闻动态/banner 拷贝 2.png';
 import brandNews from '../assets/新闻动态/品牌动态.png';
@@ -192,22 +192,22 @@ const NewsCard = React.memo(({ news }: { news: NewsItem }) => {
       transition={{ duration: 0.3 }}
     >
       <Link to={`/news/${news.id}`} className="block">
-        <div className="flex h-[500px] mb-6">
+        <div className="flex h-[400px] mb-6">
           {/* 左侧内容 */}
-          <div className="w-[85%] p-6 bg-white">
+          <div className="w-[85%] p-8 bg-white flex flex-col justify-between">
             <div>
-              <h3 className="text-lg font-bold text-[#8E5E16] mb-8 line-clamp-1 leading-7 hover:text-[#6d4810] transition-colors" title={news.title}>
+              <h3 className="text-xl font-bold text-[#8E5E16] mb-6 line-clamp-1 leading-8 hover:text-[#6d4810] transition-colors" title={news.title}>
                 {news.title}
               </h3>
 
-              <p className="text-sm text-slate-600 mb-4 leading-relaxed line-clamp-3 mb-24">
+              <p className=" text-base text-slate-600 mb-4 leading-relaxed line-clamp-3">
                 {news.excerpt}
               </p>
             </div>
 
             <div>
               <div className="flex items-end justify-between">
-                <div className="flex items-end text-sm text-slate-400 gap-2">
+                <div className="flex items-end text-lg text-slate-400 gap-2">
                   <img
                     src={calendarIcon}
                     alt="日历"
@@ -240,6 +240,7 @@ NewsCard.displayName = 'NewsCard';
 
 // 主页面组件
 export function NewsPage() {
+  const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<'品牌动态' | '爱宠公益'>('品牌动态');
   const [currentPage, setCurrentPage] = useState(1);
   const [allNews, setAllNews] = useState<NewsItem[]>([]);
@@ -325,15 +326,32 @@ export function NewsPage() {
   }, []);
 
   return (
-    <div className="bg-white w-full min-h-screen">
+    <div className="bg-white w-full min-h-screen" style={{ zoom: 0.75 } as React.CSSProperties}>
       {/* Banner图 */}
-      <div className="w-full relative mb-16">
+      <div className="w-full relative">
         <img
           src={bannerImg}
           alt="新闻动态"
-          className="w-full h-auto object-cover"
+          className="w-full h-[300px] md:h-[400px] object-cover"
           onError={handleBannerError}
         />
+      </div>
+
+      {/* Breadcrumb Navigation - 模仿产品页面 */}
+      <div className="w-full border-b border-gray-100 bg-white">
+        <div className="container mx-auto px-6 py-6 flex justify-center">
+          <div className="flex items-center gap-3 text-lg product-breadcrumb">
+            <Home size={28} className="text-[#8B7355]" />
+            <button
+              onClick={() => navigate('/')}
+              className="hover:text-[#6d5a42] transition-colors text-slate-600"
+            >
+              首页
+            </button>
+            <BreadcrumbArrow size={26} className="text-[#C5A47E]" />
+            <span className="font-medium text-[#8B7355]">新闻动态</span>
+          </div>
+        </div>
       </div>
 
       {/* 新闻轮播 */}
@@ -350,7 +368,7 @@ export function NewsPage() {
               : 'opacity-60 hover:opacity-100 hover:scale-102'
               }`}
           >
-            <img src={brandNews} alt="品牌动态" className="h-10 w-auto object-contain" />
+            <img src={brandNews} alt="品牌动态" className="h-15 w-auto object-contain" />
             {activeCategory === '品牌动态' && (
               <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#8E5E16]"></div>
             )}
@@ -362,7 +380,7 @@ export function NewsPage() {
               : 'opacity-60 hover:opacity-100 hover:scale-102'
               }`}
           >
-            <img src={petCharity} alt="爱宠公益" className="h-10 w-auto object-contain" />
+            <img src={petCharity} alt="爱宠公益" className="h-15 w-auto object-contain" />
             {activeCategory === '爱宠公益' && (
               <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#8E5E16]"></div>
             )}
@@ -390,7 +408,7 @@ export function NewsPage() {
             <button
               onClick={handlePrevPage}
               disabled={currentPage === 1}
-              className="w-10 h-10 bg-white hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center justify-center disabled:hover:bg-white"
+              className="w-10 h-15 bg-white hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center justify-center disabled:hover:bg-white"
             >
               <img
                 src={triangleIcon2}

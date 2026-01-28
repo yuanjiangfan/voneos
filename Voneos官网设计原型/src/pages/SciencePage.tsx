@@ -59,7 +59,7 @@ import catDogImg from '../assets/科学营养/猫狗图.png';
 
 export function SciencePage() {
     return (
-        <div className="bg-white w-full relative" style={{ marginBottom: '-250px' }}>
+        <div className="bg-white w-full relative" style={{ zoom: 0.75, marginBottom: '-350px' } as React.CSSProperties}>
             {/* 1. Hero Banner */}
             <section className="w-full relative">
                 <img src={banner} alt="Science Nutrition Banner" className="w-full h-auto object-cover" />

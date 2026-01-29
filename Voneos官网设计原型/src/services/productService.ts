@@ -86,12 +86,11 @@ export async function getAllProducts(): Promise<Product[]> {
             return [];
         }
 
-        console.log('getAllProducts - 原始数据:', data);
+
 
         const result = (data || []).map(mapProductData);
 
-        console.log('getAllProducts - 转换后结果:', result);
-        console.log('getAllProducts - 总数:', result.length);
+
 
         return result;
     } catch (error) {
@@ -119,12 +118,9 @@ export async function getProductsByCategory(category: 'dog' | 'cat'): Promise<Pr
             return [];
         }
 
-        console.log('getProductsByCategory - 原始数据:', data);
 
         const result = (data || []).map(mapProductData);
 
-        console.log('getProductsByCategory - 转换后结果:', result);
-        console.log('getProductsByCategory - 总数:', result.length);
 
         return result;
     } catch (error) {
@@ -150,12 +146,9 @@ export async function getHomeProducts(): Promise<Product[]> {
             return [];
         }
 
-        console.log('getHomeProducts - 原始数据:', data);
 
         const result = (data || []).map(mapProductData);
 
-        console.log('getHomeProducts - 转换后结果:', result);
-        console.log('getHomeProducts - 总数:', result.length);
 
         return result;
     } catch (error) {
@@ -169,7 +162,6 @@ export async function getHomeProducts(): Promise<Product[]> {
  */
 export async function getProductById(id: string): Promise<ProductDetail | null> {
     try {
-        console.log('getProductById - 查询ID:', id);
 
         // 使用关联查询一次性获取产品基础信息和详情
         const { data, error } = await supabase
@@ -193,7 +185,6 @@ export async function getProductById(id: string): Promise<ProductDetail | null> 
             return null;
         }
 
-        console.log('getProductById - 关联查询结果:', data);
 
         // 提取product_details数据（Supabase返回的是数组，取第一个元素）
         const detailData = Array.isArray(data.product_details)
@@ -211,7 +202,6 @@ export async function getProductById(id: string): Promise<ProductDetail | null> 
             jdLink: detailData?.jd_link || undefined
         };
 
-        console.log('getProductById - 完整结果:', result);
 
         return result;
     } catch (error) {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getProductById, ProductDetail } from '../services/productService';
+import { useLoading } from '../components/common/LoadingContext';
 import { ChevronLeft, ChevronRight, Home, ChevronRight as BreadcrumbArrow } from 'lucide-react';
 import bannerImg from '../assets/产品页面/product-3.png';
 import horizontalDashedLine from '../assets/虚线/横虚线.png';
@@ -11,6 +12,7 @@ export function ProductDetailPage() {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [product, setProduct] = useState<ProductDetail | null>(null);
     const [loading, setLoading] = useState(true);
+    const { setIsLoading } = useLoading();
 
     // 获取产品数据
     useEffect(() => {
@@ -20,16 +22,18 @@ export function ProductDetailPage() {
                 return;
             }
             try {
+                setIsLoading(true);
                 const data = await getProductById(productId);
                 setProduct(data);
             } catch (error) {
                 console.error('Error fetching product:', error);
             } finally {
                 setLoading(false);
+                setIsLoading(false);
             }
         };
         fetchProduct();
-    }, [productId]);
+    }, [productId, setIsLoading]);
 
     if (loading) {
         return (

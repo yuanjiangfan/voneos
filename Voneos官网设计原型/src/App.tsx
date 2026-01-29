@@ -11,6 +11,8 @@ import { NewsDetailPage } from './pages/NewsDetailPage';
 import { ProductSeriesPage } from './pages/ProductSeriesPage';
 import { ProductCategoryPage } from './pages/ProductCategoryPage';
 import { ProductDetailPage } from './pages/ProductDetailPage';
+import { LoadingProvider } from './components/common/LoadingContext';
+import { PageLoader } from './components/common/PageLoader';
 
 // ScrollToTop component to reset scroll position on route change
 function ScrollToTop() {
@@ -25,23 +27,26 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <div className="min-h-screen bg-[#FFF8F0] font-sans text-slate-800">
-        <ScrollToTop />
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/brand" element={<BrandPage />} />
-          <Route path="/products" element={<ProductSeriesPage />} />
-          <Route path="/products/:categoryId" element={<ProductCategoryPage />} />
-          <Route path="/products/:categoryId/:productId" element={<ProductDetailPage />} />
-          <Route path="/science" element={<SciencePage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/news/:id" element={<NewsDetailPage />} />
-        </Routes>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <LoadingProvider>
+      <BrowserRouter>
+        <div className="min-h-screen bg-[#FFF8F0] font-sans text-slate-800">
+          <PageLoader />
+          <ScrollToTop />
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/brand" element={<BrandPage />} />
+            <Route path="/products" element={<ProductSeriesPage />} />
+            <Route path="/products/:categoryId" element={<ProductCategoryPage />} />
+            <Route path="/products/:categoryId/:productId" element={<ProductDetailPage />} />
+            <Route path="/science" element={<SciencePage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/news/:id" element={<NewsDetailPage />} />
+          </Routes>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </LoadingProvider>
   );
 }

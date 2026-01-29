@@ -17,6 +17,20 @@ export function Hero() {
   const [loading, setLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Preload images to prevent flickering/reloading
+  useEffect(() => {
+    const urlsToPreload = [
+      heroImage1,
+      heroImage2,
+      "https://images.unsplash.com/photo-1616968491853-875e02f61e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXQlMjBzbGVlcGluZyUyMG9uJTIwc3VubnklMjB3aW5kb3dzaWxsfGVufDF8fHx8MTc2NTIwMDc0NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+    ];
+
+    urlsToPreload.forEach(url => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, []);
+
   // Fetch banners from Supabase
   useEffect(() => {
     const fetchBanners = async () => {
@@ -24,11 +38,11 @@ export function Hero() {
         const data = await getHomeBanners();
         if (data && data.length > 0) {
           setBanners(data);
-        } else {
-          // If no data or error (which returns empty array), use defaults
-          // But technically setBanners([]) is already initial state, 
-          // we just need to know if we should render 'banners' or 'defaultBanners'
-          // We can just keep banners empty and handle it in render variable
+          // Preload fetched images
+          data.forEach(banner => {
+            const img = new Image();
+            img.src = banner.imageUrl;
+          });
         }
       } catch (error) {
         console.error('Failed to fetch banners:', error);
@@ -57,7 +71,6 @@ export function Hero() {
   return (
     <div className="relative w-full h-screen min-h-[600px] overflow-hidden bg-[#F5E7CB]">
       {/* Background Image Carousel */}
-      {/* Removed mode="wait" to enable crossfade animation instead of fade-out-then-in */}
       <AnimatePresence>
         <motion.div
           key={currentIndex}
@@ -65,7 +78,7 @@ export function Hero() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-10"
         >
           <img
             src={displayBanners[currentIndex]?.imageUrl}
@@ -75,6 +88,13 @@ export function Hero() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-[#F5E7CB]/20" />
         </motion.div>
       </AnimatePresence>
+
+      {/* Hidden constant images to keep browser cache active and prevent re-evaluating */}
+      <div className="hidden" aria-hidden="true">
+        {displayBanners.map((banner, idx) => (
+          <img key={`preload-${banner.id}-${idx}`} src={banner.imageUrl} alt="" />
+        ))}
+      </div>
 
       {/* Curved Mask Area */}
       <div className="absolute -bottom-0.5 left-0 w-full z-20">

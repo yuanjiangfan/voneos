@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Home, ChevronRight as BreadcrumbArrow } from 'lucide-react';
 import { NewsItem, getAllNews, getFeaturedNews } from '../services/newsService';
+import { useLoading } from '../components/common/LoadingContext';
 import bannerImg from '../assets/新闻动态/banner 拷贝 2.png';
 import brandNews from '../assets/新闻动态/品牌动态.png';
 import petCharity from '../assets/新闻动态/爱宠公益.png';
@@ -245,19 +246,26 @@ export function NewsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [allNews, setAllNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const { setIsLoading } = useLoading();
   const itemsPerPage = 4; // 横向卡片布局，减少每页显示数量
 
   // 加载所有新闻
   useEffect(() => {
     const loadNews = async () => {
-      setLoading(true);
-      const data = await getAllNews();
-      setAllNews(data);
-      setLoading(false);
+      try {
+        setIsLoading(true);
+        const data = await getAllNews();
+        setAllNews(data);
+      } catch (error) {
+        console.error('Error fetching news:', error);
+      } finally {
+        setLoading(false);
+        setIsLoading(false);
+      }
     };
 
     loadNews();
-  }, []);
+  }, [setIsLoading]);
 
   // 使用 useMemo 缓存筛选结果
   const filteredNews = useMemo(

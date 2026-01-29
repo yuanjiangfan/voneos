@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAllProducts, Product } from '../services/productService';
+import { useLoading } from '../components/common/LoadingContext';
 import { ArrowRight } from 'lucide-react';
 import bannerImg from '../assets/产品页面/一级广告.png';
 import learnMoreBtn from '../assets/产品页面/点击了解更多.png';
@@ -11,11 +12,13 @@ export function ProductSeriesPage() {
     const [dogProducts, setDogProducts] = useState<Product[]>([]);
     const [catProducts, setCatProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
+    const { setIsLoading } = useLoading();
 
     // 获取产品数据
     useEffect(() => {
         const fetchProducts = async () => {
             try {
+                setIsLoading(true);
                 const allProducts = await getAllProducts();
                 setDogProducts(allProducts.filter(p => p.category === 'dog' && p.showInSeriesPage).slice(0, 4));
                 setCatProducts(allProducts.filter(p => p.category === 'cat' && p.showInSeriesPage).slice(0, 4));
@@ -23,10 +26,11 @@ export function ProductSeriesPage() {
                 console.error('Error fetching products:', error);
             } finally {
                 setLoading(false);
+                setIsLoading(false);
             }
         };
         fetchProducts();
-    }, []);
+    }, [setIsLoading]);
 
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);

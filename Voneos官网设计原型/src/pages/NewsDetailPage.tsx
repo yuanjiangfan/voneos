@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ChevronRight, Home, ChevronRight as BreadcrumbArrow } from 'lucide-react';
+import { useLoading } from '../components/common/LoadingContext';
 import { NewsItem, getNewsById, getHotNews, incrementNewsViews } from '../services/newsService';
 import bannerImg from '../assets/新闻动态/banner 拷贝 2.png';
 import dividerLine from '../assets/虚线/横虚线.png';
@@ -15,26 +16,33 @@ export function NewsDetailPage() {
   const [news, setNews] = useState<NewsItem | null>(null);
   const [hotNews, setHotNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const { setIsLoading } = useLoading();
 
   // 加载新闻详情
   useEffect(() => {
     const loadNews = async () => {
       if (!id) return;
 
-      setLoading(true);
-      const newsId = parseInt(id);
-      const data = await getNewsById(newsId);
-      setNews(data);
-      setLoading(false);
+      try {
+        setIsLoading(true);
+        const newsId = parseInt(id);
+        const data = await getNewsById(newsId);
+        setNews(data);
+      } catch (error) {
+        console.error('Error fetching news detail:', error);
+      } finally {
+        setLoading(false);
+        setIsLoading(false);
+      }
 
       // 增加浏览量
-      if (data) {
-        incrementNewsViews(newsId);
+      if (id) {
+        incrementNewsViews(parseInt(id));
       }
     };
 
     loadNews();
-  }, [id]);
+  }, [id, setIsLoading]);
 
   // 加载热门新闻
   useEffect(() => {

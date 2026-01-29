@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useLoading } from '../common/LoadingContext';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -10,21 +11,24 @@ export function ProductShowcase() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const { setIsLoading } = useLoading();
 
   // 从Supabase获取首页产品(is_home=true)
   useEffect(() => {
     const fetchHomeProducts = async () => {
       try {
+        setIsLoading(true);
         const data = await getHomeProducts();
         setProducts(data);
       } catch (error) {
         console.error('Failed to fetch home products:', error);
       } finally {
         setLoading(false);
+        setIsLoading(false);
       }
     };
     fetchHomeProducts();
-  }, []);
+  }, [setIsLoading]);
 
   const handlePrevious = () => {
     if (scrollContainerRef.current) {

@@ -12,16 +12,9 @@ export interface NewsItemDB {
   author: string;
   featured: boolean;
   views: number;
+  content: string; // 新增富文本内容字段
 }
 
-export interface NewsSectionDB {
-  id: number;
-  created_at: string;
-  subtitle: string;
-  image: string;
-  content: string;
-  news_item_id: number;
-}
 
 // 前端使用的类型（兼容现有代码）
 export interface NewsItem {
@@ -34,13 +27,7 @@ export interface NewsItem {
   author: string;
   featured: boolean;
   views: number;
-  sections?: NewsSection[];
-}
-
-export interface NewsSection {
-  subtitle: string;
-  image: string;
-  content: string;
+  content?: string; // 新增富文本内容字段
 }
 
 /**
@@ -56,7 +43,8 @@ function mapNewsData(item: NewsItemDB): NewsItem {
     category: item.category,
     author: item.author,
     featured: item.featured,
-    views: item.views
+    views: item.views,
+    content: item.content
   };
 }
 
@@ -137,7 +125,7 @@ export async function getHotNews(): Promise<NewsItem[]> {
  */
 export async function getNewsById(id: number): Promise<NewsItem | null> {
   try {
-    // 获取新闻主体
+    // 获取新闻主体 (包含 content 字段)
     const { data: newsData, error: newsError } = await supabase
       .from('news_item')
       .select('*')
@@ -149,30 +137,7 @@ export async function getNewsById(id: number): Promise<NewsItem | null> {
       return null;
     }
 
-    // 获取新闻段落
-    const { data: sectionsData, error: sectionsError } = await supabase
-      .from('news_sections')
-      .select('*')
-      .eq('news_item_id', id)
-      .order('id', { ascending: true });
-
-    if (sectionsError) {
-      console.error('Error fetching news sections:', sectionsError);
-    }
-
-    // 组合数据
-    const sections: NewsSection[] = (sectionsData || []).map(section => ({
-      subtitle: section.subtitle,
-      image: section.image,
-      content: section.content
-    }));
-
-    const result = {
-      ...mapNewsData(newsData),
-      sections
-    };
-
-    return result;
+    return mapNewsData(newsData);
   } catch (error) {
     console.error('Exception fetching news by id:', error);
     return null;

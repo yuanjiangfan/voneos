@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ChevronRight, Home, ChevronRight as BreadcrumbArrow } from 'lucide-react';
+import { ArrowLeft, Home, ChevronRight as BreadcrumbArrow } from 'lucide-react';
 import { useLoading } from '../components/common/LoadingContext';
 import { NewsItem, getNewsById, getHotNews, incrementNewsViews } from '../services/newsService';
 import bannerImg from '../assets/新闻动态/banner 拷贝 2.png';
@@ -9,13 +9,15 @@ import dividerLine from '../assets/虚线/横虚线.png';
 import calendarIcon from '../assets/新闻动态/矢量智能对象-2.png';
 import backupImg from '../assets/新闻动态/返回列表.png';
 
+import DOMPurify from 'dompurify';
+import '@wangeditor/editor/dist/css/style.css';
+
 // 新闻详情页面组件
 export function NewsDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [news, setNews] = useState<NewsItem | null>(null);
   const [hotNews, setHotNews] = useState<NewsItem[]>([]);
-  const [loading, setLoading] = useState(true);
   const { setIsLoading } = useLoading();
 
   // 加载新闻详情
@@ -31,7 +33,6 @@ export function NewsDetailPage() {
       } catch (error) {
         console.error('Error fetching news detail:', error);
       } finally {
-        setLoading(false);
         setIsLoading(false);
       }
 
@@ -163,42 +164,23 @@ export function NewsDetailPage() {
             </div>
 
             <div className="px-8 md:px-12 py-6 mb-6">
-              {news.sections && news.sections.map((section, index) => (
+              {/* 富文本内容渲染 */}
+              {news.content && (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 * (index + 1) }}
-                  className="mb-10"
-                >
-                  {/* Section Title */}
-                  <h2 className="text-xl font-bold text-slate-800 mb-6">
-                    {section.subtitle}
-                  </h2>
-
-                  {/* Section Content */}
-                  <div className="text-slate-700 space-y-6 mb-8">
-                    {section.content.split('\n\n').map((paragraph, pIndex) => (
-                      <p key={pIndex} className="indent-10 text-2xl leading-[1.8]">
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-
-                  {/* Section Image */}
-                  {section.image != null && (
-                    <div className="my-6 overflow-hidden mb-6">
-                      <img
-                        src={section.image}
-                        alt={section.subtitle}
-                        className="w-full h-auto object-cover"
-                        onError={handleImageError}
-                        loading="lazy"
-                      />
-                    </div>
-                  )}
-                </motion.div>
-              ))}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="editor-content-view"
+                  style={{
+                    fontSize: '1.5rem',
+                    lineHeight: '1.8',
+                    color: '#334155'
+                  }}
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(news.content)
+                  }}
+                />
+              )}
             </div>
 
             {/* 底部分隔线 */}

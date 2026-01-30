@@ -3,15 +3,10 @@ import { motion, AnimatePresence } from 'motion/react';
 import { getHomeBanners, Banner } from '../../services/bannerService';
 import heartUnselected from '../../assets/首页/b2d60a3007e626530c4f26151cac09a610940128.png';
 import heartSelected from '../../assets/首页/a67f782c8eb15f304b30c791f802f0e455953716.png';
-import heroImage1 from '../../assets/首页/3b693765c88dcb52e7aee5428b483cd7fef2c78c.png';
-import heroImage2 from '../../assets/首页/猫.png';
+
 
 export function Hero() {
-  const defaultBanners: Banner[] = [
-    { id: 'local-1', title: 'Default Banner 1', imageUrl: heroImage1, sortOrder: 1 },
-    { id: 'local-2', title: 'Default Banner 2', imageUrl: heroImage2, sortOrder: 2 },
-    { id: 'local-3', title: 'Default Banner 3', imageUrl: "https://images.unsplash.com/photo-1616968491853-875e02f61e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXQlMjBzbGVlcGluZyUyMG9uJTIwc3VubnklMjB3aW5kb3dzaWxsfGVufDF8fHx8MTc2NTIwMDc0NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", sortOrder: 3 }
-  ];
+
 
   const [banners, setBanners] = useState<Banner[]>([]);
   const [loading, setLoading] = useState(true);
@@ -19,11 +14,7 @@ export function Hero() {
 
   // Preload images to prevent flickering/reloading
   useEffect(() => {
-    const urlsToPreload = [
-      heroImage1,
-      heroImage2,
-      "https://images.unsplash.com/photo-1616968491853-875e02f61e45?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXQlMjBzbGVlcGluZyUyMG9uJTIwc3VubnklMjB3aW5kb3dzaWxsfGVufDF8fHx8MTc2NTIwMDc0NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-    ];
+    const urlsToPreload = [];
 
     urlsToPreload.forEach(url => {
       const img = new Image();
@@ -53,7 +44,7 @@ export function Hero() {
     fetchBanners();
   }, []);
 
-  const displayBanners = banners.length > 0 ? banners : defaultBanners;
+  const displayBanners = banners;
 
   // Auto-switch logic
   useEffect(() => {
